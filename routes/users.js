@@ -72,4 +72,18 @@ router.get("/loggedin", (req, res) => {
   res.json(req.user);
 });
 
+router.get("/user/:id", (req, res) => {
+  const userId = req.params.id;
+
+  User.findById(userId)
+    .then(user => {
+      res.json(user);
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: err.message
+      });
+    });
+});
+
 module.exports = router;
