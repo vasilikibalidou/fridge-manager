@@ -17,6 +17,12 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "FoodItem"
     }
+  ],
+  fridges: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Fridge"
+    }
   ]
 });
 
