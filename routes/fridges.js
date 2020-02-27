@@ -12,7 +12,6 @@ router.post("/fridge", (req, res) => {
 
   Fridge.create({ name: name, admins: [userId], users: [userId] })
     .then(newFridge => {
-      console.log(userId);
       User.findById(userId)
         .then(foundUser => {
           return User.updateOne(

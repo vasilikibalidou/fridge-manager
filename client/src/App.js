@@ -6,7 +6,8 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import CreateFridge from "./components/CreateFridge";
-import Fridge from "./components/Fridge";
+import FridgeDetails from "./components/FridgeDetails";
+import CreateItem from "./components/CreateItem";
 import axios from "axios";
 
 class App extends React.Component {
@@ -34,10 +35,21 @@ class App extends React.Component {
         <Navbar user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Route
+            path="/fridge/:id/createItem"
+            render={props => (
+              <CreateItem
+                history={props.history}
+                user={this.props.user}
+                updateFunc={this.updateUserState}
+                fridgeId={props.match.params.id}
+              />
+            )}
+          />
+          <Route
             exact
             path="/fridge/:id"
             render={props => (
-              <Fridge
+              <FridgeDetails
                 history={props.history}
                 user={this.state.user}
                 fridgeId={props.match.params.id}

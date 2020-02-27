@@ -7,7 +7,6 @@ export default class Fridge extends Component {
   };
 
   componentDidMount() {
-    console.log("fridgeId: " + this.props.fridgeId);
     axios.get(`/fridge/${this.props.fridgeId}`).then(response => {
       this.setState({
         fridge: response.data
