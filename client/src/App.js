@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -32,48 +32,48 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        <Route
-          extact
-          path="/"
-          render={props => (
-            <Home history={props.history} user={this.state.user} />
-          )}
-        />
-        <Route
-          path="/signup"
-          render={props => (
-            <Signup history={props.history} setUser={this.setUser} />
-          )}
-        />
-        <Route
-          path="/login"
-          render={props => (
-            <Login history={props.history} setUser={this.setUser} />
-          )}
-        />
-        <Route
-          path="/fridge/:id"
-          render={props => (
-            <Fridge history={props.history} user={this.state.user} />
-          )}
-        />
-        {/* <Route
-          path="/fridge/:id/detail"
-          render={props => (
-            console.log("props: "+props);
-            <Fridge history={props.history} user={this.state.user}/>
-          )}
-        /> */}
-        <Route
-          path="/createFridge"
-          render={props => (
-            <CreateFridge
-              history={props.history}
-              user={this.props.user}
-              updateFunc={this.updateUserState}
-            />
-          )}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/fridge/:id"
+            render={props => (
+              <Fridge
+                history={props.history}
+                user={this.state.user}
+                fridgeId={props.match.params.id}
+              />
+            )}
+          />
+          <Route
+            extact
+            path="/"
+            render={props => (
+              <Home history={props.history} user={this.state.user} />
+            )}
+          />
+          <Route
+            path="/signup"
+            render={props => (
+              <Signup history={props.history} setUser={this.setUser} />
+            )}
+          />
+          <Route
+            path="/login"
+            render={props => (
+              <Login history={props.history} setUser={this.setUser} />
+            )}
+          />
+          <Route
+            path="/createFridge"
+            render={props => (
+              <CreateFridge
+                history={props.history}
+                user={this.props.user}
+                updateFunc={this.updateUserState}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
