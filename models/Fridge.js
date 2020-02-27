@@ -9,6 +9,12 @@ const fridgeSchema = new Schema({
       ref: "FoodItem"
     }
   ],
+  admins: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
   users: [
     {
       type: Schema.Types.ObjectId,

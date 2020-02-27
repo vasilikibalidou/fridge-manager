@@ -8,10 +8,6 @@ const userSchema = new Schema({
     unique: true
   },
   password: String,
-  admin: {
-    type: Boolean,
-    default: false
-  },
   items: [
     {
       type: Schema.Types.ObjectId,

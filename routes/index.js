@@ -3,11 +3,13 @@
 const router = require("express").Router();
 const usersRoutes = require("./users");
 const profileRoutes = require("./profile");
+const fridgeRoutes = require("./fridges");
 
 router.get("/", (req, res) => {
   res.send("This is home");
 });
 
+router.use("/", fridgeRoutes);
 router.use("/", profileRoutes);
 router.use("/auth", usersRoutes);
 

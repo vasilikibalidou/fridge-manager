@@ -57,6 +57,13 @@ class App extends React.Component {
             <Fridge history={props.history} user={this.state.user} />
           )}
         />
+        {/* <Route
+          path="/fridge/:id/detail"
+          render={props => (
+            console.log("props: "+props);
+            <Fridge history={props.history} user={this.state.user}/>
+          )}
+        /> */}
         <Route
           path="/createFridge"
           render={props => (
