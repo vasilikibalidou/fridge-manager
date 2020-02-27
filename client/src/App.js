@@ -6,6 +6,8 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import CreateFridge from "./components/CreateFridge";
+import Fridge from "./components/Fridge";
 
 class App extends React.Component {
   state = {
@@ -22,7 +24,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        <Home user={this.state.user} />
+        <Route
+          extact
+          path="/"
+          render={props => (
+            <Home history={props.history} user={this.state.user} />
+          )}
+        />
         <Route
           path="/signup"
           render={props => (
@@ -33,6 +41,18 @@ class App extends React.Component {
           path="/login"
           render={props => (
             <Login history={props.history} setUser={this.setUser} />
+          )}
+        />
+        <Route
+          path="/createFridge"
+          render={props => (
+            <CreateFridge history={props.history} user={this.state.user} />
+          )}
+        />
+        <Route
+          path="/fridge/:id"
+          render={props => (
+            <Fridge history={props.history} user={this.state.user} />
           )}
         />
       </div>

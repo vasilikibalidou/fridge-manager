@@ -26,7 +26,6 @@ export default class Login extends Component {
         // redirect
         this.props.history.push("/");
         // update state for user in <App/>
-        console.log(response);
         this.props.setUser(response.data);
       })
       .catch(err => {
