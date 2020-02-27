@@ -34,7 +34,16 @@ class App extends React.Component {
         <Navbar user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Route
-            exact
+            path="/createFridge"
+            render={props => (
+              <CreateFridge
+                history={props.history}
+                user={this.props.user}
+                updateFunc={this.updateUserState}
+              />
+            )}
+          />
+          <Route
             path="/fridge/:id"
             render={props => (
               <Fridge
@@ -61,16 +70,6 @@ class App extends React.Component {
             path="/login"
             render={props => (
               <Login history={props.history} setUser={this.setUser} />
-            )}
-          />
-          <Route
-            path="/createFridge"
-            render={props => (
-              <CreateFridge
-                history={props.history}
-                user={this.props.user}
-                updateFunc={this.updateUserState}
-              />
             )}
           />
         </Switch>
