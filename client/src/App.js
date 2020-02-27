@@ -24,6 +24,7 @@ class App extends React.Component {
   };
 
   setUser = userObj => {
+    console.log("set user: " + userObj);
     this.setState({
       user: userObj
     });
@@ -39,7 +40,7 @@ class App extends React.Component {
             render={props => (
               <CreateItem
                 history={props.history}
-                user={this.props.user}
+                user={this.state.user}
                 updateFunc={this.updateUserState}
                 fridgeId={props.match.params.id}
               />
@@ -50,12 +51,13 @@ class App extends React.Component {
             render={props => (
               <CreateFridge
                 history={props.history}
-                user={this.props.user}
+                user={this.state.user}
                 updateFunc={this.updateUserState}
               />
             )}
           />
           <Route
+            exact
             path="/fridge/:id"
             render={props => (
               <FridgeDetails
@@ -63,13 +65,6 @@ class App extends React.Component {
                 user={this.state.user}
                 fridgeId={props.match.params.id}
               />
-            )}
-          />
-          <Route
-            extact
-            path="/"
-            render={props => (
-              <Home history={props.history} user={this.state.user} />
             )}
           />
           <Route
@@ -82,6 +77,12 @@ class App extends React.Component {
             path="/login"
             render={props => (
               <Login history={props.history} setUser={this.setUser} />
+            )}
+          />
+          <Route
+            path="/"
+            render={props => (
+              <Home history={props.history} user={this.state.user} />
             )}
           />
         </Switch>

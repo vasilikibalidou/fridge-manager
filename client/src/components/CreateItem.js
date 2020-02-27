@@ -25,8 +25,7 @@ export default class CreateItem extends Component {
       .then(response => {
         console.log("response: " + response);
         // redirect
-        // this.props.history.push(`/fridge/${this.props.fridgeId}`);
-        // this.props.updateFunc(response.data);
+        this.props.history.push(`/fridge/${this.props.fridgeId}`);
       })
       .catch(err => {
         this.setState({

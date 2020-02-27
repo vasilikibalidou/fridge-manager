@@ -13,6 +13,7 @@ export default class CreateFridge extends Component {
   };
 
   handleSubmit = event => {
+    console.log("user id: " + this.props.user._id);
     event.preventDefault();
     axios
       .post("/fridge", {

@@ -16,18 +16,10 @@ export default class FridgeDetails extends Component {
     });
   }
 
-  updateFridgeState = () => {
-    // axios.get("/auth/loggedin").then(response => {
-    //   this.setState({
-    //     user: response.data
-    //   });
-    // });
-  };
-
   render() {
     return (
       <div>
-        <div>Name: {this.state.fridge?.name}</div>
+        <div>Fridge name: {this.state.fridge?.name}</div>
         <div>
           Items:
           {this.state.fridge?.items.map(itemId => {
