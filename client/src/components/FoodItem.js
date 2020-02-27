@@ -15,6 +15,20 @@ export default class FoodItem extends Component {
   }
 
   render() {
-    return <div>Name: {this.state.foodItem?.name}</div>;
+    return (
+      <div>
+        <ul>
+          <li>
+            {" "}
+            <img height="50" src="/022-containers.png"></img>
+            {this.state.foodItem?.category}
+          </li>
+          <li>Name: {this.state.foodItem?.name}</li>
+          <li>Availability: {this.state.foodItem?.availability}</li>
+          <li>Best Before: {this.state.foodItem?.expiration}</li>
+          <li>Description: {this.state.foodItem?.description}</li>
+        </ul>
+      </div>
+    );
   }
 }
