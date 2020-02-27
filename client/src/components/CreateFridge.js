@@ -19,11 +19,13 @@ export default class CreateFridge extends Component {
         name: this.state.name,
         userId: this.props.user._id
       })
-      .then(() => {
+      .then(response => {
         // redirect
         this.props.history.push("/");
+        this.props.updateFunc(response.data);
       })
       .catch(err => {
+        console.log(err);
         this.setState({
           message: err.response.data.message
         });

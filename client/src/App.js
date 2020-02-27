@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import logo from "./logo.svg";
 import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -8,10 +7,19 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import CreateFridge from "./components/CreateFridge";
 import Fridge from "./components/Fridge";
+import axios from "axios";
 
 class App extends React.Component {
   state = {
     user: this.props.user
+  };
+
+  updateUserState = () => {
+    axios.get("/auth/loggedin").then(response => {
+      this.setState({
+        user: response.data
+      });
+    });
   };
 
   setUser = userObj => {
@@ -44,15 +52,19 @@ class App extends React.Component {
           )}
         />
         <Route
-          path="/createFridge"
-          render={props => (
-            <CreateFridge history={props.history} user={this.state.user} />
-          )}
-        />
-        <Route
           path="/fridge/:id"
           render={props => (
             <Fridge history={props.history} user={this.state.user} />
+          )}
+        />
+        <Route
+          path="/createFridge"
+          render={props => (
+            <CreateFridge
+              history={props.history}
+              user={this.props.user}
+              updateFunc={this.updateUserState}
+            />
           )}
         />
       </div>
