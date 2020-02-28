@@ -33,7 +33,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Navbar user={this.state.user} setUser={this.setUser} />
+        {this.state.user && (
+          <Navbar user={this.state.user} setUser={this.setUser} />
+        )}
         <Switch>
           <Route
             path="/fridge/:id/createItem"
@@ -92,7 +94,11 @@ class App extends React.Component {
           <Route
             path="/"
             render={props => (
-              <Home history={props.history} user={this.state.user} />
+              <Home
+                history={props.history}
+                user={this.state.user}
+                setUser={this.setUser}
+              />
             )}
           />
         </Switch>

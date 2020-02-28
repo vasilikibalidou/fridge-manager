@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import styled, { css } from "styled-components";
+
+import { Form, Section, Button, Input } from "./StyledComponents";
 
 export default class CreateItem extends Component {
   state = {
@@ -37,27 +40,29 @@ export default class CreateItem extends Component {
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Item name: </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-
-          <label htmlFor="name">Description: </label>
-          <input
-            type="text"
-            id="description"
-            name="description"
-            value={this.state.description}
-            onChange={this.handleChange}
-          />
-
-          <button type="submit">Submit</button>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <Section>
+            <label htmlFor="name">Item name: </label>
+            <Input
+              type="text"
+              id="name"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </Section>
+          <Section>
+            <label htmlFor="name">Description: </label>
+            <Input
+              type="text"
+              id="description"
+              name="description"
+              value={this.state.description}
+              onChange={this.handleChange}
+            />
+          </Section>
+          <Button type="submit">Submit</Button>
+        </Form>
       </>
     );
   }
