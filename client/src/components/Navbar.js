@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import styled, { css } from "styled-components";
+
+import { Nav, NavLink } from "./StyledComponents";
 
 const Navbar = props => {
   const logout = () => {
@@ -10,20 +13,20 @@ const Navbar = props => {
   };
   if (props.user) {
     return (
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/" onClick={logout}>
+      <Nav>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" onClick={logout}>
           Logout
-        </Link>
-      </nav>
+        </NavLink>
+      </Nav>
     );
   }
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Sign Up</Link>
-    </nav>
+    <Nav>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/login">Login</NavLink>
+      <NavLink to="/signup">Sign Up</NavLink>
+    </Nav>
   );
 };
 
