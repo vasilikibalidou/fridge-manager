@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import CreateFridge from "./components/CreateFridge";
 import FridgeDetails from "./components/FridgeDetails";
 import CreateItem from "./components/CreateItem";
+import Invite from "./components/Invite";
 import axios from "axios";
 
 class App extends React.Component {
@@ -24,7 +25,6 @@ class App extends React.Component {
   };
 
   setUser = userObj => {
-    console.log("set user: " + userObj);
     this.setState({
       user: userObj
     });
@@ -42,6 +42,16 @@ class App extends React.Component {
                 history={props.history}
                 user={this.state.user}
                 updateFunc={this.updateUserState}
+                fridgeId={props.match.params.id}
+              />
+            )}
+          />
+          <Route
+            path="/fridge/:id/invite"
+            render={props => (
+              <Invite
+                history={props.history}
+                user={this.state.user}
                 fridgeId={props.match.params.id}
               />
             )}
