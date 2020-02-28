@@ -27,9 +27,8 @@ export default class Login extends Component {
       })
       .then(response => {
         // redirect
-        this.props.history.push("/");
-        // update state for user in <App/>
         this.props.setUser(response.data);
+        // update state for user in <App/>
       })
       .catch(err => {
         this.setState({
@@ -43,21 +42,22 @@ export default class Login extends Component {
       <>
         <Form onSubmit={this.handleSubmit}>
           <Section>
-            <label htmlFor="username">Username: </label>
             <Input
               type="text"
               id="username"
               name="username"
+              placeholder="Username"
               value={this.state.username}
               onChange={this.handleChange}
             />
           </Section>
           <Section>
-            <label htmlFor="password">Password: </label>
+            <label htmlFor="password"></label>
             <Input
               type="password"
               name="password"
               id="password"
+              placeholder="Password"
               value={this.state.password}
               onChange={this.handleChange}
             />
