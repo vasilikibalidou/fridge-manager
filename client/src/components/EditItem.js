@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class CreateItem extends Component {
+export default class EditItem extends Component {
   state = {
     name: "",
     description: "",
@@ -18,32 +18,41 @@ export default class CreateItem extends Component {
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    axios
-      .post("/foodItem", {
-        name: this.state.name,
-        description: this.state.description,
-        userId: this.props.user._id,
-        fridgeId: this.props.fridgeId,
-        // expiration: this.state.expiration,
-        image: this.state.image,
-        quantity: {
-          number: this.state.number,
-          unit: this.state.unit
-        },
-        availability: this.state.availability
-      })
-      .then(response => {
-        // redirect
-        this.props.history.push(`/fridge/${this.props.fridgeId}`);
-      })
-      .catch(err => {
-        this.setState({
-          message: err.response.data.message
-        });
+  editItem = () => {
+    axios.get(`/foodItem/${this.props.foodId}`).then(response => {
+      console.log("RESPONSE:", response.data);
+      this.setState({
+        foodItem: response.data
       });
+    });
   };
+
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   axios
+  //     .post("/foodItem/id/edit", {
+  //       name: this.state.name,
+  //       description: this.state.description,
+  //       userId: this.props.user._id,
+  //       fridgeId: this.props.fridgeId,
+  //       // expiration: this.state.expiration,
+  //       image: this.state.image,
+  //       quantity: {
+  //         number: this.state.number,
+  //         unit: this.state.unit
+  //       },
+  //       availability: this.state.availability
+  //     })
+  //     .then(response => {
+  //       // redirect
+  //     //   this.props.history.push(`/fridge/${this.props.fridgeId}`);
+  //     })
+  //     .catch(err => {
+  //       this.setState({
+  //         message: err.response.data.message
+  //       });
+  //     });
+  // };
 
   render() {
     return (

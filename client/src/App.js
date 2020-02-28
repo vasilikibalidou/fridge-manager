@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import CreateFridge from "./components/CreateFridge";
 import FridgeDetails from "./components/FridgeDetails";
 import CreateItem from "./components/CreateItem";
+import EditItem from "./components/EditItem";
 import axios from "axios";
 
 class App extends React.Component {
@@ -35,6 +36,17 @@ class App extends React.Component {
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
         <Switch>
+          <Route
+            path="/foodItem/:id/edit"
+            render={props => (
+              <EditItem
+                history={props.history}
+                user={this.state.user}
+                updateFunc={this.updateUserState}
+                foodItemId={props.match.params.id}
+              />
+            )}
+          />
           <Route
             path="/fridge/:id/createItem"
             render={props => (

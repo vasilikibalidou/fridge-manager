@@ -5,7 +5,15 @@ const Fridge = require("../models/Fridge");
 const User = require("../models/User");
 
 router.post("/foodItem", (req, res) => {
-  const { name, description, userId, fridgeId } = req.body;
+  const {
+    name,
+    description,
+    userId,
+    fridgeId,
+    availability,
+    expiration,
+    quantity
+  } = req.body;
 
   if (!name) {
     return res.status(400).json({ message: "Username can't be empty" });
