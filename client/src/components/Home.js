@@ -15,8 +15,8 @@ export default class Home extends Component {
           <Container>
             {this.props.user.fridges.map(fridgeId => {
               return (
-                <Card>
-                  <StyledLink to={`/fridge/${fridgeId}`} key={fridgeId}>
+                <Card key={fridgeId}>
+                  <StyledLink to={`/fridge/${fridgeId}`}>
                     <Fridge fridgeId={fridgeId} />
                   </StyledLink>
                 </Card>
