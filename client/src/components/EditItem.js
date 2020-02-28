@@ -5,22 +5,23 @@ export default class EditItem extends Component {
   state = {
     name: "",
     description: "",
-    category: "other",
+    category: "",
     expiration: "",
-    quantity: { number: "", unit: "L" },
-    availability: "full",
-    common: "false"
+    quantity: { number: "", unit: "" },
+    availability: "",
+    common: ""
   };
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+  //   handleChange = event => {
+  //     this.setState({
+  //       [event.target.name]: event.target.value
+  //     });
+  //   };
 
-  editItem = () => {
-    axios.get(`/foodItem/${this.props.foodId}`).then(response => {
+  componentDidMount = () => {
+    axios.get(`/foodItem/${this.props.foodItemId}`).then(response => {
       console.log("RESPONSE:", response.data);
+
       this.setState({
         foodItem: response.data
       });

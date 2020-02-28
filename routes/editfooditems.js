@@ -18,9 +18,7 @@ router.post("/foodItem/:id/edit", (req, res) => {
   if (!name) {
     return res.status(400).json({ message: "Username can't be empty" });
   }
-});
 
-router.get("/foodItem/:id/edit", (req, res) => {
   FoodItem.findByIdAndUpdate(
     req.params.id,
     ({
