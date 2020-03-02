@@ -20,13 +20,14 @@ export default class CreateItem extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.state.category);
     axios
       .post("/foodItem", {
         name: this.state.name,
         description: this.state.description,
         userId: this.props.user._id,
         fridgeId: this.props.fridgeId,
-        // category: this.state.category,
+        category: this.state.category,
         // expiration: this.state.expiration,
         image: this.state.image,
         quantity: {
@@ -111,19 +112,19 @@ export default class CreateItem extends Component {
             value={this.state.category}
             onChange={this.handleChange}
           >
-            <option value="fruit">🍏fruit</option>
-            <option value="vegetables">🍅vegetables</option>
-            <option value="dairy">🧀dairy</option>
-            <option value="eggs">🥚 eggs</option>
-            <option value="meat">🥩meat </option>
-            <option value="fish">🐟fish </option>
-            <option value="seafood">🍤seafood </option>
-            <option value="dessert">🧁dessert </option>
-            <option value="bread">🥖bread</option>
-            <option value="cooked meal">🥘cooked meal </option>
-            <option value="drinks">🧃 drinks</option>
-            <option value="alcohol">🍾alcohol </option>
-            <option value="coffee">☕️ coffee</option>
+            <option value="fruit">fruit</option>
+            <option value="vegetables">vegetables</option>
+            <option value="dairy">dairy</option>
+            <option value="eggs">eggs</option>
+            <option value="meat">meat </option>
+            <option value="fish">fish </option>
+            <option value="seafood">seafood </option>
+            <option value="dessert">dessert </option>
+            <option value="bread">bread</option>
+            <option value="cooked meal">cooked meal </option>
+            <option value="drinks">drinks</option>
+            <option value="alcohol">alcohol </option>
+            <option value="coffee">coffee</option>
             <option value="other">other </option>
           </select>
           <label htmlFor="common">shared food </label>

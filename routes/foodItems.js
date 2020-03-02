@@ -11,12 +11,20 @@ router.post("/foodItem", (req, res) => {
     userId,
     fridgeId,
     availability,
-    // category,
+    category,
     expiration,
     quantity
   } = req.body;
 
-  console.log("joiejfoaij", name, description);
+  console.log(
+    "test",
+    name,
+    description,
+    "availability:",
+    availability,
+    "category:",
+    category
+  );
 
   if (!name) {
     return res.status(400).json({ message: "Username can't be empty" });
@@ -28,8 +36,8 @@ router.post("/foodItem", (req, res) => {
     users: [userId],
     expiration: expiration,
     availability: availability,
-    quantity: quantity
-    // category: category
+    quantity: quantity,
+    category: category
   })
     .then(newItem => {
       User.findById(userId)

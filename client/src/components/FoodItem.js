@@ -21,7 +21,7 @@ export default class FoodItem extends Component {
         <ul>
           <li>
             {" "}
-            <img height="50" src="/022-containers.png"></img>
+            <img height="50" src="/022-containers.png" alt="itemimage"></img>
             {this.state.foodItem?.category}
           </li>
           <li>Name: {this.state.foodItem?.name}</li>

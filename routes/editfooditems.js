@@ -12,7 +12,8 @@ router.post("/foodItem/:id/edit", (req, res) => {
     fridgeId,
     availability,
     expiration,
-    quantity
+    quantity,
+    category
   } = req.body;
 
   if (!name) {
@@ -28,7 +29,8 @@ router.post("/foodItem/:id/edit", (req, res) => {
       fridgeId,
       availability,
       expiration,
-      quantity
+      quantity,
+      category
     } = req.body)
   )
     .then(foundItem => {

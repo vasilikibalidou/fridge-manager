@@ -93,7 +93,7 @@ export default class EditItem extends Component {
             <option value="kg">kg</option>
             <option value="item">item</option>
           </select>
-          <label htmlFor="category">availability: </label>
+          <label htmlFor="availability">availability: </label>
           <select
             type="text"
             id="availability"
@@ -125,19 +125,21 @@ export default class EditItem extends Component {
             value={this.state.category}
             onChange={this.handleChange}
           >
-            <option value="fruit">🍏fruit</option>
-            <option value="vegetables">🍅vegetables</option>
-            <option value="dairy">🧀dairy</option>
-            <option value="eggs">🥚 eggs</option>
-            <option value="meat">🥩meat </option>
-            <option value="fish">🐟fish </option>
-            <option value="seafood">🍤seafood </option>
-            <option value="dessert">🧁dessert </option>
-            <option value="bread">🥖bread</option>
-            <option value="cooked meal">🥘cooked meal </option>
-            <option value="drinks">🧃 drinks</option>
-            <option value="alcohol">🍾alcohol </option>
-            <option value="coffee">☕️ coffee</option>
+            <option value={this.state.category} value="fruit">
+              fruit
+            </option>
+            <option value="vegetables">vegetables</option>
+            <option value="dairy">dairy</option>
+            <option value="eggs">eggs</option>
+            <option value="meat">meat </option>
+            <option value="fish">fish </option>
+            <option value="seafood">seafood </option>
+            <option value="dessert">dessert </option>
+            <option value="bread">bread</option>
+            <option value="cooked meal">cooked meal </option>
+            <option value="drinks">drinks</option>
+            <option value="alcohol">alcohol </option>
+            <option value="coffee">coffee</option>
             <option value="other">other </option>
           </select>
           <label htmlFor="common">shared food </label>
