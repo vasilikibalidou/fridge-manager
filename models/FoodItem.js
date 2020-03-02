@@ -24,7 +24,8 @@ const foodItemSchema = new Schema(
         "alcoholic drinks",
         "coffee",
         "other"
-      ]
+      ],
+      default: "other"
     },
     common: {
       type: Boolean,

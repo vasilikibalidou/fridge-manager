@@ -5,13 +5,41 @@ const Fridge = require("../models/Fridge");
 const User = require("../models/User");
 
 router.post("/foodItem", (req, res) => {
-  const { name, description, userId, fridgeId } = req.body;
+  const {
+    name,
+    description,
+    userId,
+    fridgeId,
+    availability,
+    category,
+    expiration,
+    quantity
+  } = req.body;
+
+  console.log(
+    "test",
+    name,
+    description,
+    "availability:",
+    availability,
+    "category:",
+    category
+  );
 
   if (!name) {
+    console.log("🔆");
     return res.status(400).json({ message: "Username can't be empty" });
   }
-
-  FoodItem.create({ name: name, description: description, users: [userId] })
+  //extended the k-v pairs
+  FoodItem.create({
+    name: name,
+    description: description,
+    users: [userId],
+    expiration: expiration,
+    availability: availability,
+    quantity: quantity,
+    category: category
+  })
     .then(newItem => {
       User.findById(userId)
         .then(foundUser => {
@@ -28,14 +56,20 @@ router.post("/foodItem", (req, res) => {
             );
           });
         })
-        .catch();
+        .catch(err => {
+          console.log("🚴");
+          console.log(err);
+        });
       res.json(newItem);
     })
     .catch(err => {
-      res.status(400).json({ message: "Error while logging in" });
+      console.log("🍏");
+      console.log(err);
+      res.status(400).json({ message: "Error while creating item." });
     });
 });
 
+// gets food item
 router.get("/foodItem/:id", (req, res) => {
   FoodItem.findById(req.params.id)
     .then(foundItem => {
