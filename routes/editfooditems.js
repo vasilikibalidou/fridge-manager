@@ -4,39 +4,30 @@ const FoodItem = require("../models/FoodItem");
 const Fridge = require("../models/Fridge");
 const User = require("../models/User");
 
-router.post("/foodItem/:id/edit", (req, res) => {
-  const {
-    name,
-    description,
-    userId,
-    fridgeId,
-    availability,
-    expiration,
-    quantity,
-    category
-  } = req.body;
+router.post("/foodItem/edit/:id", (req, res) => {
+  console.log("hello");
 
-  if (!name) {
-    return res.status(400).json({ message: "Username can't be empty" });
-  }
-
-  FoodItem.findByIdAndUpdate(
-    req.params.id,
-    ({
-      name,
-      description,
-      userId,
-      fridgeId,
-      availability,
-      expiration,
-      quantity,
-      category
-    } = req.body)
-  )
+  FoodItem.findById(req.params.id)
     .then(foundItem => {
-      return res.json(foundItem);
+      console.log(foundItem.category, "FOUND ITEM");
+
+      console.log(req.body, "body ITEM");
+      return FoodItem.updateOne(
+        { _id: foundItem._id },
+        ({
+          name,
+          description,
+          userId,
+          fridgeId,
+          availability,
+          expiration,
+          quantity,
+          category
+        } = req.body)
+      );
     })
     .catch(err => {
+      console.log(err);
       res.status(400).json({ message: "Could not find fridge." });
     });
 });
