@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import { Form, Section, Button, Input } from "./StyledComponents";
+
 export default class Login extends Component {
   state = {
     username: "",
@@ -24,9 +26,8 @@ export default class Login extends Component {
       })
       .then(response => {
         // redirect
-        this.props.history.push("/");
-        // update state for user in <App/>
         this.props.setUser(response.data);
+        // update state for user in <App/>
       })
       .catch(err => {
         this.setState({
@@ -38,28 +39,33 @@ export default class Login extends Component {
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username: </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-
-          <button type="submit">Login</button>
-        </form>
-        {this.state.message && <p>{this.state.message}</p>}
+        <Form onSubmit={this.handleSubmit}>
+          <Section>
+            <Input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </Section>
+          <Section>
+            <label htmlFor="password"></label>
+            <Input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </Section>
+          <Section>
+            <Button type="submit">Login</Button>
+          </Section>
+        </Form>
+        <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
       </>
     );
   }

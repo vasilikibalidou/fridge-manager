@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import { Form, Section, Button, Input } from "./StyledComponents";
+
 export default class CreateFridge extends Component {
   state = {
     name: ""
@@ -13,7 +15,6 @@ export default class CreateFridge extends Component {
   };
 
   handleSubmit = event => {
-    console.log("user id: " + this.props.user._id);
     event.preventDefault();
     axios
       .post("/fridge", {
@@ -36,18 +37,19 @@ export default class CreateFridge extends Component {
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Fridge name: </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-
-          <button type="submit">Submit</button>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <Section>
+            <label htmlFor="name">Fridge name: </label>
+            <Input
+              type="text"
+              id="name"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </Section>
+          <Button type="submit">Submit</Button>
+        </Form>
       </>
     );
   }

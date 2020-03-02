@@ -8,6 +8,7 @@ const foodItemSchema = new Schema(
     description: String,
     category: {
       type: String,
+      default: "other",
       enum: [
         "fruit",
         "vegetables",
@@ -24,7 +25,6 @@ const foodItemSchema = new Schema(
         "coffee",
         "other"
       ],
-      // ,
       default: "other"
     },
     common: {

@@ -80,4 +80,25 @@ router.get("/foodItem/:id", (req, res) => {
     });
 });
 
+router.post("/foodItem/:id/delete", (req, res) => {
+  const { fridgeId } = req.body;
+  console.log(req.body);
+  FoodItem.findById(req.params.id)
+    .then(foundFoodItem => {
+      console.log(foundFoodItem);
+      Fridge.findById(fridgeId).then(foundFridge => {
+        console.log(foundFridge);
+        return Fridge.updateOne(
+          { _id: foundFridge._id },
+          { $pull: { items: foundFoodItem._id } }
+        );
+      });
+
+      res.json(foundFoodItem);
+    })
+    .catch(err => {
+      res.status(400).json({ message: "Could not find fridge." });
+    });
+});
+
 module.exports = router;

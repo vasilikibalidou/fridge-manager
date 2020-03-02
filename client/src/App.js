@@ -9,6 +9,7 @@ import CreateFridge from "./components/CreateFridge";
 import FridgeDetails from "./components/FridgeDetails";
 import CreateItem from "./components/CreateItem";
 import EditItem from "./components/EditItem";
+import Invite from "./components/Invite";
 import axios from "axios";
 
 class App extends React.Component {
@@ -25,7 +26,6 @@ class App extends React.Component {
   };
 
   setUser = userObj => {
-    console.log("set user: " + userObj);
     this.setState({
       user: userObj
     });
@@ -34,7 +34,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Navbar user={this.state.user} setUser={this.setUser} />
+        {this.state.user && (
+          <Navbar user={this.state.user} setUser={this.setUser} />
+        )}
         <Switch>
           <Route
             path="/fridge/:fridgeId/foodItem/:id/edit"
@@ -60,6 +62,26 @@ class App extends React.Component {
             )}
           />
           <Route
+            path="/fridge/:id/invite"
+            render={props => (
+              <Invite
+                history={props.history}
+                user={this.state.user}
+                fridgeId={props.match.params.id}
+              />
+            )}
+          />
+          <Route
+            path="/fridge/:id/join"
+            render={props => (
+              <Invite
+                history={props.history}
+                user={this.state.user}
+                fridgeId={props.match.params.id}
+              />
+            )}
+          />
+          <Route
             path="/createFridge"
             render={props => (
               <CreateFridge
@@ -77,6 +99,7 @@ class App extends React.Component {
                 history={props.history}
                 user={this.state.user}
                 fridgeId={props.match.params.id}
+                updateFunc={this.updateUserState}
               />
             )}
           />
@@ -95,7 +118,11 @@ class App extends React.Component {
           <Route
             path="/"
             render={props => (
-              <Home history={props.history} user={this.state.user} />
+              <Home
+                history={props.history}
+                user={this.state.user}
+                setUser={this.setUser}
+              />
             )}
           />
         </Switch>

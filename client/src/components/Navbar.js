@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import axios from "axios";
+
+import { Nav, NavLink, LogoImg } from "./StyledComponents";
 
 const Navbar = props => {
   const logout = () => {
@@ -8,22 +9,17 @@ const Navbar = props => {
       props.setUser(null);
     });
   };
-  if (props.user) {
-    return (
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/" onClick={logout}>
-          Logout
-        </Link>
-      </nav>
-    );
-  }
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Sign Up</Link>
-    </nav>
+    <Nav>
+      <div>
+        <NavLink to="/">Home</NavLink>
+      </div>
+      <div>
+        <NavLink to="/" onClick={logout}>
+          Logout
+        </NavLink>
+      </div>
+    </Nav>
   );
 };
 
