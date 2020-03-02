@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import styled, { css } from "styled-components";
 
 import { Nav, NavLink, LogoImg } from "./StyledComponents";
 

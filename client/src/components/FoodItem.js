@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import styled, { css } from "styled-components";
 
 import { DeleteButton } from "./StyledComponents";
 

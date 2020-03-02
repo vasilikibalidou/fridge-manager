@@ -15,6 +15,7 @@ import {
 
 export default class FridgeDetails extends Component {
   state = {
+    user: this.props.user,
     fridge: null,
     userIsAdmin: false,
     userHasFridge: false,
@@ -25,8 +26,8 @@ export default class FridgeDetails extends Component {
     axios
       .get(`/fridge/${this.props.fridgeId}`)
       .then(response => {
-        let isAdmin = response.data?.admins.includes(this.props.user._id);
-        let hasFridge = response.data?.users.includes(this.props.user._id);
+        let isAdmin = response.data?.admins.includes(this.state.user._id);
+        let hasFridge = response.data?.users.includes(this.state.user._id);
         this.setState({
           fridge: response.data,
           userIsAdmin: isAdmin,
@@ -47,19 +48,18 @@ export default class FridgeDetails extends Component {
       })
       .then(response => {
         this.props.updateFunc();
-        // redirect to get new props
-        this.props.history.push(`/fridge/${this.state.fridge._id}`);
-        // axios.get("/auth/loggedin").then(response => {
-        //   this.setState({
-        //     user: response.data
-        //   });
-        // });
-        // this.setState({
-        //   fridge: response.data
-        // });
+        axios.get("/auth/loggedin").then(resp => {
+          let isAdmin = response.data?.admins.includes(resp.data._id);
+          let hasFridge = response.data?.users.includes(resp.data._id);
+          this.setState({
+            user: resp.data,
+            userIsAdmin: isAdmin,
+            userHasFridge: hasFridge,
+            fridge: response.data
+          });
+        });
       })
       .catch(err => {
-        console.log(err);
         this.setState({
           message: err.response.data.message
         });
@@ -108,14 +108,6 @@ export default class FridgeDetails extends Component {
                 </StyledLink>
               </Card>
             )}
-
-            {this.state.userIsAdmin && (
-              <DeleteButton
-                onClick={() => this.handleDelete(this.props.fridgeId)}
-              >
-                Delete this fridge
-              </DeleteButton>
-            )}
           </Container>
         </div>
         <br />
@@ -131,6 +123,11 @@ export default class FridgeDetails extends Component {
               Join Fridge
             </Button>
           </div>
+        )}
+        {this.state.userIsAdmin && (
+          <DeleteButton onClick={() => this.handleDelete(this.props.fridgeId)}>
+            Delete this fridge
+          </DeleteButton>
         )}
         <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
       </div>
