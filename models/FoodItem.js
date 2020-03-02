@@ -24,18 +24,18 @@ const foodItemSchema = new Schema(
         "coffee",
         "other"
       ],
-      default: "other",
-      common: {
-        type: Boolean,
-        default: false
-      },
-      users: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "User"
-        }
-      ]
+      default: "other"
     },
+    common: {
+      type: Boolean,
+      default: false
+    },
+    users: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+      }
+    ],
     expiration: Date,
     image: String,
     quantity: {

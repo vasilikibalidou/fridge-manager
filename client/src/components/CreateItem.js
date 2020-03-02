@@ -5,10 +5,10 @@ export default class CreateItem extends Component {
   state = {
     name: "",
     description: "",
-    category: "other",
+    category: "",
     expiration: "",
     quantity: { number: "", unit: "L" },
-    availability: "full",
+    availability: "",
     common: "false"
   };
 
@@ -26,6 +26,7 @@ export default class CreateItem extends Component {
         description: this.state.description,
         userId: this.props.user._id,
         fridgeId: this.props.fridgeId,
+        // category: this.state.category,
         // expiration: this.state.expiration,
         image: this.state.image,
         quantity: {
@@ -36,6 +37,7 @@ export default class CreateItem extends Component {
       })
       .then(response => {
         // redirect
+
         this.props.history.push(`/fridge/${this.props.fridgeId}`);
       })
       .catch(err => {
@@ -77,7 +79,7 @@ export default class CreateItem extends Component {
             <option value="kg">kg</option>
             <option value="item">item</option>
           </select>
-          <label htmlFor="category">availability: </label>
+          <label htmlFor="availability">availability: </label>
           <select
             type="text"
             id="availability"

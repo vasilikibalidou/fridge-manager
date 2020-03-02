@@ -23,7 +23,13 @@ export default class EditItem extends Component {
       console.log("RESPONSE:", response.data);
 
       this.setState({
-        foodItem: response.data
+        name: response.data.name,
+        description: response.data.description,
+        category: response.data.category,
+        expiration: response.data.expiration,
+        quantity: { number: "", unit: "" },
+        availability: response.data.availability,
+        common: response.data.common
       });
     });
   };
