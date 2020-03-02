@@ -4,7 +4,13 @@ import FoodItem from "./FoodItem";
 import axios from "axios";
 import styled, { css } from "styled-components";
 
-import { StyledLink, Container, Card } from "./StyledComponents";
+import {
+  StyledLink,
+  Container,
+  Card,
+  AddImg,
+  DeleteButton
+} from "./StyledComponents";
 
 export default class FridgeDetails extends Component {
   state = {
@@ -39,11 +45,8 @@ export default class FridgeDetails extends Component {
           <Container>
             {this.state.fridge?.items.map(itemId => {
               return (
-                <Card>
-                  <StyledLink
-                    to={`/fridge/${this.state.fridge._id}/${itemId}`}
-                    key={itemId}
-                  >
+                <Card key={itemId}>
+                  <StyledLink to={`/fridge/${this.state.fridge._id}/${itemId}`}>
                     <FoodItem
                       foodId={itemId}
                       fridgeId={this.props.fridgeId}
@@ -57,13 +60,15 @@ export default class FridgeDetails extends Component {
             <Card>
               {this.state.fridge && (
                 <StyledLink to={`/fridge/${this.state.fridge._id}/createItem`}>
-                  Add item
+                  <AddImg src="/add.png" alt="add" />
                 </StyledLink>
               )}
             </Card>
-            <button onClick={() => this.handleDelete(this.props.fridgeId)}>
-              Delete
-            </button>
+            <DeleteButton
+              onClick={() => this.handleDelete(this.props.fridgeId)}
+            >
+              Delete this fridge
+            </DeleteButton>
           </Container>
         </div>
       </div>

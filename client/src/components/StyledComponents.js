@@ -35,6 +35,15 @@ export const Button = styled.button`
   color: white;
 `;
 
+export const DeleteButton = styled.button`
+  padding: 1.5vh 3vh;
+  font-size: 1em;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+`;
+
 export const Input = styled.input`
   padding: 1.5vh;
   width: 50%;
@@ -69,4 +78,7 @@ export const HomeImg = styled.img`
 
 export const LogoImg = styled.img`
   width: 70px;
+`;
+export const AddImg = styled.img`
+  width: 50px;
 `;

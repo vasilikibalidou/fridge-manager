@@ -4,7 +4,13 @@ import Fridge from "./Fridge";
 import Login from "./Login";
 import styled, { css } from "styled-components";
 
-import { StyledLink, Card, Container, HomeImg } from "./StyledComponents";
+import {
+  StyledLink,
+  Card,
+  Container,
+  HomeImg,
+  AddImg
+} from "./StyledComponents";
 
 export default class Home extends Component {
   render() {
@@ -23,7 +29,9 @@ export default class Home extends Component {
               );
             })}
             <Card>
-              <StyledLink to="/createFridge">Create Fridge</StyledLink>
+              <StyledLink to="/createFridge">
+                <AddImg src="/add.png" alt="add" />
+              </StyledLink>
             </Card>
           </Container>
         </>

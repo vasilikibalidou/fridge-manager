@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import styled, { css } from "styled-components";
 
+import { DeleteButton } from "./StyledComponents";
+
 export default class FoodItem extends Component {
   state = {
     foodItem: null
@@ -30,9 +32,9 @@ export default class FoodItem extends Component {
     return (
       <div>
         <div>Name: {this.state.foodItem?.name}</div>
-        <button onClick={() => this.handleDelete(this.props.foodId)}>
+        <DeleteButton onClick={() => this.handleDelete(this.props.foodId)}>
           Delete
-        </button>
+        </DeleteButton>
       </div>
     );
   }
