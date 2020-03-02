@@ -41,21 +41,27 @@ router.get("/fridge/:id", (req, res) => {
 });
 
 router.post("/fridge/:id/delete", (req, res) => {
-  const { userId } = req.body;
   Fridge.findById(req.params.id)
     .then(foundFridge => {
-      User.findById(userId)
-        .then(foundUser => {
-          return User.updateOne(
-            { _id: foundUser._id },
-            { $pull: { fridges: foundFridge._id } }
-          );
-        })
-        .then(() => {
-          return Fridge.deleteOne({ _id: foundFridge._id });
+      Fridge.deleteOne({ _id: foundFridge._id }).then(() => {
+        foundFridge.users.forEach(user => {
+          User.findById(user._id).then(foundUser => {
+            User.updateOne(
+              { _id: foundUser._id },
+              { $pull: { fridges: foundFridge._id } }
+            )
+              .then(result => {
+                console.log("removed from user!");
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          });
         });
-
-      res.json(foundFridge);
+      });
+    })
+    .then(() => {
+      res.json("result");
     })
     .catch(err => {
       res.status(400).json({ message: "Could not find fridge." });
