@@ -52,10 +52,12 @@ export default class EditItem extends Component {
         availability: this.state.availability
       })
       .then(response => {
-        console.log("submit");
+        console.log("🧩");
         console.log(response);
+        console.log(this.props);
+
         // redirect
-        //   this.props.history.push(`/fridge/${this.props.fridgeId}`);
+        this.props.history.push(`/fridge/${this.props.fridgeId}`);
       })
       .catch(err => {
         this.setState({

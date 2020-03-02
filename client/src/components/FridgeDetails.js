@@ -28,7 +28,7 @@ export default class FridgeDetails extends Component {
                 to={`/fridge/${this.state.fridge._id}/${itemId}`}
                 key={itemId}
               >
-                <FoodItem foodId={itemId} />
+                <FoodItem foodId={itemId} fridgeId={this.state.fridge._id} />
               </Link>
             );
           })}

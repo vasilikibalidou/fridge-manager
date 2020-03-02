@@ -37,13 +37,14 @@ class App extends React.Component {
         <Navbar user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Route
-            path="/foodItem/:id/edit"
+            path="/fridge/:fridgeId/foodItem/:id/edit"
             render={props => (
               <EditItem
                 history={props.history}
                 user={this.state.user}
                 updateFunc={this.updateUserState}
                 foodItemId={props.match.params.id}
+                fridgeId={props.match.params.fridgeId}
               />
             )}
           />

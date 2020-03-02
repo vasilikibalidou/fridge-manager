@@ -29,7 +29,9 @@ export default class FoodItem extends Component {
           <li>Best Before: {this.state.foodItem?.expiration}</li>
           <li>Description: {this.state.foodItem?.description}</li>
         </ul>
-        <Link to={`/foodItem/${this.props.foodId}/edit`}>Edit item</Link>
+        <Link to={`${this.props.fridgeId}/foodItem/${this.props.foodId}/edit`}>
+          Edit item
+        </Link>
       </div>
     );
   }
