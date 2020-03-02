@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Title, Button } from "./StyledComponents";
 
 export default class Fridge extends Component {
   state = {
@@ -21,7 +22,9 @@ export default class Fridge extends Component {
   render() {
     return (
       <div>
-        <div>Name: {this.state.fridge?.name}</div>
+        <div>
+          <Title>{this.state.fridge?.name}</Title>
+        </div>
       </div>
     );
   }

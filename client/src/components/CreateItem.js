@@ -53,21 +53,23 @@ export default class CreateItem extends Component {
       <>
         <Form onSubmit={this.handleSubmit}>
           <Section>
-            <label htmlFor="name">Item name: </label>
+            <label htmlFor="name">This is: </label>
             <Input
               type="text"
               id="name"
               name="name"
+              placeholder="item name"
               value={this.state.name}
               onChange={this.handleChange}
             />
           </Section>
           <Section>
-            <label htmlFor="quantity">Quantity: </label>
+            <label htmlFor="quantity">How much is it? </label>
             <Input
               type="number"
               id="quantity"
               name="quantity"
+              placeholder="quantity"
               value={this.state.number}
               onChange={this.handleChange}
             />

@@ -58,9 +58,16 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Card = styled.div`
-  border: 1px solid black;
-  padding: 2vh;
-  width: 30vw;
+  // border-bottom: 1px solid grey;
+  border: 2px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-around;
+  padding: 20vh;
+  width: 20vw;
   height: 15vh;
   margin-bottom: 5vh;
 `;
@@ -72,6 +79,22 @@ export const Container = styled.div`
   padding: 2vw;
 `;
 
+export const ContainerScroll = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-around;
+  padding: 20vw;
+  background-color: lightblue;
+  height: 70vh;
+  width: 15vw;
+  overflow-y: auto;
+  border-radius: 15px;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
+`;
+
 export const HomeImg = styled.img`
   height: 40vh;
 `;
@@ -81,4 +104,10 @@ export const LogoImg = styled.img`
 `;
 export const AddImg = styled.img`
   width: 50px;
+`;
+
+export const Title = styled.h1`
+  font-size: 5vh;
+  font-family: "Lobster";
+  padding: 2vh;
 `;

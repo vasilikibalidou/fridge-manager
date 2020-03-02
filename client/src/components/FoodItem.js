@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-import { DeleteButton } from "./StyledComponents";
+import { Button } from "./StyledComponents";
+import { DeleteButton, Section, Card } from "./StyledComponents";
 
 export default class FoodItem extends Component {
   state = {
@@ -30,7 +30,7 @@ export default class FoodItem extends Component {
 
   render() {
     return (
-      <div>
+      <Card>
         <div>Name: {this.state.foodItem?.name}</div>
         <ul>
           <li>
@@ -43,13 +43,12 @@ export default class FoodItem extends Component {
           <li>Description: {this.state.foodItem?.description}</li>
         </ul>
         <Link to={`${this.props.fridgeId}/foodItem/${this.props.foodId}/edit`}>
-          Edit item
+          <Button>Edit item</Button>
         </Link>
-
         <DeleteButton onClick={() => this.handleDelete(this.props.foodId)}>
           Delete
         </DeleteButton>
-      </div>
+      </Card>
     );
   }
 }

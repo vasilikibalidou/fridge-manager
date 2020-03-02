@@ -6,11 +6,13 @@ import axios from "axios";
 import {
   StyledLink,
   Container,
+  ContainerScroll,
   Card,
   Section,
   Button,
   AddImg,
-  DeleteButton
+  DeleteButton,
+  Title
 } from "./StyledComponents";
 
 export default class FridgeDetails extends Component {
@@ -79,15 +81,21 @@ export default class FridgeDetails extends Component {
   };
 
   render() {
+    // if (this.state.redirect){
+    //   return <Redirect />
+    // }
     return (
       <div>
-        <div>Fridge name: {this.state.fridge?.name}</div>
         <div>
-          Items:
-          <Container>
+          <p>The Fridge:</p>
+          <Title> {this.state.fridge?.name}</Title>
+          <div> Items:</div>
+        </div>
+        <Container>
+          <ContainerScroll>
             {this.state.fridge?.items.map(itemId => {
               return (
-                <Card key={itemId}>
+                <div key={itemId}>
                   <StyledLink
                     to={`/fridge/${this.state.fridge._id}/${itemId}`}
                     key={itemId}
@@ -99,7 +107,7 @@ export default class FridgeDetails extends Component {
                       history={this.props.history}
                     />
                   </StyledLink>
-                </Card>
+                </div>
               );
             })}
             {this.state.fridge && this.state.userHasFridge && (
@@ -109,8 +117,8 @@ export default class FridgeDetails extends Component {
                 </StyledLink>
               </Card>
             )}
-          </Container>
-        </div>
+          </ContainerScroll>
+        </Container>
         <br />
         {this.state.userIsAdmin && (
           <Link to={`/fridge/${this.state.fridge._id}/invite`}>
