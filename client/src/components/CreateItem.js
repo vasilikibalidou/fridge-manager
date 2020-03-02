@@ -31,9 +31,7 @@ export default class CreateItem extends Component {
         this.props.history.push(`/fridge/${this.props.fridgeId}`);
       })
       .catch(err => {
-        this.setState({
-          message: err.response.data.message
-        });
+        console.log("Error: " + err);
       });
   };
 

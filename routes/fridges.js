@@ -36,7 +36,7 @@ router.get("/fridge/:id", (req, res) => {
       return res.json(foundFridge);
     })
     .catch(err => {
-      res.status(400).json({ message: "Could not find fridge." });
+      res.status(400).json({ message: "Could not find fridge with this id." });
     });
 });
 
@@ -72,7 +72,7 @@ router.post("/fridge/invite", (req, res) => {
               If you don't already have an account for the Fridge App, 
               you will need to sign up. </p>
               <p>
-              <a href="${process.env.BASEURL}"> 👉Join fridge!</a>
+              <a href="${process.env.BASEURL}/fridge/${foundFridge._id}"> 👉Join fridge!</a>
               </p></div>`
               })
               .then(info => {
@@ -85,8 +85,6 @@ router.post("/fridge/invite", (req, res) => {
                 });
               });
           });
-
-          //res.json(emailsArray);
         })
         .catch(err => {
           res.status(400).json({ message: "Could not find user." });
@@ -94,6 +92,41 @@ router.post("/fridge/invite", (req, res) => {
     })
     .catch(err => {
       res.status(400).json({ message: "Could not find fridge." });
+    });
+});
+
+router.post("/fridge/:id/join", (req, res) => {
+  const fridgeId = req.params.id;
+  const { userId } = req.body;
+  if (!userId) {
+    res
+      .status(400)
+      .json({ message: "Cannot join fridge. User id is missing." });
+  }
+
+  // add User to Fridge
+  Fridge.updateOne({ _id: fridgeId }, { $push: { users: userId } })
+    .then(() => {
+      // add Fridge to User
+      User.updateOne({ _id: userId }, { $push: { fridges: fridgeId } })
+        .then(() => {
+          // find and return new updated Fridge
+          Fridge.findById(fridgeId)
+            .then(foundFridge => {
+              return res.json(foundFridge);
+            })
+            .catch(() => {
+              res
+                .status(400)
+                .json({ message: "Could not find fridge after updating." });
+            });
+        })
+        .catch(err => {
+          res.status(400).json({ message: "Could not update user." });
+        });
+    })
+    .catch(err => {
+      res.status(400).json({ message: "Could not update fridge." });
     });
 });
 
