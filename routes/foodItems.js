@@ -51,6 +51,7 @@ router.post("/foodItem", (req, res) => {
     });
 });
 
+// gets food item
 router.get("/foodItem/:id", (req, res) => {
   FoodItem.findById(req.params.id)
     .then(foundItem => {
