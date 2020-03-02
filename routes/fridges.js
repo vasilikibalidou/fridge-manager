@@ -87,7 +87,7 @@ router.post("/fridge/invite", (req, res) => {
                 subject: `Invitation to use fridge ${foundFridge.name}`,
                 text: `Invitation to use fridge ${foundFridge.name}`,
                 html: `<div>Hey there! 👋 <p> You have received an invitation, from the 
-              user <strong>${foundUser.name}</strong> for the fridge 
+              user <strong>${foundUser.username}</strong> for the fridge 
               <strong>${foundFridge.name}</strong>. 
               </p>
               <p>You can accept the invitation by clicking on the following link. 
@@ -127,10 +127,10 @@ router.post("/fridge/:id/join", (req, res) => {
   }
 
   // add User to Fridge
-  Fridge.updateOne({ _id: fridgeId }, { $push: { users: userId } })
+  Fridge.updateOne({ _id: fridgeId }, { $addToSet: { users: userId } })
     .then(() => {
       // add Fridge to User
-      User.updateOne({ _id: userId }, { $push: { fridges: fridgeId } })
+      User.updateOne({ _id: userId }, { $addToSet: { fridges: fridgeId } })
         .then(() => {
           // find and return new updated Fridge
           Fridge.findById(fridgeId)

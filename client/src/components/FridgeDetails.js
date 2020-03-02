@@ -28,6 +28,7 @@ export default class FridgeDetails extends Component {
       .then(response => {
         let isAdmin = response.data?.admins.includes(this.state.user._id);
         let hasFridge = response.data?.users.includes(this.state.user._id);
+        console.log(hasFridge);
         this.setState({
           fridge: response.data,
           userIsAdmin: isAdmin,
