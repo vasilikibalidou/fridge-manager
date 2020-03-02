@@ -40,6 +40,28 @@ router.get("/fridge/:id", (req, res) => {
     });
 });
 
+router.post("/fridge/:id/delete", (req, res) => {
+  const { userId } = req.body;
+  Fridge.findById(req.params.id)
+    .then(foundFridge => {
+      User.findById(userId)
+        .then(foundUser => {
+          return User.updateOne(
+            { _id: foundUser._id },
+            { $pull: { fridges: foundFridge._id } }
+          );
+        })
+        .then(() => {
+          return Fridge.deleteOne({ _id: foundFridge._id });
+        });
+
+      res.json(foundFridge);
+    })
+    .catch(err => {
+      res.status(400).json({ message: "Could not find fridge." });
+    });
+});
+
 router.post("/fridge/invite", (req, res) => {
   const { emails, fridgeId, userId } = req.body;
   if (!emails || !fridgeId || !userId) {

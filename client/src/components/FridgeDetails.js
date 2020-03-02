@@ -4,7 +4,13 @@ import FoodItem from "./FoodItem";
 import axios from "axios";
 import styled, { css } from "styled-components";
 
-import { StyledLink, Container, Card } from "./StyledComponents";
+import {
+  StyledLink,
+  Container,
+  Card,
+  AddImg,
+  DeleteButton
+} from "./StyledComponents";
 
 export default class FridgeDetails extends Component {
   state = {
@@ -25,6 +31,17 @@ export default class FridgeDetails extends Component {
     });
   }
 
+  handleDelete = id => {
+    axios
+      .post(`/fridge/${this.props.fridgeId}/delete`, {
+        userId: this.props.user._id
+      })
+      .then(response => {
+        this.props.updateFunc(response.data);
+        this.props.history.push("/");
+      });
+  };
+
   render() {
     return (
       <div>
@@ -34,12 +51,14 @@ export default class FridgeDetails extends Component {
           <Container>
             {this.state.fridge?.items.map(itemId => {
               return (
-                <Card>
-                  <StyledLink
-                    to={`/fridge/${this.state.fridge._id}/${itemId}`}
-                    key={itemId}
-                  >
-                    <FoodItem foodId={itemId} />
+                <Card key={itemId}>
+                  <StyledLink to={`/fridge/${this.state.fridge._id}/${itemId}`}>
+                    <FoodItem
+                      foodId={itemId}
+                      fridgeId={this.props.fridgeId}
+                      updateFunc={this.props.updateFunc}
+                      history={this.props.history}
+                    />
                   </StyledLink>
                 </Card>
               );
@@ -47,10 +66,15 @@ export default class FridgeDetails extends Component {
             <Card>
               {this.state.fridge && (
                 <StyledLink to={`/fridge/${this.state.fridge._id}/createItem`}>
-                  Add item
+                  <AddImg src="/add.png" alt="add" />
                 </StyledLink>
               )}
             </Card>
+            <DeleteButton
+              onClick={() => this.handleDelete(this.props.fridgeId)}
+            >
+              Delete this fridge
+            </DeleteButton>
           </Container>
         </div>
         {this.state.fridge && (

@@ -16,6 +16,10 @@ export default class Fridge extends Component {
   }
 
   render() {
-    return <div>Name: {this.state.fridge?.name}</div>;
+    return (
+      <div>
+        <div>Name: {this.state.fridge?.name}</div>
+      </div>
+    );
   }
 }
