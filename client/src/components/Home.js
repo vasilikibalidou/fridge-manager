@@ -17,7 +17,7 @@ export default class Home extends Component {
               return (
                 <Card key={fridgeId}>
                   <StyledLink to={`/fridge/${fridgeId}`}>
-                    <Fridge fridgeId={fridgeId} />
+                    <Fridge fridgeId={fridgeId} user={this.props.user} />
                   </StyledLink>
                 </Card>
               );

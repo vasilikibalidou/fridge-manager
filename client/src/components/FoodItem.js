@@ -15,7 +15,25 @@ export default class FoodItem extends Component {
     });
   }
 
+  handleDelete = id => {
+    axios
+      .post(`/foodItem/${this.props.foodId}/delete`, {
+        fridgeId: this.props.fridgeId
+      })
+      .then(response => {
+        this.props.updateFunc(response.data);
+        this.props.history.push(`/fridge/${this.props.fridgeId}`);
+      });
+  };
+
   render() {
-    return <div>Name: {this.state.foodItem?.name}</div>;
+    return (
+      <div>
+        <div>Name: {this.state.foodItem?.name}</div>
+        <button onClick={() => this.handleDelete(this.props.foodId)}>
+          Delete
+        </button>
+      </div>
+    );
   }
 }

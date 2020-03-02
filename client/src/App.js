@@ -66,6 +66,7 @@ class App extends React.Component {
                 history={props.history}
                 user={this.state.user}
                 fridgeId={props.match.params.id}
+                updateFunc={this.updateUserState}
               />
             )}
           />
