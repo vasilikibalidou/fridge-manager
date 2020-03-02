@@ -3,13 +3,13 @@ import axios from "axios";
 
 export default class CreateItem extends Component {
   state = {
-    name: "",
-    description: "",
-    category: "",
-    expiration: "",
-    quantity: { number: "", unit: "L" },
-    availability: "",
-    common: "false"
+    name: null,
+    description: null,
+    category: "dairy",
+    expiration: null,
+    quantity: { number: null, unit: null },
+    availability: "full",
+    common: false
   };
 
   handleChange = event => {

@@ -27,6 +27,7 @@ router.post("/foodItem", (req, res) => {
   );
 
   if (!name) {
+    console.log("🔆");
     return res.status(400).json({ message: "Username can't be empty" });
   }
   //extended the k-v pairs
@@ -55,11 +56,16 @@ router.post("/foodItem", (req, res) => {
             );
           });
         })
-        .catch();
+        .catch(err => {
+          console.log("🚴");
+          console.log(err);
+        });
       res.json(newItem);
     })
     .catch(err => {
-      res.status(400).json({ message: "Error while logging in" });
+      console.log("🍏");
+      console.log(err);
+      res.status(400).json({ message: "Error while creating item." });
     });
 });
 
