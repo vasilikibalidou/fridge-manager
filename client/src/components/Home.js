@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Fridge from "./Fridge";
 import Login from "./Login";
-import styled, { css } from "styled-components";
 
 import {
   StyledLink,

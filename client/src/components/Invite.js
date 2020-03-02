@@ -13,6 +13,7 @@ export default class CreateItem extends Component {
   };
 
   handleSubmit = event => {
+    console.log(this.props);
     event.preventDefault();
     axios
       .post(`/fridge/invite`, {

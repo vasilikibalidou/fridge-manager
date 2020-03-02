@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import styled, { css } from "styled-components";
 
 export default class Fridge extends Component {
   state = {
@@ -14,6 +13,10 @@ export default class Fridge extends Component {
       });
     });
   }
+
+  // componentWillUnmount() {
+
+  // }
 
   render() {
     return (

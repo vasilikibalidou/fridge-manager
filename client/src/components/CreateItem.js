@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import styled, { css } from "styled-components";
 
 import { Form, Section, Button, Input } from "./StyledComponents";
 
@@ -31,9 +30,7 @@ export default class CreateItem extends Component {
         this.props.history.push(`/fridge/${this.props.fridgeId}`);
       })
       .catch(err => {
-        this.setState({
-          message: err.response.data.message
-        });
+        console.log("Error: " + err);
       });
   };
 

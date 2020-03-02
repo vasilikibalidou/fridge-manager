@@ -8,6 +8,7 @@ const foodItemSchema = new Schema(
     description: String,
     category: {
       type: String,
+      default: "other",
       enum: [
         "fruit",
         "vegetables",
@@ -23,19 +24,18 @@ const foodItemSchema = new Schema(
         "alcoholic drinks",
         "coffee",
         "other"
-      ],
-      default: "other",
-      common: {
-        type: Boolean,
-        default: false
-      },
-      users: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "User"
-        }
       ]
     },
+    common: {
+      type: Boolean,
+      default: false
+    },
+    users: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+      }
+    ],
     expiration: Date,
     image: String,
     quantity: {

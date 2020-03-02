@@ -59,6 +59,16 @@ class App extends React.Component {
             )}
           />
           <Route
+            path="/fridge/:id/join"
+            render={props => (
+              <Invite
+                history={props.history}
+                user={this.state.user}
+                fridgeId={props.match.params.id}
+              />
+            )}
+          />
+          <Route
             path="/createFridge"
             render={props => (
               <CreateFridge
