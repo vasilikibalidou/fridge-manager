@@ -8,7 +8,9 @@ import {
   Container,
   Card,
   Section,
-  Button
+  Button,
+  AddImg,
+  DeleteButton
 } from "./StyledComponents";
 
 export default class FridgeDetails extends Component {
@@ -64,6 +66,17 @@ export default class FridgeDetails extends Component {
       });
   };
 
+  handleDelete = id => {
+    axios
+      .post(`/fridge/${this.props.fridgeId}/delete`, {
+        userId: this.props.user._id
+      })
+      .then(response => {
+        this.props.updateFunc(response.data);
+        this.props.history.push("/");
+      });
+  };
+
   render() {
     return (
       <div>
@@ -78,7 +91,12 @@ export default class FridgeDetails extends Component {
                     to={`/fridge/${this.state.fridge._id}/${itemId}`}
                     key={itemId}
                   >
-                    <FoodItem foodId={itemId} />
+                    <FoodItem
+                      foodId={itemId}
+                      fridgeId={this.props.fridgeId}
+                      updateFunc={this.props.updateFunc}
+                      history={this.props.history}
+                    />
                   </StyledLink>
                 </Card>
               );
@@ -86,9 +104,17 @@ export default class FridgeDetails extends Component {
             {this.state.fridge && this.state.userHasFridge && (
               <Card>
                 <StyledLink to={`/fridge/${this.state.fridge._id}/createItem`}>
-                  Add item
+                  <AddImg src="/add.png" alt="add" />
                 </StyledLink>
               </Card>
+            )}
+
+            {this.state.userIsAdmin && (
+              <DeleteButton
+                onClick={() => this.handleDelete(this.props.fridgeId)}
+              >
+                Delete this fridge
+              </DeleteButton>
             )}
           </Container>
         </div>
