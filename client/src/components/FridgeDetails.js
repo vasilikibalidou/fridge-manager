@@ -31,7 +31,6 @@ export default class FridgeDetails extends Component {
       .then(response => {
         let isAdmin = response.data?.admins.includes(this.state.user._id);
         let hasFridge = response.data?.users.includes(this.state.user._id);
-        console.log(hasFridge);
         this.setState({
           fridge: response.data,
           userIsAdmin: isAdmin,
@@ -76,7 +75,7 @@ export default class FridgeDetails extends Component {
         userId: this.props.user._id
       })
       .then(response => {
-        this.props.updateFunc(response.data);
+        this.props.updateFunc();
         this.props.history.push("/");
       });
   };
@@ -108,6 +107,13 @@ export default class FridgeDetails extends Component {
               </Innerbox>
             );
           })}
+          <Section>
+            {this.state.userIsAdmin && this.state.fridge && (
+              <Link to={`/fridge/${this.state.fridge._id}/users`}>
+                ({this.state.fridge.users.length}) Users
+              </Link>
+            )}
+          </Section>
           {this.state.fridge && this.state.userHasFridge && (
             <Innerbox>
               <Card>
@@ -142,6 +148,28 @@ export default class FridgeDetails extends Component {
           )}
           <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
         </div>
+        <br />
+        {this.state.userIsAdmin && (
+          <StyledLink to={`/fridge/${this.state.fridge._id}/invite`}>
+            Invite Users
+          </StyledLink>
+        )}
+        <br />
+        {this.state.userHasFridge === false && (
+          <div>
+            <Button type="submit" onClick={this.joinFridge}>
+              Join Fridge
+            </Button>
+          </div>
+        )}
+        {this.state.userIsAdmin && (
+          <DeleteButton onClick={() => this.handleDelete(this.props.fridgeId)}>
+            Delete this fridge
+          </DeleteButton>
+        )}
+        <Section style={{ color: "red" }}>
+          {this.state.message && <p>{this.state.message}</p>}
+        </Section>
       </div>
     );
   }

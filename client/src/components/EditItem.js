@@ -21,9 +21,12 @@ export default class EditItem extends Component {
 
   componentDidMount = () => {
     axios.get(`/foodItem/${this.props.foodItemId}`).then(response => {
+<<<<<<< HEAD
       console.log("RESPONSE:", this.props.foodItemId);
       console.log("RESPONSE:", response.data);
 
+=======
+>>>>>>> development
       this.setState({
         name: response.data.name,
         description: response.data.description,
@@ -55,10 +58,6 @@ export default class EditItem extends Component {
         availability: this.state.availability
       })
       .then(response => {
-        console.log("🧩");
-        console.log(response);
-        console.log(this.props);
-
         // redirect
         this.props.history.push(`/fridge/${this.props.fridgeId}`);
       })

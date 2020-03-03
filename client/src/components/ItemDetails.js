@@ -40,19 +40,17 @@ export default class ItemDetails extends Component {
   };
 
   render() {
-    let empty = {};
+    let style = {};
     if (this.state.foodItem?.availability === "empty") {
-      empty = { opacity: "0.5" };
+      style = { opacity: "0.5" };
     }
-    let expired = {};
     if (new Date(this.state.foodItem?.expiration) < new Date()) {
-      console.log("expired");
-      expired = { color: "red" };
+      style = { color: "red" };
     }
     return (
       <div>
         <Section>
-          <Title style={(empty, expired)}>{this.state.foodItem?.name}</Title>
+          <Title style={style}>{this.state.foodItem?.name}</Title>
           <Cleanlist>
             <li>
               <img height="50" src="/022-containers.png" alt="itemimage"></img>

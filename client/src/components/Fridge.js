@@ -15,10 +15,6 @@ export default class Fridge extends Component {
     });
   }
 
-  // componentWillUnmount() {
-
-  // }
-
   render() {
     return (
       <div>

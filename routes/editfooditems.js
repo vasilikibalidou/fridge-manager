@@ -9,8 +9,6 @@ router.post("/foodItem/edit/:id", (req, res) => {
 
   FoodItem.findById(req.params.id)
     .then(foundItem => {
-      console.log(foundItem.category, "FOUND ITEM");
-      console.log(req.body, "body ITEM");
       return FoodItem.updateOne(
         { _id: foundItem._id },
         ({

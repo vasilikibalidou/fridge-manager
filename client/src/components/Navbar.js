@@ -5,9 +5,8 @@ import { Nav, NavLink, LogoImg } from "./StyledComponents";
 
 const Navbar = props => {
   const logout = () => {
-    axios.delete("/auth/logout").then(() => {
-      props.setUser(null);
-    });
+    props.setUser(null);
+    axios.delete("/auth/logout").then(() => {});
   };
   return (
     <Nav>
