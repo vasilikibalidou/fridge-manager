@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-import { DeleteButton } from "./StyledComponents";
+import { Button } from "./StyledComponents";
+import {
+  DeleteButton,
+  Section,
+  Card,
+  Innerbox,
+  Cleanlist
+} from "./StyledComponents";
 
 export default class FoodItem extends Component {
   state = {
@@ -18,17 +24,15 @@ export default class FoodItem extends Component {
   }
 
   render() {
-    let empty = {};
+    let style = {};
     if (this.state.foodItem?.availability === "empty") {
-      empty = { opacity: "0.5" };
-    }
-    let expired = {};
-    if (new Date(this.state.foodItem?.expiration) < new Date()) {
-      expired = { color: "red" };
+      style = { opacity: "0.5" };
+    } else if (new Date(this.state.foodItem?.expiration) < new Date()) {
+      style = { color: "red" };
     }
     return (
       <div>
-        <div style={(empty, expired)}>Name: {this.state.foodItem?.name}</div>
+        <div style={style}>Name: {this.state.foodItem?.name}</div>
         <img height="50" src="/022-containers.png" alt="itemimage"></img>
       </div>
     );

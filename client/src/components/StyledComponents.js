@@ -22,6 +22,7 @@ export const Form = styled.form`
 `;
 
 export const Section = styled.div`
+  margin-top: 3vh;
   padding: 2vh;
   font-size: 1em;
 `;
@@ -29,15 +30,18 @@ export const Section = styled.div`
 export const Button = styled.button`
   padding: 1.5vh 3vh;
   font-size: 1em;
+  width: 45vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   background-color: #5cb1ab;
   color: white;
+  margin-bottom: 3vh;
 `;
 
 export const DeleteButton = styled.button`
   padding: 1.5vh 3vh;
   font-size: 1em;
+  width: 45vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   background-color: red;
@@ -58,20 +62,40 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Card = styled.div`
-  border: 1px solid black;
-  padding: 2vh;
-  width: 30vw;
-  height: 15vh;
-  margin-bottom: 5vh;
+  text-align: center;
+`;
+
+export const Innerbox = styled.div`
+  border-bottom: 3px double grey;
+  border-bottom-style: double;
+  width: 35vw;
+  height: 12vh;
+`;
+
+export const ContainerScroll = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: flex-start;
+  padding: 10vw;
+  background-color: rgb(242, 249, 250);
+  height: 80vh;
+  width: 100vw;
+  overflow-y: auto;
+  border-radius: 45px;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
+  border: solid transparent;
+  border-width: 70px 15px 40px 15px;
+  border-image-source: url(https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG);
+  border-image-slice: 120;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 2vw;
+  justify-content: center;
+  padding: 0vw;
 `;
-
 export const HomeImg = styled.img`
   height: 40vh;
 `;
@@ -80,5 +104,19 @@ export const LogoImg = styled.img`
   width: 70px;
 `;
 export const AddImg = styled.img`
-  width: 50px;
+  padding-top: 3vh;
+  width: 40px;
+`;
+
+export const Title = styled.h1`
+  font-size: 5vh;
+  font-family: "Lobster";
+  padding: 2vh;
+`;
+
+export const Cleanlist = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
 `;
