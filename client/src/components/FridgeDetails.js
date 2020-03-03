@@ -87,44 +87,42 @@ export default class FridgeDetails extends Component {
     // }
     return (
       <div>
-        <p>The Fridge:</p>
         <Title> {this.state.fridge?.name}</Title>
-        <div> Items:</div>
-        <Container>
-          <ContainerScroll>
-            {this.state.fridge?.items.map(itemId => {
-              return (
+        <ContainerScroll>
+          {this.state.fridge?.items.map(itemId => {
+            return (
+              <Innerbox>
                 <Card key={itemId}>
-                  <Innerbox>
-                    <StyledLink
-                      to={`/fridge/${this.props.fridgeId}/foodItem/${itemId}`}
-                      key={itemId}
-                    >
-                      <FoodItem
-                        foodId={itemId}
-                        fridgeId={this.props.fridgeId}
-                        updateFunc={this.props.updateFunc}
-                        history={this.props.history}
-                      />
-                    </StyledLink>
-                  </Innerbox>
+                  <StyledLink
+                    to={`/fridge/${this.props.fridgeId}/foodItem/${itemId}`}
+                    key={itemId}
+                  >
+                    <FoodItem
+                      foodId={itemId}
+                      fridgeId={this.props.fridgeId}
+                      updateFunc={this.props.updateFunc}
+                      history={this.props.history}
+                    />
+                  </StyledLink>
                 </Card>
-              );
-            })}
-            {this.state.fridge && this.state.userHasFridge && (
+              </Innerbox>
+            );
+          })}
+          {this.state.fridge && this.state.userHasFridge && (
+            <Innerbox>
               <Card>
                 <StyledLink to={`/fridge/${this.state.fridge._id}/createItem`}>
                   <AddImg src="/add.png" alt="add" />
                 </StyledLink>
               </Card>
-            )}
-          </ContainerScroll>
-        </Container>
+            </Innerbox>
+          )}
+        </ContainerScroll>
         <div>
           <br />
           {this.state.userIsAdmin && (
             <Link to={`/fridge/${this.state.fridge._id}/invite`}>
-              Invite Users
+              <Button>Invite Users</Button>
             </Link>
           )}
           <br />
@@ -144,28 +142,6 @@ export default class FridgeDetails extends Component {
           )}
           <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
         </div>
-        <br />
-        {this.state.userIsAdmin && (
-          <Link to={`/fridge/${this.state.fridge._id}/invite`}>
-            Invite Users
-          </Link>
-        )}
-        <br />
-        {this.state.userHasFridge === false && (
-          <div>
-            <Button type="submit" onClick={this.joinFridge}>
-              Join Fridge
-            </Button>
-          </div>
-        )}
-        {this.state.userIsAdmin && (
-          <DeleteButton onClick={() => this.handleDelete(this.props.fridgeId)}>
-            Delete this fridge
-          </DeleteButton>
-        )}
-        <Section style={{ color: "red" }}>
-          {this.state.message && <p>{this.state.message}</p>}
-        </Section>
       </div>
     );
   }

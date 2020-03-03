@@ -21,6 +21,7 @@ export default class EditItem extends Component {
 
   componentDidMount = () => {
     axios.get(`/foodItem/${this.props.foodItemId}`).then(response => {
+      console.log("RESPONSE:", this.props.foodItemId);
       console.log("RESPONSE:", response.data);
 
       this.setState({

@@ -22,6 +22,7 @@ export const Form = styled.form`
 `;
 
 export const Section = styled.div`
+  margin-top: 3vh;
   padding: 2vh;
   font-size: 1em;
 `;
@@ -29,15 +30,18 @@ export const Section = styled.div`
 export const Button = styled.button`
   padding: 1.5vh 3vh;
   font-size: 1em;
+  width: 45vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   background-color: #5cb1ab;
   color: white;
+  margin-bottom: 3vh;
 `;
 
 export const DeleteButton = styled.button`
   padding: 1.5vh 3vh;
   font-size: 1em;
+  width: 45vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   background-color: red;
@@ -58,44 +62,30 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Card = styled.div`
-  border: 2px solid red;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
   text-align: center;
-  padding: 10vh;
-  width: 20vh;
-  height: 15vh;
-  margin-bottom: 5vh;
 `;
 
 export const Innerbox = styled.div`
   border-bottom: 3px double grey;
   border-bottom-style: double;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
   width: 35vw;
-  height: 25vh;
-  margin-bottom: 5vh;
+  height: 12vh;
 `;
 
 export const ContainerScroll = styled.div`
   display: flex;
-  flex-wrap: ;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-content: flex-start;
-  padding: 20vw;
+  padding: 10vw;
   background-color: rgb(242, 249, 250);
   height: 80vh;
-  width: 15vw;
+  width: 100vw;
   overflow-y: auto;
-  border-radius: 15px;
+  border-radius: 45px;
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
-  border: 100px solid transparent;
+  border: solid transparent;
+  border-width: 70px 15px 40px 15px;
   border-image-source: url(https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG);
   border-image-slice: 120;
 `;
@@ -104,7 +94,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2vw;
+  padding: 0vw;
 `;
 export const HomeImg = styled.img`
   height: 40vh;
@@ -114,7 +104,8 @@ export const LogoImg = styled.img`
   width: 70px;
 `;
 export const AddImg = styled.img`
-  width: 50px;
+  padding-top: 3vh;
+  width: 40px;
 `;
 
 export const Title = styled.h1`
@@ -127,4 +118,5 @@ export const Cleanlist = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
+  font-size: 1.2em;
 `;
