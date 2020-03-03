@@ -28,7 +28,6 @@ export default class FridgeDetails extends Component {
       .then(response => {
         let isAdmin = response.data?.admins.includes(this.state.user._id);
         let hasFridge = response.data?.users.includes(this.state.user._id);
-        console.log(hasFridge);
         this.setState({
           fridge: response.data,
           userIsAdmin: isAdmin,
@@ -73,7 +72,7 @@ export default class FridgeDetails extends Component {
         userId: this.props.user._id
       })
       .then(response => {
-        this.props.updateFunc(response.data);
+        this.props.updateFunc();
         this.props.history.push("/");
       });
   };
@@ -102,6 +101,13 @@ export default class FridgeDetails extends Component {
                 </Card>
               );
             })}
+            <Section>
+              {this.state.userIsAdmin && this.state.fridge && (
+                <Link to={`/fridge/${this.state.fridge._id}/users`}>
+                  ({this.state.fridge.users.length}) Users
+                </Link>
+              )}
+            </Section>
             {this.state.fridge && this.state.userHasFridge && (
               <Card>
                 <StyledLink to={`/fridge/${this.state.fridge._id}/createItem`}>
@@ -113,9 +119,9 @@ export default class FridgeDetails extends Component {
         </div>
         <br />
         {this.state.userIsAdmin && (
-          <Link to={`/fridge/${this.state.fridge._id}/invite`}>
+          <StyledLink to={`/fridge/${this.state.fridge._id}/invite`}>
             Invite Users
-          </Link>
+          </StyledLink>
         )}
         <br />
         {this.state.userHasFridge === false && (

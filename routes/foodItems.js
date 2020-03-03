@@ -16,18 +16,7 @@ router.post("/foodItem", (req, res) => {
     quantity
   } = req.body;
 
-  console.log(
-    "test",
-    name,
-    description,
-    "availability:",
-    availability,
-    "category:",
-    category
-  );
-
   if (!name) {
-    console.log("🔆");
     return res.status(400).json({ message: "Username can't be empty" });
   }
   //extended the k-v pairs
@@ -57,13 +46,11 @@ router.post("/foodItem", (req, res) => {
           });
         })
         .catch(err => {
-          console.log("🚴");
           console.log(err);
         });
       res.json(newItem);
     })
     .catch(err => {
-      console.log("🍏");
       console.log(err);
       res.status(400).json({ message: "Error while creating item." });
     });
@@ -82,12 +69,9 @@ router.get("/foodItem/:id", (req, res) => {
 
 router.post("/foodItem/:id/delete", (req, res) => {
   const { fridgeId } = req.body;
-  console.log(req.body);
   FoodItem.findById(req.params.id)
     .then(foundFoodItem => {
-      console.log(foundFoodItem);
       Fridge.findById(fridgeId).then(foundFridge => {
-        console.log(foundFridge);
         return Fridge.updateOne(
           { _id: foundFridge._id },
           { $pull: { items: foundFoodItem._id } }

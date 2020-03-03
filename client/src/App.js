@@ -10,6 +10,7 @@ import FridgeDetails from "./components/FridgeDetails";
 import CreateItem from "./components/CreateItem";
 import EditItem from "./components/EditItem";
 import Invite from "./components/Invite";
+import FridgeUsers from "./components/FridgeUsers";
 import ItemDetails from "./components/ItemDetails";
 import axios from "axios";
 
@@ -52,6 +53,16 @@ class App extends React.Component {
             )}
           />
           <Route
+            path="/fridge/:id/users"
+            render={props => (
+              <FridgeUsers
+                history={props.history}
+                userId={this.state.user._id}
+                fridgeId={props.match.params.id}
+              />
+            )}
+          />
+          <Route
             path="/fridge/:fridgeId/foodItem/:foodId"
             render={props => (
               <ItemDetails
@@ -63,7 +74,6 @@ class App extends React.Component {
               />
             )}
           />
-
           <Route
             path="/fridge/:id/createItem"
             render={props => (
