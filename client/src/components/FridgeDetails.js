@@ -155,11 +155,11 @@ export default class FridgeDetails extends Component {
               Delete fridge
             </DeleteButton>
           )}
-          <Section style={{ color: "red" }}>{this.state.message && <p>{this.state.message}</p>}</Section>
+          <Section style={{ color: "red" }}>
+            {this.state.message && <p>{this.state.message}</p>}
+          </Section>
         </div>
-
       </div>
-
     );
   }
 }
