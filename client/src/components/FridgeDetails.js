@@ -67,7 +67,7 @@ export default class FridgeDetails extends Component {
       });
   };
 
-  handleDelete = id => {
+  handleDelete = () => {
     axios
       .post(`/fridge/${this.props.fridgeId}/delete`, {
         userId: this.props.user._id
@@ -89,7 +89,7 @@ export default class FridgeDetails extends Component {
               return (
                 <Card key={itemId}>
                   <StyledLink
-                    to={`/fridge/${this.state.fridge._id}/${itemId}`}
+                    to={`/fridge/${this.props.fridgeId}/foodItem/${itemId}`}
                     key={itemId}
                   >
                     <FoodItem
