@@ -120,6 +120,13 @@ export default class FridgeDetails extends Component {
               </Card>
             </Innerbox>
           )}
+          <Section>
+            {this.state.userIsAdmin && this.state.fridge && (
+              <Link to={`/fridge/${this.state.fridge._id}/users`}>
+                ({this.state.fridge.users.length}) Users
+              </Link>
+            )}
+          </Section>
         </ContainerScroll>
         <div>
           {this.state.userIsAdmin && this.state.fridge && (
@@ -148,9 +155,11 @@ export default class FridgeDetails extends Component {
               Delete fridge
             </DeleteButton>
           )}
-          <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
+          <Section style={{ color: "red" }}>{this.state.message && <p>{this.state.message}</p>}</Section>
         </div>
+
       </div>
+
     );
   }
 }
