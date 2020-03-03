@@ -107,13 +107,6 @@ export default class FridgeDetails extends Component {
               </Innerbox>
             );
           })}
-          <Section>
-            {this.state.userIsAdmin && this.state.fridge && (
-              <Link to={`/fridge/${this.state.fridge._id}/users`}>
-                ({this.state.fridge.users.length}) Users
-              </Link>
-            )}
-          </Section>
           {this.state.fridge && this.state.userHasFridge && (
             <Innerbox>
               <Card>
@@ -123,6 +116,13 @@ export default class FridgeDetails extends Component {
               </Card>
             </Innerbox>
           )}
+          <Section>
+            {this.state.userIsAdmin && this.state.fridge && (
+              <Link to={`/fridge/${this.state.fridge._id}/users`}>
+                ({this.state.fridge.users.length}) Users
+              </Link>
+            )}
+          </Section>
         </ContainerScroll>
         <div>
           <br />
@@ -148,28 +148,6 @@ export default class FridgeDetails extends Component {
           )}
           <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
         </div>
-        <br />
-        {this.state.userIsAdmin && (
-          <StyledLink to={`/fridge/${this.state.fridge._id}/invite`}>
-            Invite Users
-          </StyledLink>
-        )}
-        <br />
-        {this.state.userHasFridge === false && (
-          <div>
-            <Button type="submit" onClick={this.joinFridge}>
-              Join Fridge
-            </Button>
-          </div>
-        )}
-        {this.state.userIsAdmin && (
-          <DeleteButton onClick={() => this.handleDelete(this.props.fridgeId)}>
-            Delete this fridge
-          </DeleteButton>
-        )}
-        <Section style={{ color: "red" }}>
-          {this.state.message && <p>{this.state.message}</p>}
-        </Section>
       </div>
     );
   }
