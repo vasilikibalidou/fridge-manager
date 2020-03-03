@@ -13,13 +13,13 @@ router.post("/foodItem", (req, res) => {
     availability,
     category,
     expiration,
-    quantity
+    quantity,
+    common
   } = req.body;
 
   if (!name) {
     return res.status(400).json({ message: "Username can't be empty" });
   }
-  //extended the k-v pairs
   FoodItem.create({
     name: name,
     description: description,
@@ -27,7 +27,8 @@ router.post("/foodItem", (req, res) => {
     expiration: expiration,
     availability: availability,
     quantity: quantity,
-    category: category
+    category: category,
+    common: common
   })
     .then(newItem => {
       User.findById(userId)

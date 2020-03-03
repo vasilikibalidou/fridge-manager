@@ -53,6 +53,7 @@ export default class FridgeDetails extends Component {
               } else if (filter === "common-items") {
                 return item.common === true;
               }
+              return true;
             });
           }
         }

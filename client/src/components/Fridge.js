@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Title, Button } from "./StyledComponents";
+import { Title } from "./StyledComponents";
 
 export default class Fridge extends Component {
   state = {
