@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import FoodItem from "./FoodItem";
 import axios from "axios";
 
 import {
+  StyledLink,
+  Container,
+  Card,
   Section,
   Button,
+  AddImg,
   DeleteButton,
   Cleanlist,
   Title
@@ -24,28 +29,23 @@ export default class ItemDetails extends Component {
   }
 
   handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this item?")) {
-      axios
-        .post(`/foodItem/${this.props.itemId}/delete`, {
-          fridgeId: this.props.fridgeId
-        })
-        .then(response => {
-          this.props.updateFunc(response.data);
-          this.props.history.push(`/fridge/${this.props.fridgeId}`);
-        });
-    }
+    axios
+      .post(`/foodItem/${this.props.itemId}/delete`, {
+        fridgeId: this.props.fridgeId
+      })
+      .then(response => {
+        this.props.updateFunc(response.data);
+        this.props.history.push(`/fridge/${this.props.fridgeId}`);
+      });
   };
 
   render() {
-    let src = "/" + this.state.foodItem?.category + ".png";
     let style = {};
     if (this.state.foodItem?.availability === "empty") {
       style = { opacity: "0.5" };
     }
-    if (this.state.foodItem?.expiration) {
-      if (new Date(this.state.foodItem?.expiration) < new Date()) {
-        style = { color: "red" };
-      }
+    if (new Date(this.state.foodItem?.expiration) < new Date()) {
+      style = { color: "red" };
     }
     return (
       <div>
@@ -53,14 +53,11 @@ export default class ItemDetails extends Component {
           <Title style={style}>{this.state.foodItem?.name}</Title>
           <Cleanlist>
             <li>
-              <img height="70vh" src={src} alt="itemimage"></img>
+              <img height="50" src="/022-containers.png" alt="itemimage"></img>
             </li>
-            <li>Belongs to: {this.props.user.username}</li>
             <li>Category: {this.state.foodItem?.category}</li>
             <li>Availability: {this.state.foodItem?.availability}</li>
-            <li>
-              Best Before: {this.state.foodItem?.expiration?.slice(0, 10)}
-            </li>
+            <li>Best Before: {this.state.foodItem?.expiration}</li>
             <li>Description: {this.state.foodItem?.description}</li>
           </Cleanlist>
         </Section>

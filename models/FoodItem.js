@@ -19,9 +19,10 @@ const foodItemSchema = new Schema(
         "seafood",
         "dessert",
         "bread",
-        "cooked",
+        "cooked meal",
         "drinks",
-        "alcohol",
+        "alcoholic drinks",
+        "coffee",
         "other"
       ],
       default: "other"
