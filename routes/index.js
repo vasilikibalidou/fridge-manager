@@ -2,13 +2,18 @@
 
 const router = require("express").Router();
 const usersRoutes = require("./users");
-const postsRoutes = require("./posts");
-
+const profileRoutes = require("./profile");
+const fridgeRoutes = require("./fridges");
+const itemRoutes = require("./foodItems");
+const editRoutes = require("./editfooditems");
 router.get("/", (req, res) => {
   res.send("This is home");
 });
 
-router.use("/api/auth", usersRoutes);
-router.use("/api", postsRoutes);
+router.use("/", editRoutes);
+router.use("/", itemRoutes);
+router.use("/", fridgeRoutes);
+router.use("/", profileRoutes);
+router.use("/auth", usersRoutes);
 
 module.exports = router;
