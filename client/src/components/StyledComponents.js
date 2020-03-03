@@ -19,6 +19,8 @@ export const Form = styled.form`
   display: flex:
   flex-direction: column;
   padding-top: 5vh;
+  align-items: flex-start;
+  
 `;
 
 export const Section = styled.div`
@@ -35,7 +37,7 @@ export const Button = styled.button`
   border-radius: 5px;
   background-color: #5cb1ab;
   color: white;
-  margin-bottom: 3vh;
+  margin-top: 3vh;
 `;
 
 export const DeleteButton = styled.button`
@@ -46,6 +48,7 @@ export const DeleteButton = styled.button`
   border-radius: 5px;
   background-color: red;
   color: white;
+  margin-top: 3vh;
 `;
 
 export const Input = styled.input`
@@ -112,6 +115,7 @@ export const Title = styled.h1`
   font-size: 5vh;
   font-family: "Lobster";
   padding: 2vh;
+  color: darkgray;
 `;
 
 export const Cleanlist = styled.ul`
@@ -119,4 +123,31 @@ export const Cleanlist = styled.ul`
   margin: 0;
   padding: 0;
   font-size: 1.2em;
+`;
+
+export const Select = styled.select`
+  width: 50%;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  font-size: 1em;
+  margin: 1vw;
+  outline: 0;
+  padding: 1.8vh;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+`;
+
+export const SmallFridge = styled.div`
+  background-image: url("https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG");
+  height: 40vh;
+  width: 50vw;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  margin: 2vh 0vh;
+`;
+export const NavTitle = styled.span`
+  font-family: "Lobster";
+  font-size: 3vh;
 `;
