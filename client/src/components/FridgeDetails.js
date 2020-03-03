@@ -12,7 +12,8 @@ import {
   Button,
   AddImg,
   DeleteButton,
-  Title
+  Title,
+  Innerbox
 } from "./StyledComponents";
 
 export default class FridgeDetails extends Component {
@@ -95,19 +96,21 @@ export default class FridgeDetails extends Component {
           <ContainerScroll>
             {this.state.fridge?.items.map(itemId => {
               return (
-                <div key={itemId}>
-                  <StyledLink
-                    to={`/fridge/${this.state.fridge._id}/${itemId}`}
-                    key={itemId}
-                  >
+                <Innerbox>
+                  <div key={itemId}>
                     <FoodItem
                       foodId={itemId}
                       fridgeId={this.props.fridgeId}
                       updateFunc={this.props.updateFunc}
                       history={this.props.history}
-                    />
-                  </StyledLink>
-                </div>
+                    >
+                      <StyledLink
+                        to={`/fridge/${this.state.fridge._id}/${itemId}`}
+                        key={itemId}
+                      ></StyledLink>
+                    </FoodItem>
+                  </div>
+                </Innerbox>
               );
             })}
             {this.state.fridge && this.state.userHasFridge && (

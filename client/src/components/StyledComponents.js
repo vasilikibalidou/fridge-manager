@@ -58,43 +58,54 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Card = styled.div`
-  // border-bottom: 1px solid grey;
   border: 2px solid red;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
-  align-content: space-around;
-  padding: 20vh;
-  width: 20vw;
+  text-align: center;
+  padding: 10vh;
+  width: 20vh;
   height: 15vh;
   margin-bottom: 5vh;
+`;
+
+export const Innerbox = styled.div`
+  border-bottom: 3px double grey;
+  border-bottom-style: double;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 35vw;
+  height: 25vh;
+  margin-bottom: 5vh;
+`;
+
+export const ContainerScroll = styled.div`
+  display: flex;
+  flex-wrap: ;
+  flex-direction: column;
+  align-content: flex-start;
+  padding: 20vw;
+  background-color: rgb(242, 249, 250);
+  height: 80vh;
+  width: 15vw;
+  overflow-y: auto;
+  border-radius: 15px;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
+  border: 100px solid transparent;
+  border-image-source: url(https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG);
+  border-image-slice: 120;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   padding: 2vw;
 `;
-
-export const ContainerScroll = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: space-around;
-  padding: 20vw;
-  background-color: lightblue;
-  height: 70vh;
-  width: 15vw;
-  overflow-y: auto;
-  border-radius: 15px;
-  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
-`;
-
 export const HomeImg = styled.img`
   height: 40vh;
 `;
@@ -110,4 +121,10 @@ export const Title = styled.h1`
   font-size: 5vh;
   font-family: "Lobster";
   padding: 2vh;
+`;
+
+export const Cleanlist = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 `;
