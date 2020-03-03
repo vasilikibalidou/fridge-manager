@@ -103,12 +103,14 @@ export default class FridgeDetails extends Component {
                       fridgeId={this.props.fridgeId}
                       updateFunc={this.props.updateFunc}
                       history={this.props.history}
+                      user={this.state.user}
                     />
                   </StyledLink>
                 </Card>
               </Innerbox>
             );
           })}
+
           {this.state.fridge && this.state.userHasFridge && (
             <Innerbox>
               <Card>
@@ -127,6 +129,11 @@ export default class FridgeDetails extends Component {
           </Section>
         </ContainerScroll>
         <div>
+          {this.state.userIsAdmin && this.state.fridge && (
+            <Link to={`/fridge/${this.state.fridge._id}/users`}>
+              <Button>({this.state.fridge.users.length}) Users</Button>
+            </Link>
+          )}
           <br />
           {this.state.userIsAdmin && (
             <Link to={`/fridge/${this.state.fridge._id}/invite`}>
@@ -145,7 +152,7 @@ export default class FridgeDetails extends Component {
             <DeleteButton
               onClick={() => this.handleDelete(this.props.fridgeId)}
             >
-              Delete this fridge
+              Delete fridge
             </DeleteButton>
           )}
           <Section style={{ color: "red" }}>

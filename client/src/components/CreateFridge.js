@@ -40,6 +40,7 @@ export default class CreateFridge extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Section>
             <label htmlFor="name">Fridge name: </label>
+            <br />
             <Input
               type="text"
               id="name"
