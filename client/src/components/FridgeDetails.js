@@ -97,14 +97,16 @@ export default class FridgeDetails extends Component {
   };
 
   handleDelete = () => {
-    axios
-      .post(`/fridge/${this.props.fridgeId}/delete`, {
-        userId: this.props.user._id
-      })
-      .then(response => {
-        this.props.updateFunc();
-        this.props.history.push("/");
-      });
+    if (window.confirm("Are you sure you want to delete this fridge?")) {
+      axios
+        .post(`/fridge/${this.props.fridgeId}/delete`, {
+          userId: this.props.user._id
+        })
+        .then(response => {
+          this.props.updateFunc();
+          this.props.history.push("/");
+        });
+    }
   };
 
   render() {
@@ -129,19 +131,14 @@ export default class FridgeDetails extends Component {
                       fridgeId={this.props.fridgeId}
                       updateFunc={this.props.updateFunc}
                       history={this.props.history}
+                      user={this.state.user}
                     />
                   </StyledLink>
                 </Card>
               </Innerbox>
             );
           })}
-          <Section>
-            {this.state.userIsAdmin && this.state.fridge && (
-              <Link to={`/fridge/${this.state.fridge._id}/users`}>
-                ({this.state.fridge.users.length}) Users
-              </Link>
-            )}
-          </Section>
+
           {this.state.fridge && this.state.userHasFridge && (
             <Innerbox>
               <Card>
@@ -151,8 +148,20 @@ export default class FridgeDetails extends Component {
               </Card>
             </Innerbox>
           )}
+          <Section>
+            {this.state.userIsAdmin && this.state.fridge && (
+              <Link to={`/fridge/${this.state.fridge._id}/users`}>
+                ({this.state.fridge.users.length}) Users
+              </Link>
+            )}
+          </Section>
         </ContainerScroll>
         <div>
+          {this.state.userIsAdmin && this.state.fridge && (
+            <Link to={`/fridge/${this.state.fridge._id}/users`}>
+              <Button>({this.state.fridge.users.length}) Users</Button>
+            </Link>
+          )}
           <br />
           {this.state.userIsAdmin && (
             <Link to={`/fridge/${this.state.fridge._id}/invite`}>
@@ -171,33 +180,13 @@ export default class FridgeDetails extends Component {
             <DeleteButton
               onClick={() => this.handleDelete(this.props.fridgeId)}
             >
-              Delete this fridge
+              Delete fridge
             </DeleteButton>
           )}
-          <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
+          <Section style={{ color: "red" }}>
+            {this.state.message && <p>{this.state.message}</p>}
+          </Section>
         </div>
-        <br />
-        {this.state.userIsAdmin && (
-          <StyledLink to={`/fridge/${this.state.fridge._id}/invite`}>
-            Invite Users
-          </StyledLink>
-        )}
-        <br />
-        {this.state.userHasFridge === false && (
-          <div>
-            <Button type="submit" onClick={this.joinFridge}>
-              Join Fridge
-            </Button>
-          </div>
-        )}
-        {this.state.userIsAdmin && (
-          <DeleteButton onClick={() => this.handleDelete(this.props.fridgeId)}>
-            Delete this fridge
-          </DeleteButton>
-        )}
-        <Section style={{ color: "red" }}>
-          {this.state.message && <p>{this.state.message}</p>}
-        </Section>
       </div>
     );
   }

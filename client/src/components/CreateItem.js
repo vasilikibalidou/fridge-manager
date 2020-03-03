@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { Form, Section, Button, Input } from "./StyledComponents";
+import { Form, Section, Button, Input, Select } from "./StyledComponents";
 
 export default class CreateItem extends Component {
   state = {
@@ -53,6 +53,7 @@ export default class CreateItem extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Section>
             <label htmlFor="name">This is: </label>
+            <br />
             <Input
               type="text"
               id="name"
@@ -63,19 +64,20 @@ export default class CreateItem extends Component {
             />
           </Section>
           <Section>
-            <label htmlFor="quantity">How much is it? </label>
+            <label htmlFor="quantity">How much?</label>
+            <br />
             <Input
               type="number"
+              min="0"
               id="quantity"
               name="quantity"
-              placeholder="quantity"
+              placeholder="0"
               value={this.state.number}
               onChange={this.handleChange}
+              style={{ width: "10vw" }}
             />
-          </Section>
-          <Section>
-            <label htmlFor="unit">unit </label>
-            <select
+
+            <Select
               type="text"
               id="unit"
               name="unit"
@@ -85,11 +87,12 @@ export default class CreateItem extends Component {
               <option value="L">Liter</option>
               <option value="kg">kg</option>
               <option value="item">item</option>
-            </select>
+            </Select>
           </Section>
           <Section>
-            <label htmlFor="availability">availability: </label>
-            <select
+            <label htmlFor="availability">How much is left? </label>
+            <br />
+            <Select
               type="text"
               id="availability"
               name="availability"
@@ -100,10 +103,11 @@ export default class CreateItem extends Component {
               <option value="half-full">half-full</option>
               <option value="almost empty">almost empty</option>
               <option value="empty">empty</option>
-            </select>
+            </Select>
           </Section>
           <Section>
             <label htmlFor="expiration">Best before: </label>
+            <br />
             <Input
               type="date"
               id="expiration"
@@ -114,8 +118,8 @@ export default class CreateItem extends Component {
           </Section>
           <Section>
             <label htmlFor="category">Category: </label>
-
-            <select
+            <br />
+            <Select
               type="text"
               id="category"
               name="category"
@@ -131,24 +135,21 @@ export default class CreateItem extends Component {
               <option value="seafood">seafood </option>
               <option value="dessert">dessert </option>
               <option value="bread">bread</option>
-              <option value="cooked meal">cooked meal </option>
+              <option value="cooked">cooked meal</option>
               <option value="drinks">drinks</option>
-              <option value="alcohol">alcohol </option>
-              <option value="coffee">coffee</option>
+              <option value="alcohol">alcohol</option>
               <option value="other">other </option>
-            </select>
+            </Select>
           </Section>
           <Section>
-            <label htmlFor="common">shared food </label>
-            <Input
-              type="checkbox"
-              id="common"
-              name="common"
-              value="false"
-            ></Input>
+            <label htmlFor="common">
+              To share
+              <Input type="checkbox" id="common" name="common" value="false" />
+            </label>
           </Section>
           <Section>
             <label htmlFor="name">Description: </label>
+            <br />
             <Input
               type="text"
               id="description"
