@@ -67,14 +67,16 @@ export default class FridgeDetails extends Component {
   };
 
   handleDelete = () => {
-    axios
-      .post(`/fridge/${this.props.fridgeId}/delete`, {
-        userId: this.props.user._id
-      })
-      .then(response => {
-        this.props.updateFunc();
-        this.props.history.push("/");
-      });
+    if (window.confirm("Are you sure you want to delete this fridge?")) {
+      axios
+        .post(`/fridge/${this.props.fridgeId}/delete`, {
+          userId: this.props.user._id
+        })
+        .then(response => {
+          this.props.updateFunc();
+          this.props.history.push("/");
+        });
+    }
   };
 
   render() {
@@ -136,6 +138,7 @@ export default class FridgeDetails extends Component {
             Delete this fridge
           </DeleteButton>
         )}
+
         <Section style={{ color: "red" }}>
           {this.state.message && <p>{this.state.message}</p>}
         </Section>
