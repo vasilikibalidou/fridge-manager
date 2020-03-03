@@ -25,26 +25,20 @@ export default class FridgeUsers extends Component {
   }
 
   handleDelete(userId) {
-    if (
-      window.confirm(
-        "Are you sure you want to remove this user from this fridge?"
-      )
-    ) {
-      axios
-        .post(`/fridge/${this.props.fridgeId}/removeUser`, {
-          userId: userId
-        })
-        .then(response => {
-          this.setState({
-            fridge: response.data
-          });
-        })
-        .catch(err => {
-          this.setState({
-            message: err.response.data.message
-          });
+    axios
+      .post(`/fridge/${this.props.fridgeId}/removeUser`, {
+        userId: userId
+      })
+      .then(response => {
+        this.setState({
+          fridge: response.data
         });
-    }
+      })
+      .catch(err => {
+        this.setState({
+          message: err.response.data.message
+        });
+      });
   }
 
   render() {
