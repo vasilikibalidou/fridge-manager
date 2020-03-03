@@ -36,6 +36,15 @@ export default class Filters extends Component {
               Category
             </Button>
           </li> */}
+          <li>
+            <Button
+              onClick={this.handleClick}
+              name="no-filter"
+              style={{ backgroundColor: "#e7a40a" }}
+            >
+              No filter
+            </Button>
+          </li>
         </Cleanlist>
         {/* Redirect, with a parameter, if a flter has been selected. */}
         {this.state.filter && (
@@ -46,6 +55,9 @@ export default class Filters extends Component {
               //   state: { filter: this.state.filter } doesn't work
             }}
           />
+        )}
+        {this.state.filter === "no-filter" && (
+          <Redirect to={{ pathname: `/fridge/${this.props.fridgeId}` }} />
         )}
       </div>
     );

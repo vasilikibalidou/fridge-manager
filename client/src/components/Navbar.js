@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import { Nav, NavLink, LogoImg, Title, NavTitle } from "./StyledComponents";
+import { Nav, NavLink, NavTitle } from "./StyledComponents";
 
 const Navbar = props => {
   const logout = () => {
