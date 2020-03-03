@@ -15,6 +15,7 @@ export default class CreateItem extends Component {
   };
 
   handleChange = event => {
+    console.log(event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -29,7 +30,7 @@ export default class CreateItem extends Component {
         userId: this.props.user._id,
         fridgeId: this.props.fridgeId,
         category: this.state.category,
-        // expiration: this.state.expiration,
+        expiration: this.state.expiration,
         image: this.state.image,
         quantity: {
           number: this.state.number,
@@ -101,11 +102,11 @@ export default class CreateItem extends Component {
             </select>
           </Section>
           <Section>
-            <label htmlFor="expirydate">Best before: </label>
+            <label htmlFor="expiration">Best before: </label>
             <Input
               type="date"
-              id="expirydate"
-              name="expirydate"
+              id="expiration"
+              name="expiration"
               // value={this.state.expiration}
               onChange={this.handleChange}
             ></Input>

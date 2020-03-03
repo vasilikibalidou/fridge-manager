@@ -66,7 +66,7 @@ export default class FridgeDetails extends Component {
       });
   };
 
-  handleDelete = id => {
+  handleDelete = () => {
     axios
       .post(`/fridge/${this.props.fridgeId}/delete`, {
         userId: this.props.user._id
@@ -88,7 +88,7 @@ export default class FridgeDetails extends Component {
               return (
                 <Card key={itemId}>
                   <StyledLink
-                    to={`/fridge/${this.state.fridge._id}/${itemId}`}
+                    to={`/fridge/${this.props.fridgeId}/foodItem/${itemId}`}
                     key={itemId}
                   >
                     <FoodItem
@@ -101,11 +101,13 @@ export default class FridgeDetails extends Component {
                 </Card>
               );
             })}
-            {this.state.userIsAdmin && this.state.fridge && (
-              <Link to={`/fridge/${this.state.fridge._id}/users`}>
-                ({this.state.fridge.users.length}) Users
-              </Link>
-            )}
+            <Section>
+              {this.state.userIsAdmin && this.state.fridge && (
+                <Link to={`/fridge/${this.state.fridge._id}/users`}>
+                  ({this.state.fridge.users.length}) Users
+                </Link>
+              )}
+            </Section>
             {this.state.fridge && this.state.userHasFridge && (
               <Card>
                 <StyledLink to={`/fridge/${this.state.fridge._id}/createItem`}>
@@ -134,7 +136,9 @@ export default class FridgeDetails extends Component {
             Delete this fridge
           </DeleteButton>
         )}
-        <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
+        <Section style={{ color: "red" }}>
+          {this.state.message && <p>{this.state.message}</p>}
+        </Section>
       </div>
     );
   }
