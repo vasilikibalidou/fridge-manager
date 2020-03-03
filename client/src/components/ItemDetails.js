@@ -58,6 +58,7 @@ export default class ItemDetails extends Component {
             <li>
               <img height="70vh" src={src} alt="itemimage"></img>
             </li>
+            <li>Belongs to: {this.props.user.username}</li>
             <li>Category: {this.state.foodItem?.category}</li>
             <li>Availability: {this.state.foodItem?.availability}</li>
             <li>

@@ -69,6 +69,7 @@ export default class CreateItem extends Component {
             <br />
             <Input
               type="number"
+              min="0"
               id="quantity"
               name="quantity"
               placeholder="0"

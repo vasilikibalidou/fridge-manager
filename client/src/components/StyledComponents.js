@@ -80,7 +80,6 @@ export const ContainerScroll = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   align-content: flex-start;
-  padding: 10vw;
   background-color: rgb(242, 249, 250);
   height: 80vh;
   width: 100vw;
@@ -89,8 +88,9 @@ export const ContainerScroll = styled.div`
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
   border: solid transparent;
   border-width: 70px 15px 40px 15px;
-  border-image-source: url(https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG);
+  border-image-source: url(/FridgyFridge.png);
   border-image-slice: 120;
+  padding: 10vw;
 `;
 
 export const Container = styled.div`
@@ -139,15 +139,17 @@ export const Select = styled.select`
 `;
 
 export const SmallFridge = styled.div`
-  background-image: url("https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG");
-  height: 40vh;
-  width: 50vw;
-  background-position: center; /* Center the image */
+  background-image: url("/FridgyFridge.png");
+  height: 45vh;
+  width: 45vw;
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  margin: 2vh 0vh;
+  margin: 2vh 1vh;
+  padding-top: 3vh;
 `;
 export const NavTitle = styled.span`
   font-family: "Lobster";
   font-size: 3vh;
 `;
+
+//https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG

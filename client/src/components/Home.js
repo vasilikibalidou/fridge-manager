@@ -10,7 +10,8 @@ import {
   HomeImg,
   AddImg,
   ContainerScroll,
-  SmallFridge
+  SmallFridge,
+  Title
 } from "./StyledComponents";
 
 export default class Home extends Component {
@@ -41,7 +42,7 @@ export default class Home extends Component {
     }
     return (
       <div>
-        <h1>Fridgy</h1>
+        <Title>Fridgy</Title>
         <p style={{ padding: "0 10vh" }}>
           Welcome to Fridgy!
           <br /> The app that helps you organise your fridge.

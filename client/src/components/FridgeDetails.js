@@ -101,6 +101,7 @@ export default class FridgeDetails extends Component {
                       fridgeId={this.props.fridgeId}
                       updateFunc={this.props.updateFunc}
                       history={this.props.history}
+                      user={this.state.user}
                     />
                   </StyledLink>
                 </Card>
