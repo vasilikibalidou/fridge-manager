@@ -40,6 +40,18 @@ router.get("/fridge/:id", (req, res) => {
     });
 });
 
+// returns fridge with populated users
+router.get("/fridge/:id/users", (req, res) => {
+  Fridge.findById(req.params.id)
+    .populate("users")
+    .then(foundFridge => {
+      return res.json(foundFridge);
+    })
+    .catch(err => {
+      res.status(400).json({ message: "Could not find fridge with this id." });
+    });
+});
+
 router.post("/fridge/:id/delete", (req, res) => {
   Fridge.findById(req.params.id)
     .then(foundFridge => {
@@ -155,6 +167,42 @@ router.post("/fridge/:id/join", (req, res) => {
     })
     .catch(err => {
       res.status(400).json({ message: "Could not update fridge." });
+    });
+});
+
+router.post("/fridge/:id/removeUser", (req, res) => {
+  const { userId } = req.body;
+  const fridgeId = req.params.id;
+
+  Fridge.findOneAndUpdate(
+    { _id: fridgeId },
+    { $pull: { users: userId } },
+    { new: true }
+  )
+    .populate("users")
+    .exec(function(err, documents) {
+      if (err) {
+        console.log(err);
+        res.status(400).json({ message: "Could not find or update fridge." });
+        return;
+      }
+
+      User.findById(userId)
+        .then(foundUser => {
+          User.updateOne(
+            { _id: foundUser._id },
+            { $pull: { fridges: fridgeId } }
+          )
+            .then(result => {
+              res.json(documents);
+            })
+            .catch(err => {
+              res.status(400).json({ message: "Could not update user." });
+            });
+        })
+        .catch(err => {
+          res.status(400).json({ message: "Could not find user." });
+        });
     });
 });
 

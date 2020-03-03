@@ -101,6 +101,11 @@ export default class FridgeDetails extends Component {
                 </Card>
               );
             })}
+            {this.state.userIsAdmin && this.state.fridge && (
+              <Link to={`/fridge/${this.state.fridge._id}/users`}>
+                ({this.state.fridge.users.length}) Users
+              </Link>
+            )}
             {this.state.fridge && this.state.userHasFridge && (
               <Card>
                 <StyledLink to={`/fridge/${this.state.fridge._id}/createItem`}>
@@ -112,9 +117,9 @@ export default class FridgeDetails extends Component {
         </div>
         <br />
         {this.state.userIsAdmin && (
-          <Link to={`/fridge/${this.state.fridge._id}/invite`}>
+          <StyledLink to={`/fridge/${this.state.fridge._id}/invite`}>
             Invite Users
-          </Link>
+          </StyledLink>
         )}
         <br />
         {this.state.userHasFridge === false && (
