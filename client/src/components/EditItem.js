@@ -36,6 +36,7 @@ export default class EditItem extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.state.expiration);
     axios
       .post(`/foodItem/edit/${this.props.foodItemId}`, {
         name: this.state.name,
@@ -43,7 +44,7 @@ export default class EditItem extends Component {
         userId: this.props.user._id,
         fridgeId: this.props.fridgeId,
         category: this.state.category,
-        // expiration: this.state.expiration,
+        expiration: this.state.expiration,
         image: this.state.image,
         quantity: {
           number: this.state.number,
@@ -112,12 +113,12 @@ export default class EditItem extends Component {
             <option value="empty">empty</option>
           </select>
 
-          <label htmlFor="expirydate">Best before: </label>
+          <label htmlFor="expiration">Best before: </label>
           <input
             type="date"
-            id="expirydate"
-            name="expirydate"
-            // value={this.state.expiration}
+            id="expiration"
+            name="expiration"
+            value={this.state.expiration}
             onChange={this.handleChange}
           ></input>
 
