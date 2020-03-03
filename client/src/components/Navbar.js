@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import { Nav, NavLink, LogoImg } from "./StyledComponents";
+import { Nav, NavLink, LogoImg, Title, NavTitle } from "./StyledComponents";
 
 const Navbar = props => {
   const logout = () => {
@@ -11,7 +11,9 @@ const Navbar = props => {
   return (
     <Nav>
       <div>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/">
+          <NavTitle>Fridgy</NavTitle>
+        </NavLink>
       </div>
       <div>
         <NavLink to="/" onClick={logout}>

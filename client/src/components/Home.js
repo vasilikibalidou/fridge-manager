@@ -8,7 +8,10 @@ import {
   Card,
   Container,
   HomeImg,
-  AddImg
+  AddImg,
+  ContainerScroll,
+  SmallFridge,
+  Title
 } from "./StyledComponents";
 
 export default class Home extends Component {
@@ -16,15 +19,16 @@ export default class Home extends Component {
     if (this.props.user) {
       return (
         <>
-          <h3>Fridge List:</h3>
           <Container>
             {this.props.user.fridges.map(fridgeId => {
               return (
-                <Card key={fridgeId}>
-                  <StyledLink to={`/fridge/${fridgeId}`}>
-                    <Fridge fridgeId={fridgeId} user={this.props.user} />
-                  </StyledLink>
-                </Card>
+                <StyledLink to={`/fridge/${fridgeId}`}>
+                  <SmallFridge>
+                    <Card key={fridgeId}>
+                      <Fridge fridgeId={fridgeId} user={this.props.user} />
+                    </Card>
+                  </SmallFridge>
+                </StyledLink>
               );
             })}
             <Card>
@@ -38,7 +42,7 @@ export default class Home extends Component {
     }
     return (
       <div>
-        <h1>Fridgy</h1>
+        <Title>Fridgy</Title>
         <p style={{ padding: "0 10vh" }}>
           Welcome to Fridgy!
           <br /> The app that helps you organise your fridge.
