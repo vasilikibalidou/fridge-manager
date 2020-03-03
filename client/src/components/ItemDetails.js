@@ -60,7 +60,7 @@ export default class ItemDetails extends Component {
                 <li>Description: {this.state.foodItem?.description}</li>
               </ul>
               <Link
-                to={`/${this.props.fridgeId}/foodItem/${this.props.foodId}/edit`}
+                to={`/${this.props.fridgeId}/foodItem/${this.props.itemId}/edit`}
               >
                 Edit item
               </Link>

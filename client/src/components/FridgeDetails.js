@@ -99,17 +99,14 @@ export default class FridgeDetails extends Component {
                     <StyledLink
                       to={`/fridge/${this.props.fridgeId}/foodItem/${itemId}`}
                       key={itemId}
-                    ></StyledLink>
-                    <FoodItem
-                      foodId={itemId}
-                      fridgeId={this.props.fridgeId}
-                      updateFunc={this.props.updateFunc}
-                      history={this.props.history}
-                    />
-                    <StyledLink
-                      to={`/fridge/${this.state.fridge._id}/${itemId}`}
-                      key={itemId}
-                    ></StyledLink>
+                    >
+                      <FoodItem
+                        foodId={itemId}
+                        fridgeId={this.props.fridgeId}
+                        updateFunc={this.props.updateFunc}
+                        history={this.props.history}
+                      />
+                    </StyledLink>
                   </Innerbox>
                 </Card>
               );
