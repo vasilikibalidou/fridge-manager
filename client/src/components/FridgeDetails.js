@@ -4,8 +4,8 @@ import FoodItem from "./FoodItem";
 import axios from "axios";
 
 import {
+  SortButton,
   StyledLink,
-  Container,
   ContainerScroll,
   Card,
   Section,
@@ -20,21 +20,48 @@ export default class FridgeDetails extends Component {
   state = {
     user: this.props.user,
     fridge: null,
+    items: [],
     userIsAdmin: false,
     userHasFridge: false,
     message: ""
   };
 
   componentDidMount() {
+    const filter = window.location.search
+      ? window.location.search.split("=")[1]
+      : "";
     axios
-      .get(`/fridge/${this.props.fridgeId}`)
+      .get(`/fridge/${this.props.fridgeId}/items`)
       .then(response => {
         let isAdmin = response.data?.admins.includes(this.state.user._id);
         let hasFridge = response.data?.users.includes(this.state.user._id);
+
+        let filteredItems = response.data.items;
+        if (filter) {
+          if (filter === "expiration-date") {
+            // sort by exp.date
+            filteredItems = filteredItems.sort((a, b) => {
+              if (!a.expiration || !b.expiration) {
+                return true;
+              }
+              return new Date(a.expiration) - new Date(b.expiration);
+            });
+          } else {
+            filteredItems = response.data.items.filter(item => {
+              if (filter === "my-items") {
+                return item.users.includes(this.state.user._id);
+              } else if (filter === "common-items") {
+                return item.common === true;
+              }
+            });
+          }
+        }
+
         this.setState({
           fridge: response.data,
           userIsAdmin: isAdmin,
-          userHasFridge: hasFridge
+          userHasFridge: hasFridge,
+          items: filteredItems
         });
       })
       .catch(err => {
@@ -83,23 +110,24 @@ export default class FridgeDetails extends Component {
   };
 
   render() {
-    // if (this.state.redirect){
-    //   return <Redirect />
-    // }
     return (
       <div>
+        <Link to={`/fridge/${this.props.fridgeId}/filters`}>
+          <SortButton />
+        </Link>
+
         <Title> {this.state.fridge?.name}</Title>
         <ContainerScroll>
-          {this.state.fridge?.items.map(itemId => {
+          {this.state.items?.map(item => {
             return (
-              <Innerbox>
-                <Card key={itemId}>
+              <Innerbox key={item._id}>
+                <Card>
                   <StyledLink
-                    to={`/fridge/${this.props.fridgeId}/foodItem/${itemId}`}
-                    key={itemId}
+                    to={`/fridge/${this.props.fridgeId}/foodItem/${item._id}`}
                   >
+                    {/* TODO: pass all info to component, no need for extra axios call inside. */}
                     <FoodItem
-                      foodId={itemId}
+                      foodId={item._id}
                       fridgeId={this.props.fridgeId}
                       updateFunc={this.props.updateFunc}
                       history={this.props.history}
@@ -120,13 +148,6 @@ export default class FridgeDetails extends Component {
               </Card>
             </Innerbox>
           )}
-          <Section>
-            {this.state.userIsAdmin && this.state.fridge && (
-              <Link to={`/fridge/${this.state.fridge._id}/users`}>
-                ({this.state.fridge.users.length}) Users
-              </Link>
-            )}
-          </Section>
         </ContainerScroll>
         <div>
           {this.state.userIsAdmin && this.state.fridge && (

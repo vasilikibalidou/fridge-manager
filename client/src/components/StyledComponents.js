@@ -40,6 +40,20 @@ export const Button = styled.button`
   margin-top: 3vh;
 `;
 
+export const SortButton = styled.div`
+  margin: 2vh;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-image: url(/sort-icon.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+`;
+
 export const DeleteButton = styled.button`
   padding: 1.5vh 3vh;
   font-size: 1em;
