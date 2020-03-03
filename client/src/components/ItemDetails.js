@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import FoodItem from "./FoodItem";
 import axios from "axios";
 
 import {
-  StyledLink,
-  Container,
-  Card,
   Section,
   Button,
-  AddImg,
   DeleteButton,
   Cleanlist,
   Title
@@ -29,14 +24,16 @@ export default class ItemDetails extends Component {
   }
 
   handleDelete = () => {
-    axios
-      .post(`/foodItem/${this.props.itemId}/delete`, {
-        fridgeId: this.props.fridgeId
-      })
-      .then(response => {
-        this.props.updateFunc(response.data);
-        this.props.history.push(`/fridge/${this.props.fridgeId}`);
-      });
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      axios
+        .post(`/foodItem/${this.props.itemId}/delete`, {
+          fridgeId: this.props.fridgeId
+        })
+        .then(response => {
+          this.props.updateFunc(response.data);
+          this.props.history.push(`/fridge/${this.props.fridgeId}`);
+        });
+    }
   };
 
   render() {

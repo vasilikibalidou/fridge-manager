@@ -23,17 +23,6 @@ export default class FoodItem extends Component {
     });
   }
 
-  handleDelete = () => {
-    axios
-      .post(`/foodItem/${this.props.foodId}/delete`, {
-        fridgeId: this.props.fridgeId
-      })
-      .then(response => {
-        this.props.updateFunc(response.data);
-        this.props.history.push(`/fridge/${this.props.fridgeId}`);
-      });
-  };
-
   render() {
     let src = "/" + this.state.foodItem?.category + ".png";
     let style = {};
