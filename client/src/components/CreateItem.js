@@ -152,7 +152,7 @@ export default class CreateItem extends Component {
                 type="checkbox"
                 id="common"
                 name="common"
-                value="false"
+                checked={this.state.common}
                 onChange={this.handleChange}
               />
             </label>
