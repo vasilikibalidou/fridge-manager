@@ -23,7 +23,7 @@ export default class FoodItem extends Component {
     });
   }
 
-  handleDelete = id => {
+  handleDelete = () => {
     axios
       .post(`/foodItem/${this.props.foodId}/delete`, {
         fridgeId: this.props.fridgeId
@@ -38,33 +38,7 @@ export default class FoodItem extends Component {
     return (
       <div>
         <div>Name: {this.state.foodItem?.name}</div>
-        <div>
-          <Cleanlist>
-            <li>
-              <img
-                height="50vh"
-                src="/022-containers.png"
-                alt="itemimage"
-              ></img>
-              {this.state.foodItem?.category}
-            </li>
-            <li>Availability: {this.state.foodItem?.availability}</li>
-            <li>Best Before: {this.state.foodItem?.expiration}</li>
-            <li>Description: {this.state.foodItem?.description}</li>
-          </Cleanlist>
-        </div>
-        <div>
-          <Link
-            to={`${this.props.fridgeId}/foodItem/${this.props.foodId}/edit`}
-          >
-            <Button>Edit item</Button>
-          </Link>
-        </div>
-        <div>
-          <DeleteButton onClick={() => this.handleDelete(this.props.foodId)}>
-            Delete
-          </DeleteButton>
-        </div>
+        <img height="50" src="/022-containers.png" alt="itemimage"></img>
       </div>
     );
   }

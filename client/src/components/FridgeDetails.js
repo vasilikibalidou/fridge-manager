@@ -70,7 +70,7 @@ export default class FridgeDetails extends Component {
       });
   };
 
-  handleDelete = id => {
+  handleDelete = () => {
     axios
       .post(`/fridge/${this.props.fridgeId}/delete`, {
         userId: this.props.user._id
@@ -87,30 +87,31 @@ export default class FridgeDetails extends Component {
     // }
     return (
       <div>
-        <div>
-          <p>The Fridge:</p>
-          <Title> {this.state.fridge?.name}</Title>
-          <div> Items:</div>
-        </div>
+        <p>The Fridge:</p>
+        <Title> {this.state.fridge?.name}</Title>
+        <div> Items:</div>
         <Container>
           <ContainerScroll>
             {this.state.fridge?.items.map(itemId => {
               return (
-                <Innerbox>
-                  <div key={itemId}>
+                <Card key={itemId}>
+                  <Innerbox>
+                    <StyledLink
+                      to={`/fridge/${this.props.fridgeId}/foodItem/${itemId}`}
+                      key={itemId}
+                    ></StyledLink>
                     <FoodItem
                       foodId={itemId}
                       fridgeId={this.props.fridgeId}
                       updateFunc={this.props.updateFunc}
                       history={this.props.history}
-                    >
-                      <StyledLink
-                        to={`/fridge/${this.state.fridge._id}/${itemId}`}
-                        key={itemId}
-                      ></StyledLink>
-                    </FoodItem>
-                  </div>
-                </Innerbox>
+                    />
+                    <StyledLink
+                      to={`/fridge/${this.state.fridge._id}/${itemId}`}
+                      key={itemId}
+                    ></StyledLink>
+                  </Innerbox>
+                </Card>
               );
             })}
             {this.state.fridge && this.state.userHasFridge && (
@@ -122,26 +123,30 @@ export default class FridgeDetails extends Component {
             )}
           </ContainerScroll>
         </Container>
-        <br />
-        {this.state.userIsAdmin && (
-          <Link to={`/fridge/${this.state.fridge._id}/invite`}>
-            Invite Users
-          </Link>
-        )}
-        <br />
-        {this.state.userHasFridge === false && (
-          <div>
-            <Button type="submit" onClick={this.joinFridge}>
-              Join Fridge
-            </Button>
-          </div>
-        )}
-        {this.state.userIsAdmin && (
-          <DeleteButton onClick={() => this.handleDelete(this.props.fridgeId)}>
-            Delete this fridge
-          </DeleteButton>
-        )}
-        <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
+        <div>
+          <br />
+          {this.state.userIsAdmin && (
+            <Link to={`/fridge/${this.state.fridge._id}/invite`}>
+              Invite Users
+            </Link>
+          )}
+          <br />
+          {this.state.userHasFridge === false && (
+            <div>
+              <Button type="submit" onClick={this.joinFridge}>
+                Join Fridge
+              </Button>
+            </div>
+          )}
+          {this.state.userIsAdmin && (
+            <DeleteButton
+              onClick={() => this.handleDelete(this.props.fridgeId)}
+            >
+              Delete this fridge
+            </DeleteButton>
+          )}
+          <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
+        </div>
       </div>
     );
   }
