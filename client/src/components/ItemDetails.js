@@ -38,14 +38,12 @@ export default class ItemDetails extends Component {
   };
 
   render() {
-    let empty = {};
+    let style = {};
     if (this.state.foodItem?.availability === "empty") {
-      empty = { opacity: "0.5" };
+      style = { opacity: "0.5" };
     }
-    let expired = {};
     if (new Date(this.state.foodItem?.expiration) < new Date()) {
-      console.log("expired");
-      expired = { color: "red" };
+      style = { color: "red" };
     }
     return (
       <div>
@@ -53,9 +51,7 @@ export default class ItemDetails extends Component {
         <Container>
           <Card>
             <div>
-              <div style={(empty, expired)}>
-                Name: {this.state.foodItem?.name}
-              </div>
+              <div style={style}>Name: {this.state.foodItem?.name}</div>
               <ul>
                 <li>
                   {" "}
