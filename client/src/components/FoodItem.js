@@ -35,9 +35,17 @@ export default class FoodItem extends Component {
   };
 
   render() {
+    let empty = {};
+    if (this.state.foodItem?.availability === "empty") {
+      empty = { opacity: "0.5" };
+    }
+    let expired = {};
+    if (new Date(this.state.foodItem?.expiration) < new Date()) {
+      expired = { color: "red" };
+    }
     return (
       <div>
-        <div>Name: {this.state.foodItem?.name}</div>
+        <div style={(empty, expired)}>Name: {this.state.foodItem?.name}</div>
         <img height="50" src="/022-containers.png" alt="itemimage"></img>
       </div>
     );

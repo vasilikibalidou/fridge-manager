@@ -65,7 +65,9 @@ export default class Signup extends Component {
             <Button type="submit">Sign up</Button>
           </Section>
         </Form>
-        <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
+        <Section style={{ color: "red" }}>
+          {this.state.message && <p>{this.state.message}</p>}
+        </Section>
       </>
     );
   }
