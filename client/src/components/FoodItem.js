@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-import { DeleteButton } from "./StyledComponents";
+import { Button } from "./StyledComponents";
+import {
+  DeleteButton,
+  Section,
+  Card,
+  Innerbox,
+  Cleanlist
+} from "./StyledComponents";
 
 export default class FoodItem extends Component {
   state = {
