@@ -82,7 +82,7 @@ export default class ItemDetails extends Component {
               <Span>To be shared: </Span>
               {this.state.foodItem?.common ? "Yes" : "No"}
             </li>
-            {this.state.foodItem?.expiration && (
+            {this.state.foodItem?.description && (
               <li>
                 <Span>Description: </Span>
                 {this.state.foodItem?.description}
