@@ -26,8 +26,11 @@ export default class FridgeDetails extends Component {
   };
 
   componentDidMount() {
+    const filter = window.location.search
+      ? window.location.search.split("=")[1]
+      : "";
     axios
-      .get(`/fridge/${this.props.fridgeId}`)
+      .get(`/fridge/${this.props.fridgeId}/items`)
       .then(response => {
         let isAdmin = response.data?.admins.includes(this.state.user._id);
         let hasFridge = response.data?.users.includes(this.state.user._id);
@@ -111,16 +114,16 @@ export default class FridgeDetails extends Component {
       <div>
         <Title> {this.state.fridge?.name}</Title>
         <ContainerScroll>
-          {this.state.fridge?.items.map(itemId => {
+          {this.state.fridge?.items.map(item => {
             return (
               <Innerbox>
-                <Card key={itemId}>
+                <Card key={item._id}>
                   <StyledLink
-                    to={`/fridge/${this.props.fridgeId}/foodItem/${itemId}`}
-                    key={itemId}
+                    to={`/fridge/${this.props.fridgeId}/foodItem/${item._id}`}
+                    key={item._id}
                   >
                     <FoodItem
-                      foodId={itemId}
+                      foodId={item._id}
                       fridgeId={this.props.fridgeId}
                       updateFunc={this.props.updateFunc}
                       history={this.props.history}

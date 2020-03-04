@@ -7,6 +7,7 @@ export default class FoodItem extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props.foodId);
     axios.get(`/foodItem/${this.props.foodId}`).then(response => {
       this.setState({
         foodItem: response.data
@@ -37,6 +38,7 @@ export default class FoodItem extends Component {
     } else if (new Date(this.state.foodItem?.expiration) < new Date()) {
       style = { color: "red" };
     }
+    console.log(src);
     return (
       <div>
         <div style={style}> {this.state.foodItem?.name}</div>
