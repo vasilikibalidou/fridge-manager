@@ -6,6 +6,8 @@ import axios from "axios";
 import {
   SortButton,
   StyledLink,
+  ContainerTitleAndFilter,
+  SpacerDiv,
   ContainerScroll,
   Card,
   Section,
@@ -13,7 +15,8 @@ import {
   AddImg,
   DeleteButton,
   Title,
-  Innerbox
+  Innerbox,
+  FilterLink
 } from "./StyledComponents";
 
 export default class FridgeDetails extends Component {
@@ -113,11 +116,13 @@ export default class FridgeDetails extends Component {
   render() {
     return (
       <div>
-        <Link to={`/fridge/${this.props.fridgeId}/filters`}>
-          <SortButton />
-        </Link>
-
-        <Title> {this.state.fridge?.name}</Title>
+        <ContainerTitleAndFilter>
+          <SpacerDiv></SpacerDiv>
+          <Title> {this.state.fridge?.name}</Title>
+          <FilterLink to={`/fridge/${this.props.fridgeId}/filters`}>
+            <SortButton />
+          </FilterLink>
+        </ContainerTitleAndFilter>
         <ContainerScroll>
           {this.state.items?.map(item => {
             return (
