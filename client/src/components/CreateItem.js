@@ -80,7 +80,6 @@ export default class CreateItem extends Component {
               onChange={this.handleChange}
               style={{ width: "10vw" }}
             />
-
             <Select
               type="text"
               id="unit"
