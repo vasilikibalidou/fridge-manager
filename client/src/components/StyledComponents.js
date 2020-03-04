@@ -2,17 +2,31 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  background: lightgray;
-  padding: 2vh;
-`;
+  position: fixed;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #5cb1ab;
+  padding: 1vh;
+`;
 export const NavLink = styled(Link)`
   color: white;
   font-size: 1em;
-  padding: 2vw;
+  padding: 1vw;
   text-decoration: none;
+`;
+export const NavTitle = styled.span`
+  font-family: "Lobster";
+  padding: 0.5vw;
+  font-size: 2em;
+`;
+export const UnderNavbarDiv = styled.div`
+  margin-top: 60px;
 `;
 
 export const Span = styled.span`
@@ -57,18 +71,36 @@ export const Button = styled.button`
   margin-top: 3vh;
 `;
 
+export const ContainerTitleAndFilter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0vw;
+`;
 export const SortButton = styled.div`
-  margin: 2vh;
   width: 30px;
   height: 30px;
-  position: absolute;
-  top: 50px;
-  right: 20px;
   background-image: url(/sort-icon.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: block;
+`;
+export const FilterLink = styled(Link)`
+  width: 30px;
+  height: 30px;
+  margin: 2vh;
+`;
+export const SpacerDiv = styled.div`
+  width: 30px;
+  height: 30px;
+  margin: 2vh;
+`;
+
+export const Title = styled.h1`
+  font-size: 5vh;
+  font-family: "Lobster";
+  padding: 2vh;
+  color: darkgray;
 `;
 
 export const DeleteButton = styled.button`
@@ -80,6 +112,30 @@ export const DeleteButton = styled.button`
   background-color: red;
   color: white;
   margin-top: 3vh;
+`;
+
+export const RemoveButton = styled(DeleteButton)`
+  margin-top: 0vh;
+  width: 25vw;
+  padding: 1vw;
+  font-size: 0.8em;
+  @media (min-width: 321px) {
+    width: 20vw;
+  }
+  @media (min-width: 376px) {
+    width: 20vw;
+  }
+  @media (min-width: 426px) {
+    width: 13vw;
+    padding: 0.8vw;
+  }
+  @media (min-width: 769px) {
+    width: 10vw;
+    padding: 0.5vw;
+  }
+  @media (min-width: 1025px) {
+    width: 8vw;
+  }
 `;
 
 export const Input = styled.input`
@@ -104,6 +160,27 @@ export const StyledLink = styled(Link)`
 
 export const Card = styled.div`
   text-align: center;
+`;
+
+export const UserCard = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70vw;
+  margin: 0 auto;
+  padding: 2vh;
+  @media (min-width: 376px) {
+    width: 65vw;
+  }
+  @media (min-width: 426px) {
+    width: 50vw;
+  }
+  @media (min-width: 769px) {
+    width: 40vw;
+  }
+  @media (min-width: 1025px) {
+    width: 30vw;
+  }
 `;
 
 export const Innerbox = styled.div`
@@ -149,13 +226,6 @@ export const AddImg = styled.img`
   width: 40px;
 `;
 
-export const Title = styled.h1`
-  font-size: 5vh;
-  font-family: "Lobster";
-  padding: 2vh;
-  color: darkgray;
-`;
-
 export const Cleanlist = styled.ul`
   list-style-type: none;
   margin: 0vw auto;
@@ -188,16 +258,32 @@ export const Select = styled.select`
 
 export const SmallFridge = styled.div`
   background-image: url("/FridgyFridge.png");
-  height: 45vh;
-  width: 45vw;
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
-  margin: 2vh 1vh;
+  background-repeat: no-repeat;
+  background-size: 35vw;
+  margin: 2vh 2vw;
   padding-top: 3vh;
-`;
-export const NavTitle = styled.span`
-  font-family: "Lobster";
-  font-size: 3vh;
+  height: 45vh;
+  width: 35vw;
+  @media (min-width: 321px) {
+    height: 50vh;
+    margin: 2vh 3vw;
+  }
+  @media (min-width: 376px) {
+    height: 55vh;
+  }
+  @media (min-width: 426px) {
+    background-size: 15vw;
+    height: 45vh;
+    width: 15vw;
+  }
+  @media (min-width: 769px) {
+    background-size: 12vw;
+    height: 50vh;
+    width: 12vw;
+  }
+  @media (min-width: 1025px) {
+    height: 52vh;
+  }
 `;
 
 //https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG
