@@ -59,7 +59,7 @@ export const Section = styled.div`
 
 export const Button = styled.button`
   padding: 1vw;
-  font-size: 1em;
+  font-size: 0.8em;
   width: 30vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
@@ -111,13 +111,13 @@ export const Title = styled.h1`
 
 export const DeleteButton = styled.button`
   padding: 1vw;
-  font-size: 1em;
+  font-size: 0.8em;
   width: 30vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   background-color: red;
   color: white;
-  margin-top: 3vh;
+  margin: 3vh 0;
   @media (min-width: 321px) {
     width: 25vw;
   }
