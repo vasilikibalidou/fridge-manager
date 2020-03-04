@@ -64,7 +64,7 @@ router.get("/foodItem/:id", (req, res) => {
       return res.json(foundItem);
     })
     .catch(err => {
-      res.status(400).json({ message: "Could not find fridge." });
+      res.status(400).json({ message: "Could not find item." });
     });
 });
 
@@ -82,7 +82,7 @@ router.post("/foodItem/:id/delete", (req, res) => {
       res.json(foundFoodItem);
     })
     .catch(err => {
-      res.status(400).json({ message: "Could not find fridge." });
+      res.status(400).json({ message: "Could not find item." });
     });
 });
 

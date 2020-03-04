@@ -31,6 +31,11 @@ export default class Filters extends Component {
               Expiration date
             </Button>
           </li>
+          <li>
+            <Button onClick={this.handleClick} name="availability">
+              My shopping list
+            </Button>
+          </li>
           {/* <li>
             <Button onClick={this.handleClick} name="expiration-date">
               Category
@@ -46,7 +51,7 @@ export default class Filters extends Component {
             </Button>
           </li>
         </Cleanlist>
-        {/* Redirect, with a parameter, if a flter has been selected. */}
+        {/* Redirect, with a parameter, if a filter has been selected. */}
         {this.state.filter && (
           <Redirect
             to={{
