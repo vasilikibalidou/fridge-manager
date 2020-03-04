@@ -212,8 +212,7 @@ export const UserCard = styled.div`
 export const Innerbox = styled.div`
   border-bottom: 3px double grey;
   border-bottom-style: double;
-  width: 35vw;
-  height: 12vh;
+  width: 35%;
 `;
 
 export const ContainerScroll = styled.div`
@@ -232,6 +231,38 @@ export const ContainerScroll = styled.div`
   border-image-source: url(/FridgyFridge.png);
   border-image-slice: 120;
   padding: 10vw;
+`;
+
+export const ContainerFridgedetails = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/FridgyFridge.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  margin: 0 auto;
+  width: 90vw;
+  height: 70vh;
+  max-width: 1000px;
+  border-radius: 45px;
+`;
+export const ContainerFridgeInside = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: rgb(242, 249, 250);
+  overflow-y: auto;
+  padding: 10px;
+  width: 95%;
+  height: 95%;
+  border-radius: 45px;
+  border: solid transparent;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
+  border-width: 0px;
 `;
 
 export const Container = styled.div`

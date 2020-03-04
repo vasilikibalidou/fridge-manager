@@ -7,8 +7,9 @@ import {
   SortButton,
   StyledLink,
   ContainerTitleAndFilter,
+  ContainerFridgedetails,
+  ContainerFridgeInside,
   SpacerDiv,
-  ContainerScroll,
   Card,
   Section,
   Button,
@@ -123,38 +124,42 @@ export default class FridgeDetails extends Component {
             <SortButton />
           </FilterLink>
         </ContainerTitleAndFilter>
-        <ContainerScroll>
-          {this.state.items?.map(item => {
-            return (
-              <Innerbox key={item._id}>
+        <ContainerFridgedetails>
+          <ContainerFridgeInside>
+            {this.state.items?.map(item => {
+              return (
+                <Innerbox key={item._id}>
+                  <Card>
+                    <StyledLink
+                      to={`/fridge/${this.props.fridgeId}/foodItem/${item._id}`}
+                    >
+                      {/* TODO: pass all info to component, no need for extra axios call inside. */}
+                      <FoodItem
+                        foodId={item._id}
+                        fridgeId={this.props.fridgeId}
+                        updateFunc={this.props.updateFunc}
+                        history={this.props.history}
+                        user={this.state.user}
+                      />
+                    </StyledLink>
+                  </Card>
+                </Innerbox>
+              );
+            })}
+
+            {this.state.fridge && this.state.userHasFridge && (
+              <Innerbox style={{ borderBottom: "none" }}>
                 <Card>
                   <StyledLink
-                    to={`/fridge/${this.props.fridgeId}/foodItem/${item._id}`}
+                    to={`/fridge/${this.state.fridge._id}/createItem`}
                   >
-                    {/* TODO: pass all info to component, no need for extra axios call inside. */}
-                    <FoodItem
-                      foodId={item._id}
-                      fridgeId={this.props.fridgeId}
-                      updateFunc={this.props.updateFunc}
-                      history={this.props.history}
-                      user={this.state.user}
-                    />
+                    <AddImg src="/add.png" alt="add" />
                   </StyledLink>
                 </Card>
               </Innerbox>
-            );
-          })}
-
-          {this.state.fridge && this.state.userHasFridge && (
-            <Innerbox>
-              <Card>
-                <StyledLink to={`/fridge/${this.state.fridge._id}/createItem`}>
-                  <AddImg src="/add.png" alt="add" />
-                </StyledLink>
-              </Card>
-            </Innerbox>
-          )}
-        </ContainerScroll>
+            )}
+          </ContainerFridgeInside>
+        </ContainerFridgedetails>
         <div>
           {this.state.userIsAdmin && this.state.fridge && (
             <Link to={`/fridge/${this.state.fridge._id}/users`}>
