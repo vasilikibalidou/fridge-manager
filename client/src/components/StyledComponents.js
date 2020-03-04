@@ -2,17 +2,31 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  background: lightgray;
-  padding: 2vh;
-`;
+  position: fixed;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #5cb1ab;
+  padding: 1vh;
+`;
 export const NavLink = styled(Link)`
   color: white;
   font-size: 1em;
-  padding: 2vw;
+  padding: 1vw;
   text-decoration: none;
+`;
+export const NavTitle = styled.span`
+  font-family: "Lobster";
+  padding: 0.5vw;
+  font-size: 2em;
+`;
+export const UnderNavbarDiv = styled.div`
+  margin-top: 60px;
 `;
 
 export const Form = styled.form`
@@ -40,18 +54,36 @@ export const Button = styled.button`
   margin-top: 3vh;
 `;
 
+export const ContainerTitleAndFilter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0vw;
+`;
 export const SortButton = styled.div`
-  margin: 2vh;
   width: 30px;
   height: 30px;
-  position: absolute;
-  top: 50px;
-  right: 20px;
   background-image: url(/sort-icon.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: block;
+`;
+export const FilterLink = styled(Link)`
+  width: 30px;
+  height: 30px;
+  margin: 2vh;
+`;
+export const SpacerDiv = styled.div`
+  width: 30px;
+  height: 30px;
+  margin: 2vh;
+`;
+
+export const Title = styled.h1`
+  font-size: 5vh;
+  font-family: "Lobster";
+  padding: 2vh;
+  color: darkgray;
 `;
 
 export const DeleteButton = styled.button`
@@ -125,13 +157,6 @@ export const AddImg = styled.img`
   width: 40px;
 `;
 
-export const Title = styled.h1`
-  font-size: 5vh;
-  font-family: "Lobster";
-  padding: 2vh;
-  color: darkgray;
-`;
-
 export const Cleanlist = styled.ul`
   list-style-type: none;
   margin: 0;
@@ -160,10 +185,6 @@ export const SmallFridge = styled.div`
   background-size: cover;
   margin: 2vh 1vh;
   padding-top: 3vh;
-`;
-export const NavTitle = styled.span`
-  font-family: "Lobster";
-  font-size: 3vh;
 `;
 
 //https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG

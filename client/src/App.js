@@ -14,6 +14,7 @@ import Invite from "./components/Invite";
 import FridgeUsers from "./components/FridgeUsers";
 import ItemDetails from "./components/ItemDetails";
 import Filters from "./components/Filters";
+import { UnderNavbarDiv } from "./components/StyledComponents";
 
 class App extends React.Component {
   state = {
@@ -40,126 +41,128 @@ class App extends React.Component {
         {this.state.user && (
           <Navbar user={this.state.user} setUser={this.setUser} />
         )}
-        <Switch>
-          <Route
-            path="/:fridgeId/foodItem/:id/edit"
-            render={props => (
-              <EditItem
-                history={props.history}
-                user={this.state.user}
-                updateFunc={this.updateUserState}
-                foodItemId={props.match.params.id}
-                fridgeId={props.match.params.fridgeId}
-              />
-            )}
-          />
-          <Route
-            path="/fridge/:id/filters"
-            render={props => (
-              <Filters
-                history={props.history}
-                fridgeId={props.match.params.id}
-              />
-            )}
-          />
-          <Route
-            path="/fridge/:id/users"
-            render={props => (
-              <FridgeUsers
-                history={props.history}
-                userId={this.state.user._id}
-                fridgeId={props.match.params.id}
-              />
-            )}
-          />
-          <Route
-            path="/fridge/:fridgeId/foodItem/:foodId"
-            render={props => (
-              <ItemDetails
-                history={props.history}
-                user={this.state.user}
-                updateFunc={this.updateUserState}
-                itemId={props.match.params.foodId}
-                fridgeId={props.match.params.fridgeId}
-              />
-            )}
-          />
-          <Route
-            path="/fridge/:id/createItem"
-            render={props => (
-              <CreateItem
-                history={props.history}
-                user={this.state.user}
-                updateFunc={this.updateUserState}
-                fridgeId={props.match.params.id}
-              />
-            )}
-          />
-          <Route
-            path="/fridge/:id/invite"
-            render={props => (
-              <Invite
-                history={props.history}
-                user={this.state.user}
-                fridgeId={props.match.params.id}
-              />
-            )}
-          />
-          <Route
-            path="/fridge/:id/join"
-            render={props => (
-              <Invite
-                history={props.history}
-                user={this.state.user}
-                fridgeId={props.match.params.id}
-              />
-            )}
-          />
-          <Route
-            path="/createFridge"
-            render={props => (
-              <CreateFridge
-                history={props.history}
-                user={this.state.user}
-                updateFunc={this.updateUserState}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/fridge/:id"
-            render={props => (
-              <FridgeDetails
-                history={props.history}
-                user={this.state.user}
-                fridgeId={props.match.params.id}
-                updateFunc={this.updateUserState}
-              />
-            )}
-          />
-          <Route
-            path="/signup"
-            render={props => (
-              <Signup history={props.history} setUser={this.setUser} />
-            )}
-          />
-          <Route
-            path="/login"
-            render={props => (
-              <Login history={props.history} setUser={this.setUser} />
-            )}
-          />
-          <Route
-            path="/"
-            render={props => (
-              <Home
-                history={props.history}
-                user={this.state.user}
-                setUser={this.setUser}
-              />
-            )}
-          />
-        </Switch>
+        <UnderNavbarDiv>
+          <Switch>
+            <Route
+              path="/:fridgeId/foodItem/:id/edit"
+              render={props => (
+                <EditItem
+                  history={props.history}
+                  user={this.state.user}
+                  updateFunc={this.updateUserState}
+                  foodItemId={props.match.params.id}
+                  fridgeId={props.match.params.fridgeId}
+                />
+              )}
+            />
+            <Route
+              path="/fridge/:id/filters"
+              render={props => (
+                <Filters
+                  history={props.history}
+                  fridgeId={props.match.params.id}
+                />
+              )}
+            />
+            <Route
+              path="/fridge/:id/users"
+              render={props => (
+                <FridgeUsers
+                  history={props.history}
+                  userId={this.state.user._id}
+                  fridgeId={props.match.params.id}
+                />
+              )}
+            />
+            <Route
+              path="/fridge/:fridgeId/foodItem/:foodId"
+              render={props => (
+                <ItemDetails
+                  history={props.history}
+                  user={this.state.user}
+                  updateFunc={this.updateUserState}
+                  itemId={props.match.params.foodId}
+                  fridgeId={props.match.params.fridgeId}
+                />
+              )}
+            />
+            <Route
+              path="/fridge/:id/createItem"
+              render={props => (
+                <CreateItem
+                  history={props.history}
+                  user={this.state.user}
+                  updateFunc={this.updateUserState}
+                  fridgeId={props.match.params.id}
+                />
+              )}
+            />
+            <Route
+              path="/fridge/:id/invite"
+              render={props => (
+                <Invite
+                  history={props.history}
+                  user={this.state.user}
+                  fridgeId={props.match.params.id}
+                />
+              )}
+            />
+            <Route
+              path="/fridge/:id/join"
+              render={props => (
+                <Invite
+                  history={props.history}
+                  user={this.state.user}
+                  fridgeId={props.match.params.id}
+                />
+              )}
+            />
+            <Route
+              path="/createFridge"
+              render={props => (
+                <CreateFridge
+                  history={props.history}
+                  user={this.state.user}
+                  updateFunc={this.updateUserState}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/fridge/:id"
+              render={props => (
+                <FridgeDetails
+                  history={props.history}
+                  user={this.state.user}
+                  fridgeId={props.match.params.id}
+                  updateFunc={this.updateUserState}
+                />
+              )}
+            />
+            <Route
+              path="/signup"
+              render={props => (
+                <Signup history={props.history} setUser={this.setUser} />
+              )}
+            />
+            <Route
+              path="/login"
+              render={props => (
+                <Login history={props.history} setUser={this.setUser} />
+              )}
+            />
+            <Route
+              path="/"
+              render={props => (
+                <Home
+                  history={props.history}
+                  user={this.state.user}
+                  setUser={this.setUser}
+                />
+              )}
+            />
+          </Switch>
+        </UnderNavbarDiv>
       </div>
     );
   }

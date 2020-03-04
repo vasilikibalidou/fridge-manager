@@ -67,7 +67,7 @@ export default class ItemDetails extends Component {
               </li>
             )}
             <li>Common item: {this.state.foodItem?.common ? "Yes" : "No"}</li>
-            {this.state.foodItem?.expiration && (
+            {this.state.foodItem?.description && (
               <li>Description: {this.state.foodItem?.description}</li>
             )}
           </Cleanlist>
