@@ -7,7 +7,9 @@ import {
   Button,
   DeleteButton,
   Cleanlist,
-  Title
+  Title,
+  Span,
+  Li
 } from "./StyledComponents";
 
 export default class ItemDetails extends Component {
@@ -55,32 +57,50 @@ export default class ItemDetails extends Component {
         <Section>
           <Title style={style}>{this.state.foodItem?.name}</Title>
           <Cleanlist>
-            <li>
+            <Li>
               <img height="70vh" src={src} alt="itemimage"></img>
+            </Li>
+            <br />
+            <li>
+              <Span>Belongs to: </Span> {this.props.user.username}
             </li>
-            <li>Belongs to: {this.props.user.username}</li>
-            <li>Category: {this.state.foodItem?.category}</li>
-            <li>Availability: {this.state.foodItem?.availability}</li>
+            <li>
+              <Span>Category: </Span>
+              {this.state.foodItem?.category}
+            </li>
+            <li>
+              <Span>Availability: </Span> {this.state.foodItem?.availability}
+            </li>
             {this.state.foodItem?.expiration && (
               <li>
-                Best Before: {this.state.foodItem?.expiration?.slice(0, 10)}
+                <Span>Best before: </Span>
+                <br />
+                {this.state.foodItem?.expiration?.slice(0, 10)}
               </li>
             )}
-            <li>Common item: {this.state.foodItem?.common ? "Yes" : "No"}</li>
+            <li>
+              <Span>To be shared: </Span>
+              {this.state.foodItem?.common ? "Yes" : "No"}
+            </li>
             {this.state.foodItem?.expiration && (
-              <li>Description: {this.state.foodItem?.description}</li>
+              <li>
+                <Span>Description: </Span>
+                {this.state.foodItem?.description}
+              </li>
             )}
           </Cleanlist>
         </Section>
         <Section>
-          <DeleteButton onClick={() => this.handleDelete(this.props.foodId)}>
-            Delete
-          </DeleteButton>
           <Link
             to={`/${this.props.fridgeId}/foodItem/${this.props.itemId}/edit`}
           >
             <Button>Edit item</Button>
           </Link>
+
+          <br />
+          <DeleteButton onClick={() => this.handleDelete(this.props.foodId)}>
+            Delete
+          </DeleteButton>
         </Section>
       </div>
     );
