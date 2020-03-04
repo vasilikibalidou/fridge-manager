@@ -54,6 +54,12 @@ export default class FridgeDetails extends Component {
             filteredItems = response?.data?.items.filter(item => {
               if (filter === "my-items") {
                 return item.users.includes(this.state.user._id);
+              }
+              if (filter === "availability") {
+                return (
+                  item.availability === "empty" ||
+                  new Date(item.expiration) < new Date()
+                );
               } else if (filter === "common-items") {
                 return item.common === true;
               }
