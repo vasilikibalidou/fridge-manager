@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { Form, Section, Button, Input } from "./StyledComponents";
+import { Form, Section, Button, Input, H2 } from "./StyledComponents";
 
 export default class Signup extends Component {
   state = {
@@ -40,9 +40,11 @@ export default class Signup extends Component {
   render() {
     return (
       <>
+        <H2>Sign Up</H2>
         <Form onSubmit={this.handleSubmit}>
           <Section>
             <label htmlFor="username">Username: </label>
+            <br />
             <Input
               type="text"
               id="username"
@@ -53,6 +55,7 @@ export default class Signup extends Component {
           </Section>
           <Section>
             <label htmlFor="password">Password: </label>
+            <br />
             <Input
               type="password"
               name="password"
