@@ -7,7 +7,6 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,7 +25,7 @@ export const NavTitle = styled.span`
   font-size: 2em;
 `;
 export const UnderNavbarDiv = styled.div`
-  margin-top: 60px;
+  margin-top: 15vh;
 `;
 
 export const Form = styled.form`

@@ -30,11 +30,9 @@ export default class Home extends Component {
                 </StyledLink>
               );
             })}
-            <Card>
-              <StyledLink to="/createFridge">
-                <AddImg src="/add.png" alt="add" />
-              </StyledLink>
-            </Card>
+            <StyledLink to="/createFridge" style={{ padding: "5vw" }}>
+              <AddImg src="/add.png" alt="add" />
+            </StyledLink>
           </Container>
         </>
       );
