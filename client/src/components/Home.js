@@ -41,7 +41,6 @@ export default class Home extends Component {
     }
     return (
       <div>
-        <h1>Hello</h1>
         <Title>Fridgy</Title>
         <p style={{ padding: "0 10vh" }}>
           Welcome to Fridgy!
