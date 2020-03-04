@@ -9,8 +9,7 @@ import {
   Container,
   HomeImg,
   AddImg,
-  SmallFridge,
-  Title
+  SmallFridge
 } from "./StyledComponents";
 
 export default class Home extends Component {
@@ -18,6 +17,7 @@ export default class Home extends Component {
     if (this.props.user) {
       return (
         <>
+          <h3>Fridge List:</h3>
           <Container>
             {this.props.user.fridges.map(fridgeId => {
               return (
@@ -41,7 +41,7 @@ export default class Home extends Component {
     }
     return (
       <div>
-        <Title>Fridgy</Title>
+        <h1>Fridgy</h1>
         <p style={{ padding: "0 10vh" }}>
           Welcome to Fridgy!
           <br /> The app that helps you organise your fridge.

@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -13,7 +12,7 @@ import EditItem from "./components/EditItem";
 import Invite from "./components/Invite";
 import FridgeUsers from "./components/FridgeUsers";
 import ItemDetails from "./components/ItemDetails";
-import Filters from "./components/Filters";
+import axios from "axios";
 
 class App extends React.Component {
   state = {
@@ -50,15 +49,6 @@ class App extends React.Component {
                 updateFunc={this.updateUserState}
                 foodItemId={props.match.params.id}
                 fridgeId={props.match.params.fridgeId}
-              />
-            )}
-          />
-          <Route
-            path="/fridge/:id/filters"
-            render={props => (
-              <Filters
-                history={props.history}
-                fridgeId={props.match.params.id}
               />
             )}
           />

@@ -52,18 +52,6 @@ router.get("/fridge/:id/users", (req, res) => {
     });
 });
 
-// returns fridge with populated items
-router.get("/fridge/:id/items", (req, res) => {
-  Fridge.findById(req.params.id)
-    .populate("items")
-    .then(foundFridge => {
-      return res.json(foundFridge);
-    })
-    .catch(err => {
-      res.status(400).json({ message: "Could not find fridge with this id." });
-    });
-});
-
 router.post("/fridge/:id/delete", (req, res) => {
   Fridge.findById(req.params.id)
     .then(foundFridge => {

@@ -19,8 +19,6 @@ export const Form = styled.form`
   display: flex:
   flex-direction: column;
   padding-top: 5vh;
-  align-items: flex-start;
-  
 `;
 
 export const Section = styled.div`
@@ -37,21 +35,7 @@ export const Button = styled.button`
   border-radius: 5px;
   background-color: #5cb1ab;
   color: white;
-  margin-top: 3vh;
-`;
-
-export const SortButton = styled.div`
-  margin: 2vh;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: 50px;
-  right: 20px;
-  background-image: url(/sort-icon.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: block;
+  margin-bottom: 3vh;
 `;
 
 export const DeleteButton = styled.button`
@@ -62,7 +46,6 @@ export const DeleteButton = styled.button`
   border-radius: 5px;
   background-color: red;
   color: white;
-  margin-top: 3vh;
 `;
 
 export const Input = styled.input`
@@ -94,6 +77,7 @@ export const ContainerScroll = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   align-content: flex-start;
+  padding: 10vw;
   background-color: rgb(242, 249, 250);
   height: 80vh;
   width: 100vw;
@@ -102,9 +86,8 @@ export const ContainerScroll = styled.div`
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
   border: solid transparent;
   border-width: 70px 15px 40px 15px;
-  border-image-source: url(/FridgyFridge.png);
+  border-image-source: url(https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG);
   border-image-slice: 120;
-  padding: 10vw;
 `;
 
 export const Container = styled.div`
@@ -129,7 +112,6 @@ export const Title = styled.h1`
   font-size: 5vh;
   font-family: "Lobster";
   padding: 2vh;
-  color: darkgray;
 `;
 
 export const Cleanlist = styled.ul`
@@ -138,32 +120,3 @@ export const Cleanlist = styled.ul`
   padding: 0;
   font-size: 1.2em;
 `;
-
-export const Select = styled.select`
-  width: 50%;
-  border: 0.5px solid lightgray;
-  border-radius: 5px;
-  font-size: 1em;
-  margin: 1vw;
-  outline: 0;
-  padding: 1.8vh;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-`;
-
-export const SmallFridge = styled.div`
-  background-image: url("/FridgyFridge.png");
-  height: 45vh;
-  width: 45vw;
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
-  margin: 2vh 1vh;
-  padding-top: 3vh;
-`;
-export const NavTitle = styled.span`
-  font-family: "Lobster";
-  font-size: 3vh;
-`;
-
-//https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG

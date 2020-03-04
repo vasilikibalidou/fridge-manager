@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button } from "./StyledComponents";
-import { Section, Input, Form, Select } from "./StyledComponents";
+import { Section, Input, Form } from "./StyledComponents";
 export default class EditItem extends Component {
   state = {
     name: "",
@@ -73,7 +73,6 @@ export default class EditItem extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Section>
             <label htmlFor="name">Item name: </label>
-            <br />
             <Input
               type="text"
               id="name"
@@ -82,19 +81,19 @@ export default class EditItem extends Component {
               onChange={this.handleChange}
             />
           </Section>
-          {/* <Section>
-            <label htmlFor="quantity">How much? </label>
-            <br />
+          <Section>
+            <label htmlFor="quantity">Quantity: </label>
             <Input
               type="number"
               id="quantity"
               name="quantity"
               value={this.state.number}
               onChange={this.handleChange}
-              style={{ width: "10vw" }}
             />
-
-            <Select
+          </Section>
+          <Section>
+            <label htmlFor="unit">unit </label>
+            <select
               type="text"
               id="unit"
               name="unit"
@@ -104,13 +103,12 @@ export default class EditItem extends Component {
               <option value="L">Liter</option>
               <option value="kg">kg</option>
               <option value="item">item</option>
-            </Select>
-          </Section> */}
+            </select>
+          </Section>
 
           <Section>
-            <label htmlFor="availability">How much is left? </label>
-            <br />
-            <Select
+            <label htmlFor="availability">availability: </label>
+            <select
               type="text"
               id="availability"
               name="availability"
@@ -121,11 +119,10 @@ export default class EditItem extends Component {
               <option value="half-full">half-full</option>
               <option value="almost empty">almost empty</option>
               <option value="empty">empty</option>
-            </Select>
+            </select>
           </Section>
           <Section>
             <label htmlFor="expiration">Best before: </label>
-            <br />
             <Input
               type="date"
               id="expiration"
@@ -134,11 +131,10 @@ export default class EditItem extends Component {
               onChange={this.handleChange}
             ></Input>
           </Section>
-          {/* <Section>
+          <Section>
             <label htmlFor="category">Category: </label>
-            <br />
 
-            <Select
+            <select
               type="text"
               id="category"
               name="category"
@@ -156,13 +152,14 @@ export default class EditItem extends Component {
               <option value="seafood">seafood</option>
               <option value="dessert">dessert</option>
               <option value="bread">bread</option>
-              <option value="cooked_meal">cooked meal</option>
+              <option value="cooked meal">cooked meal</option>
               <option value="drinks">drinks</option>
-              <option value="alcoholic_drinks">alcohol</option>
+              <option value="alcohol">alcohol</option>
               <option value="coffee">coffee</option>
               <option value="other">other</option>
-            </Select>
-          </Section> */}
+            </select>
+          </Section>
+
           <Section>
             <label htmlFor="common">
               To share
@@ -178,7 +175,6 @@ export default class EditItem extends Component {
 
           <Section>
             <label htmlFor="name">Description: </label>
-            <br />
             <Input
               type="text"
               id="description"
