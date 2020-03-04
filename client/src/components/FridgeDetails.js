@@ -4,8 +4,8 @@ import FoodItem from "./FoodItem";
 import axios from "axios";
 
 import {
+  SortButton,
   StyledLink,
-  Container,
   ContainerScroll,
   Card,
   Section,
@@ -20,6 +20,7 @@ export default class FridgeDetails extends Component {
   state = {
     user: this.props.user,
     fridge: null,
+    items: [],
     userIsAdmin: false,
     userHasFridge: false,
     message: ""
@@ -60,7 +61,8 @@ export default class FridgeDetails extends Component {
         this.setState({
           fridge: response.data,
           userIsAdmin: isAdmin,
-          userHasFridge: hasFridge
+          userHasFridge: hasFridge,
+          items: filteredItems
         });
       })
       .catch(err => {
@@ -96,43 +98,48 @@ export default class FridgeDetails extends Component {
   };
 
   handleDelete = () => {
-    axios
-      .post(`/fridge/${this.props.fridgeId}/delete`, {
-        userId: this.props.user._id
-      })
-      .then(response => {
-        this.props.updateFunc();
-        this.props.history.push("/");
-      });
+    if (window.confirm("Are you sure you want to delete this fridge?")) {
+      axios
+        .post(`/fridge/${this.props.fridgeId}/delete`, {
+          userId: this.props.user._id
+        })
+        .then(response => {
+          this.props.updateFunc();
+          this.props.history.push("/");
+        });
+    }
   };
 
   render() {
-    // if (this.state.redirect){
-    //   return <Redirect />
-    // }
     return (
       <div>
+        <Link to={`/fridge/${this.props.fridgeId}/filters`}>
+          <SortButton />
+        </Link>
+
         <Title> {this.state.fridge?.name}</Title>
         <ContainerScroll>
-          {this.state.fridge?.items.map(item => {
+          {this.state.items?.map(item => {
             return (
-              <Innerbox>
-                <Card key={item._id}>
+              <Innerbox key={item._id}>
+                <Card>
                   <StyledLink
                     to={`/fridge/${this.props.fridgeId}/foodItem/${item._id}`}
-                    key={item._id}
                   >
+                    {/* TODO: pass all info to component, no need for extra axios call inside. */}
                     <FoodItem
                       foodId={item._id}
                       fridgeId={this.props.fridgeId}
                       updateFunc={this.props.updateFunc}
                       history={this.props.history}
+                      user={this.state.user}
                     />
                   </StyledLink>
                 </Card>
               </Innerbox>
             );
           })}
+
           {this.state.fridge && this.state.userHasFridge && (
             <Innerbox>
               <Card>
@@ -142,15 +149,13 @@ export default class FridgeDetails extends Component {
               </Card>
             </Innerbox>
           )}
-          <Section>
-            {this.state.userIsAdmin && this.state.fridge && (
-              <Link to={`/fridge/${this.state.fridge._id}/users`}>
-                ({this.state.fridge.users.length}) Users
-              </Link>
-            )}
-          </Section>
         </ContainerScroll>
         <div>
+          {this.state.userIsAdmin && this.state.fridge && (
+            <Link to={`/fridge/${this.state.fridge._id}/users`}>
+              <Button>({this.state.fridge.users.length}) Users</Button>
+            </Link>
+          )}
           <br />
           {this.state.userIsAdmin && (
             <Link to={`/fridge/${this.state.fridge._id}/invite`}>
@@ -169,10 +174,12 @@ export default class FridgeDetails extends Component {
             <DeleteButton
               onClick={() => this.handleDelete(this.props.fridgeId)}
             >
-              Delete this fridge
+              Delete fridge
             </DeleteButton>
           )}
-          <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
+          <Section style={{ color: "red" }}>
+            {this.state.message && <p>{this.state.message}</p>}
+          </Section>
         </div>
       </div>
     );

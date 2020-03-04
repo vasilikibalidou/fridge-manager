@@ -6,7 +6,7 @@ mongoose.set("useCreateIndex", true);
 mongoose.set("useUnifiedTopology", true);
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/fridge-manager")
+  .connect(process.env.MONGODB_URI)
   .then(conn => {
     console.log(`Connected to ${conn.connections[0].name}`);
   })

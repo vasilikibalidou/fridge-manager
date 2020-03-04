@@ -21,7 +21,7 @@ const routes = require("./routes"); // this is our controller and will manage al
 app.use(routes);
 
 app.use((req, res) => {
-  // If no routes match, send them the React HTML.
+  // // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/client/build/index.html");
 });
 
