@@ -29,10 +29,27 @@ export const UnderNavbarDiv = styled.div`
   margin-top: 60px;
 `;
 
+export const Span = styled.span`
+  font-size: 1.2em;
+  font-family: "Lobster";
+  font-weight: lighter;
+  color: darkgray;
+`;
+
+export const Label = styled.label`
+  text-align: left;
+  width: 50vw;
+`;
+
+export const H2 = styled.h2`
+padding: 3vw
+  width: 70vw;
+  text-align: center;
+`;
 export const Form = styled.form`
   display: flex:
   flex-direction: column;
-  padding-top: 5vh;
+  padding-top: 1vh;
   align-items: flex-start;
   
 `;
@@ -123,6 +140,13 @@ export const RemoveButton = styled(DeleteButton)`
 
 export const Input = styled.input`
   padding: 1.5vh;
+  width: 50vw;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+`;
+
+export const Textarea = styled.textarea`
+  padding: 1.5vh;
   width: 50%;
   border: 0.5px solid lightgray;
   border-radius: 5px;
@@ -204,9 +228,19 @@ export const AddImg = styled.img`
 
 export const Cleanlist = styled.ul`
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  font-size: 1.2em;
+  margin: 0vw auto;
+  padding: 0vw;
+  font-size: 1em;
+  text-align: center;
+  width: 75vw;
+`;
+export const Li = styled.li`
+  list-style-type: none;
+  margin: 0vw auto;
+  padding: 0vw;
+  font-size: 1em;
+  text-align: center;
+  width: 50vw;
 `;
 
 export const Select = styled.select`
