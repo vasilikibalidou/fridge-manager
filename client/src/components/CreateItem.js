@@ -5,8 +5,8 @@ import { Form, Section, Button, Input } from "./StyledComponents";
 
 export default class CreateItem extends Component {
   state = {
-    name: null,
-    description: null,
+    name: "",
+    description: "",
     category: "dairy",
     expiration: null,
     quantity: { number: null, unit: null },
@@ -15,9 +15,12 @@ export default class CreateItem extends Component {
   };
 
   handleChange = event => {
-    console.log(event.target.value);
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: value
     });
   };
 
@@ -36,11 +39,11 @@ export default class CreateItem extends Component {
           number: this.state.number,
           unit: this.state.unit
         },
-        availability: this.state.availability
+        availability: this.state.availability,
+        common: this.state.common
       })
       .then(response => {
         // redirect
-
         this.props.history.push(`/fridge/${this.props.fridgeId}`);
       })
       .catch(err => {
@@ -140,13 +143,16 @@ export default class CreateItem extends Component {
             </select>
           </Section>
           <Section>
-            <label htmlFor="common">shared food </label>
-            <Input
-              type="checkbox"
-              id="common"
-              name="common"
-              value="false"
-            ></Input>
+            <label htmlFor="common">
+              To share
+              <Input
+                type="checkbox"
+                id="common"
+                name="common"
+                checked={this.state.common}
+                onChange={this.handleChange}
+              />
+            </label>
           </Section>
           <Section>
             <label htmlFor="name">Description: </label>

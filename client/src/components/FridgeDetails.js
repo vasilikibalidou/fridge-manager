@@ -31,6 +31,29 @@ export default class FridgeDetails extends Component {
       .then(response => {
         let isAdmin = response.data?.admins.includes(this.state.user._id);
         let hasFridge = response.data?.users.includes(this.state.user._id);
+
+        let filteredItems = response.data.items;
+        if (filter) {
+          if (filter === "expiration-date") {
+            // sort by exp.date
+            filteredItems = filteredItems.sort((a, b) => {
+              if (!a.expiration || !b.expiration) {
+                return true;
+              }
+              return new Date(a.expiration) - new Date(b.expiration);
+            });
+          } else {
+            filteredItems = response.data.items.filter(item => {
+              if (filter === "my-items") {
+                return item.users.includes(this.state.user._id);
+              } else if (filter === "common-items") {
+                return item.common === true;
+              }
+              return true;
+            });
+          }
+        }
+
         this.setState({
           fridge: response.data,
           userIsAdmin: isAdmin,

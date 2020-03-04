@@ -14,8 +14,12 @@ export default class EditItem extends Component {
   };
 
   handleChange = event => {
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: value
     });
   };
 
@@ -49,7 +53,8 @@ export default class EditItem extends Component {
           number: this.state.number,
           unit: this.state.unit
         },
-        availability: this.state.availability
+        availability: this.state.availability,
+        common: this.state.common
       })
       .then(response => {
         // redirect
@@ -156,13 +161,16 @@ export default class EditItem extends Component {
           </Section>
 
           <Section>
-            <label htmlFor="common">shared food</label>
-            <Input
-              type="checkbox"
-              id="common"
-              name="common"
-              value="false"
-            ></Input>
+            <label htmlFor="common">
+              To share
+              <input
+                type="checkbox"
+                id="common"
+                name="common"
+                checked={this.state.common}
+                onChange={this.handleChange}
+              />
+            </label>
           </Section>
 
           <Section>

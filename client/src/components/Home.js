@@ -8,7 +8,8 @@ import {
   Card,
   Container,
   HomeImg,
-  AddImg
+  AddImg,
+  SmallFridge
 } from "./StyledComponents";
 
 export default class Home extends Component {
@@ -20,11 +21,13 @@ export default class Home extends Component {
           <Container>
             {this.props.user.fridges.map(fridgeId => {
               return (
-                <Card key={fridgeId}>
-                  <StyledLink to={`/fridge/${fridgeId}`}>
-                    <Fridge fridgeId={fridgeId} user={this.props.user} />
-                  </StyledLink>
-                </Card>
+                <StyledLink to={`/fridge/${fridgeId}`} key={fridgeId}>
+                  <SmallFridge>
+                    <Card>
+                      <Fridge fridgeId={fridgeId} user={this.props.user} />
+                    </Card>
+                  </SmallFridge>
+                </StyledLink>
               );
             })}
             <Card>

@@ -40,6 +40,10 @@ export default class ItemDetails extends Component {
   };
 
   render() {
+    let src = "";
+    if (this.state.foodItem?.category) {
+      src = "/" + this.state.foodItem?.category + ".png";
+    }
     let style = {};
     if (this.state.foodItem?.availability === "empty") {
       style = { opacity: "0.5" };
@@ -52,13 +56,18 @@ export default class ItemDetails extends Component {
         <Section>
           <Title style={style}>{this.state.foodItem?.name}</Title>
           <Cleanlist>
-            <li>
-              <img height="50" src="/022-containers.png" alt="itemimage"></img>
-            </li>
+            <li>{src && <img height="50" src={src} alt="itemimage"></img>}</li>
             <li>Category: {this.state.foodItem?.category}</li>
             <li>Availability: {this.state.foodItem?.availability}</li>
-            <li>Best Before: {this.state.foodItem?.expiration}</li>
-            <li>Description: {this.state.foodItem?.description}</li>
+            {this.state.foodItem?.expiration && (
+              <li>
+                Best Before: {this.state.foodItem?.expiration?.slice(0, 10)}
+              </li>
+            )}
+            <li>Common item: {this.state.foodItem?.common ? "Yes" : "No"}</li>
+            {this.state.foodItem?.expiration && (
+              <li>Description: {this.state.foodItem?.description}</li>
+            )}
           </Cleanlist>
         </Section>
         <Section>

@@ -1,14 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Button } from "./StyledComponents";
-import {
-  DeleteButton,
-  Section,
-  Card,
-  Innerbox,
-  Cleanlist
-} from "./StyledComponents";
 
 export default class FoodItem extends Component {
   state = {
@@ -35,6 +26,11 @@ export default class FoodItem extends Component {
   };
 
   render() {
+    let src = "";
+    if (this.state.foodItem?.category) {
+      src = "/" + this.state.foodItem?.category + ".png";
+    }
+
     let style = {};
     if (this.state.foodItem?.availability === "empty") {
       style = { opacity: "0.5" };
@@ -43,8 +39,8 @@ export default class FoodItem extends Component {
     }
     return (
       <div>
-        <div style={style}>Name: {this.state.foodItem?.name}</div>
-        <img height="50" src="/022-containers.png" alt="itemimage"></img>
+        <div style={style}> {this.state.foodItem?.name}</div>
+        {src && <img height="50" src={src} alt="itemimage"></img>}
       </div>
     );
   }
