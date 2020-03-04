@@ -39,13 +39,8 @@ export default class FoodItem extends Component {
     }
     return (
       <div>
-<<<<<<< HEAD
         <div style={style}> {this.state.foodItem?.name}</div>
         {src && <img height="50" src={src} alt="itemimage"></img>}
-=======
-        <div style={style}>Name: {this.state.foodItem?.name}</div>
-        <img height="50" src="/022-containers.png" alt="itemimage"></img>
->>>>>>> master
       </div>
     );
   }

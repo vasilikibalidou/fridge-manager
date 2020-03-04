@@ -15,14 +15,10 @@ export default class CreateItem extends Component {
   };
 
   handleChange = event => {
-<<<<<<< HEAD
     const value =
       event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value;
-=======
-    console.log(event.target.value);
->>>>>>> master
     this.setState({
       [event.target.name]: value
     });
