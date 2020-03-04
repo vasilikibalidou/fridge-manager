@@ -36,10 +36,10 @@ export default class FridgeDetails extends Component {
     axios
       .get(`/fridge/${this.props.fridgeId}/items`)
       .then(response => {
-        let isAdmin = response.data?.admins.includes(this.state.user._id);
-        let hasFridge = response.data?.users.includes(this.state.user._id);
+        let isAdmin = response?.data?.admins?.includes(this.state.user._id);
+        let hasFridge = response?.data?.users?.includes(this.state.user._id);
 
-        let filteredItems = response.data.items;
+        let filteredItems = response?.data?.items;
         if (filter) {
           if (filter === "expiration-date") {
             // sort by exp.date
@@ -50,7 +50,7 @@ export default class FridgeDetails extends Component {
               return new Date(a.expiration) - new Date(b.expiration);
             });
           } else {
-            filteredItems = response.data.items.filter(item => {
+            filteredItems = response?.data?.items.filter(item => {
               if (filter === "my-items") {
                 return item.users.includes(this.state.user._id);
               } else if (filter === "common-items") {
@@ -62,7 +62,7 @@ export default class FridgeDetails extends Component {
         }
 
         this.setState({
-          fridge: response.data,
+          fridge: response?.data,
           userIsAdmin: isAdmin,
           userHasFridge: hasFridge,
           items: filteredItems
