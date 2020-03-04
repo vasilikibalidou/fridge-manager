@@ -50,7 +50,7 @@ padding: 3vw
 export const Form = styled.form`
   display: flex:
   flex-direction: column;
-  padding: 5vh 0;
+  padding: 5vh 0 2vh 0;
   align-items: flex-start;
 `;
 
@@ -61,7 +61,7 @@ export const Section = styled.div`
 
 export const Button = styled.button`
   padding: 1vw;
-  font-size: 0.8em;
+  font-size: 0.9em;
   width: 30vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
@@ -76,6 +76,26 @@ export const Button = styled.button`
   }
   @media (min-width: 1025px) {
     width: 10vw;
+  }
+`;
+
+export const FilterButton = styled.button`
+  padding: 1vw;
+  font-size: 0.8em;
+  width: 30vw;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  background-color: #5cb1ab;
+  color: white;
+  margin-top: 3vh;
+  @media (min-width: 321px) {
+    width: 50vw;
+  }
+  @media (min-width: 426px) {
+    width: 40vw;
+  }
+  @media (min-width: 1025px) {
+    width: 30vw;
   }
 `;
 
@@ -96,28 +116,53 @@ export const SortButton = styled.div`
 export const FilterLink = styled(Link)`
   width: 30px;
   height: 30px;
-  margin: 2vh;
+  margin: 3vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #414042;
+
+  @media (min-width: 321px) {
+    width: 100px;
+  }
+`;
+export const FilterSpan = styled.span`
+  display: none;
+  @media (min-width: 321px) {
+    display: block;
+  }
 `;
 export const SpacerDiv = styled.div`
   width: 30px;
   height: 30px;
-  margin: 2vh;
+  margin: 3vh;
+
+  @media (min-width: 321px) {
+    width: 100px;
+  }
 `;
 
+export const MainTitle = styled.h1`
+  font-size: 2em;
+  font-family: "Lobster";
+  padding: 2vh;
+  color: #414042;
+`;
 export const Title = styled.h1`
   font-size: 5vh;
   font-family: "Lobster";
   padding: 2vh;
-  color: darkgray;
+  color: #414042;
 `;
 
 export const DeleteButton = styled.button`
   padding: 1vw;
-  font-size: 0.8em;
+  font-size: 0.9em;
   width: 30vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
-  background-color: red;
+  background-color: #f05050;
   color: white;
   margin: 3vh 0;
   @media (min-width: 321px) {
@@ -190,7 +235,7 @@ export const Card = styled.div`
 
 export const UserCard = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 70vw;
   margin: 0 auto;
@@ -207,6 +252,13 @@ export const UserCard = styled.div`
   @media (min-width: 1025px) {
     width: 30vw;
   }
+`;
+
+export const UserName = styled.div`
+  flex: 1;
+`;
+export const UserDeleteButton = styled.div`
+  flex: 1;
 `;
 
 export const Innerbox = styled.div`
@@ -253,7 +305,7 @@ export const ContainerFridgeInside = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
   background-color: rgb(242, 249, 250);
   overflow-y: auto;
   padding: 10px;

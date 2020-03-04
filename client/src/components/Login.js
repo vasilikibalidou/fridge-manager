@@ -25,7 +25,6 @@ export default class Login extends Component {
         password: this.state.password
       })
       .then(response => {
-        // redirect
         this.props.setUser(response.data);
         // update state for user in <App/>
       })

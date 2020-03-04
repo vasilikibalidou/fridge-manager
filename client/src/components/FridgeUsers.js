@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import {
-  Container,
-  Card,
   Section,
   RemoveButton,
-  UserCard
+  UserCard,
+  UserName,
+  UserDeleteButton
 } from "./StyledComponents";
 
 export default class FridgeUsers extends Component {
@@ -56,26 +56,29 @@ export default class FridgeUsers extends Component {
   render() {
     return (
       <div>
-        <Section>Fridge name: {this.state.fridge?.name}</Section>
         <Section>
-          Users:
-          {this.state.fridge?.users &&
-            this.state.fridge.users.map(user => {
-              return (
-                <UserCard key={user._id}>
-                  <div>
-                    <strong>{user.username}</strong>
-                  </div>
-                  <div>
-                    {user._id !== this.props.userId && (
-                      <RemoveButton onClick={() => this.handleDelete(user._id)}>
-                        Remove
-                      </RemoveButton>
-                    )}
-                  </div>
-                </UserCard>
-              );
-            })}
+          <Section>
+            Users of: <strong>{this.state.fridge?.name}</strong>
+          </Section>
+          <Section>
+            {this.state.fridge?.users &&
+              this.state.fridge.users.map(user => {
+                return (
+                  <UserCard key={user._id}>
+                    <UserName>{user.username}</UserName>
+                    <UserDeleteButton>
+                      {user._id !== this.props.userId && (
+                        <RemoveButton
+                          onClick={() => this.handleDelete(user._id)}
+                        >
+                          Remove
+                        </RemoveButton>
+                      )}
+                    </UserDeleteButton>
+                  </UserCard>
+                );
+              })}
+          </Section>
         </Section>
         <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
       </div>

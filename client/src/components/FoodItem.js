@@ -1,37 +1,25 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 export default class FoodItem extends Component {
-  state = {
-    foodItem: null
-  };
-
-  componentDidMount() {
-    axios.get(`/foodItem/${this.props.foodId}`).then(response => {
-      this.setState({
-        foodItem: response.data
-      });
-    });
-  }
-
   render() {
     let src = "";
-    if (this.state.foodItem?.category) {
-      src = "/" + this.state.foodItem?.category + ".png";
+    if (this.props.foodItem?.category) {
+      src = "/" + this.props.foodItem?.category + ".png";
     }
 
-    let style = {};
-    if (this.state.foodItem?.availability === "empty") {
-      style = { opacity: "0.5" };
+    let itemStyle = {};
+    if (this.props.foodItem?.availability === "empty") {
+      itemStyle = { opacity: "0.4" };
     }
-    if (this.state.foodItem?.expiration) {
-      if (new Date(this.state.foodItem?.expiration) < new Date()) {
-        style = { color: "red" };
+    let nameStyle = {};
+    if (this.props.foodItem?.expiration) {
+      if (new Date(this.props.foodItem?.expiration) < new Date()) {
+        nameStyle = { color: "#f05050" };
       }
     }
     return (
-      <div>
-        <div style={style}> {this.state.foodItem?.name}</div>
+      <div style={itemStyle}>
+        <div style={nameStyle}> {this.props.foodItem?.name}</div>
         {src && <img height="50" src={src} alt="itemimage"></img>}
       </div>
     );

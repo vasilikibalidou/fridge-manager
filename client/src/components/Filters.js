@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { Title, Cleanlist, Button } from "./StyledComponents";
+import { Title, Cleanlist, FilterButton } from "./StyledComponents";
 
 export default class Filters extends Component {
   state = {
@@ -17,38 +17,38 @@ export default class Filters extends Component {
         <Title>Select a filter</Title>
         <Cleanlist>
           <li>
-            <Button onClick={this.handleClick} name="my-items">
+            <FilterButton onClick={this.handleClick} name="my-items">
               My items
-            </Button>
+            </FilterButton>
           </li>
           <li>
-            <Button onClick={this.handleClick} name="common-items">
+            <FilterButton onClick={this.handleClick} name="common-items">
               Common items
-            </Button>
+            </FilterButton>
           </li>
           <li>
-            <Button onClick={this.handleClick} name="expiration-date">
-              Expiration date
-            </Button>
+            <FilterButton onClick={this.handleClick} name="expiration-date">
+              Sort by Expiration date
+            </FilterButton>
           </li>
           <li>
-            <Button onClick={this.handleClick} name="availability">
+            <FilterButton onClick={this.handleClick} name="availability">
               My shopping list
-            </Button>
+            </FilterButton>
           </li>
           {/* <li>
-            <Button onClick={this.handleClick} name="expiration-date">
+            <FilterButton onClick={this.handleClick} name="expiration-date">
               Category
-            </Button>
+            </FilterButton>
           </li> */}
           <li>
-            <Button
+            <FilterButton
               onClick={this.handleClick}
               name="no-filter"
               style={{ backgroundColor: "#e7a40a" }}
             >
               No filter
-            </Button>
+            </FilterButton>
           </li>
         </Cleanlist>
         {/* Redirect, with a parameter, if a filter has been selected. */}
