@@ -36,8 +36,10 @@ export const Span = styled.span`
 `;
 
 export const Label = styled.label`
-  text-align: left;
-  width: 50vw;
+  width: 70vw;
+  @media (min-width: 769px) {
+    width: 50vw;
+  }
 `;
 
 export const H2 = styled.h2`
@@ -161,17 +163,18 @@ export const Input = styled.input`
 
 export const Textarea = styled.textarea`
   padding: 1.5vh;
-  width: 50%;
+  width: 60vw;
+  height: 20vh;
   border: 0.5px solid lightgray;
   border-radius: 5px;
-    width: 40%;
+  @media (min-width: 426px) {
+    width: 50vw;
   }
   @media (min-width: 769px) {
-    width: 35%;
-    padding: 2vh;
+    width: 40vw;
   }
   @media (min-width: 1025px) {
-    width: 30%;
+    width: 35vw;
   }
 `;
 
