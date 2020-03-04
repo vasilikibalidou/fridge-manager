@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {
+  Section,
+  Title,
+  Input,
+  Form,
+  Select,
+  Button,
+  Textarea,
+  Label,
+  H2
+} from "./StyledComponents";
 
 export default class CreateItem extends Component {
   state = {
@@ -34,24 +45,25 @@ export default class CreateItem extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Invite</h2>
-        <form onSubmit={this.handleSubmit} id="email-form">
-          <label htmlFor="emails">
-            Enter user e-mails, separated by a comma:
-          </label>
+      <Section>
+        <H2>Invite to fridge</H2>
+
+        <Form onSubmit={this.handleSubmit} id="email-form">
+          <Label htmlFor="emails">
+            Please enter user e-mails, separated by a comma:
+          </Label>
           <br />
-          <textarea
+          <Textarea
             name="emails"
             cols="80"
             rows="8"
             form="email-form"
             onChange={this.handleChange}
-          ></textarea>
+          ></Textarea>
           <br />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+          <Button type="submit">Submit</Button>
+        </Form>
+      </Section>
     );
   }
 }
