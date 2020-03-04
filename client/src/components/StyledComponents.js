@@ -65,6 +65,30 @@ export const DeleteButton = styled.button`
   margin-top: 3vh;
 `;
 
+export const RemoveButton = styled(DeleteButton)`
+  margin-top: 0vh;
+  width: 25vw;
+  padding: 1vw;
+  font-size: 0.8em;
+  @media (min-width: 321px) {
+    width: 20vw;
+  }
+  @media (min-width: 376px) {
+    width: 20vw;
+  }
+  @media (min-width: 426px) {
+    width: 13vw;
+    padding: 0.8vw;
+  }
+  @media (min-width: 769px) {
+    width: 10vw;
+    padding: 0.5vw;
+  }
+  @media (min-width: 1025px) {
+    width: 8vw;
+  }
+`;
+
 export const Input = styled.input`
   padding: 1.5vh;
   width: 50%;
@@ -80,6 +104,27 @@ export const StyledLink = styled(Link)`
 
 export const Card = styled.div`
   text-align: center;
+`;
+
+export const UserCard = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70vw;
+  margin: 0 auto;
+  padding: 2vh;
+  @media (min-width: 376px) {
+    width: 65vw;
+  }
+  @media (min-width: 426px) {
+    width: 50vw;
+  }
+  @media (min-width: 769px) {
+    width: 40vw;
+  }
+  @media (min-width: 1025px) {
+    width: 30vw;
+  }
 `;
 
 export const Innerbox = styled.div`
@@ -154,12 +199,32 @@ export const Select = styled.select`
 
 export const SmallFridge = styled.div`
   background-image: url("/FridgyFridge.png");
-  height: 45vh;
-  width: 45vw;
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
-  margin: 2vh 1vh;
+  background-repeat: no-repeat;
+  background-size: 35vw;
+  margin: 2vh 2vw;
   padding-top: 3vh;
+  height: 45vh;
+  width: 35vw;
+  @media (min-width: 321px) {
+    height: 50vh;
+    margin: 2vh 3vw;
+  }
+  @media (min-width: 376px) {
+    height: 55vh;
+  }
+  @media (min-width: 426px) {
+    background-size: 15vw;
+    height: 45vh;
+    width: 15vw;
+  }
+  @media (min-width: 769px) {
+    background-size: 12vw;
+    height: 50vh;
+    width: 12vw;
+  }
+  @media (min-width: 1025px) {
+    height: 52vh;
+  }
 `;
 export const NavTitle = styled.span`
   font-family: "Lobster";

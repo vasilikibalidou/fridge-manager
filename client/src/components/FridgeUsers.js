@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { Container, Card, Section, DeleteButton } from "./StyledComponents";
+import {
+  Container,
+  Card,
+  Section,
+  RemoveButton,
+  UserCard
+} from "./StyledComponents";
 
 export default class FridgeUsers extends Component {
   state = {
@@ -53,21 +59,23 @@ export default class FridgeUsers extends Component {
         <Section>Fridge name: {this.state.fridge?.name}</Section>
         <Section>
           Users:
-          <Container>
-            {this.state.fridge?.users &&
-              this.state.fridge.users.map(user => {
-                return (
-                  <Card key={user._id}>
+          {this.state.fridge?.users &&
+            this.state.fridge.users.map(user => {
+              return (
+                <UserCard key={user._id}>
+                  <div>
                     <strong>{user.username}</strong>
+                  </div>
+                  <div>
                     {user._id !== this.props.userId && (
-                      <DeleteButton onClick={() => this.handleDelete(user._id)}>
+                      <RemoveButton onClick={() => this.handleDelete(user._id)}>
                         Remove
-                      </DeleteButton>
+                      </RemoveButton>
                     )}
-                  </Card>
-                );
-              })}
-          </Container>
+                  </div>
+                </UserCard>
+              );
+            })}
         </Section>
         <Section>{this.state.message && <p>{this.state.message}</p>}</Section>
       </div>
