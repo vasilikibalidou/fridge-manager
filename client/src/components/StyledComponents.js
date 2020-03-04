@@ -31,26 +31,33 @@ export const UnderNavbarDiv = styled.div`
 export const Form = styled.form`
   display: flex:
   flex-direction: column;
-  padding-top: 5vh;
+  padding: 5vh 0;
   align-items: flex-start;
-  
 `;
 
 export const Section = styled.div`
   margin-top: 3vh;
-  padding: 2vh;
   font-size: 1em;
 `;
 
 export const Button = styled.button`
-  padding: 1.5vh 3vh;
+  padding: 1vw;
   font-size: 1em;
-  width: 45vw;
+  width: 30vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   background-color: #5cb1ab;
   color: white;
   margin-top: 3vh;
+  @media (min-width: 321px) {
+    width: 25vw;
+  }
+  @media (min-width: 426px) {
+    width: 15vw;
+  }
+  @media (min-width: 1025px) {
+    width: 10vw;
+  }
 `;
 
 export const ContainerTitleAndFilter = styled.div`
@@ -86,14 +93,23 @@ export const Title = styled.h1`
 `;
 
 export const DeleteButton = styled.button`
-  padding: 1.5vh 3vh;
+  padding: 1vw;
   font-size: 1em;
-  width: 45vw;
+  width: 30vw;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   background-color: red;
   color: white;
   margin-top: 3vh;
+  @media (min-width: 321px) {
+    width: 25vw;
+  }
+  @media (min-width: 426px) {
+    width: 15vw;
+  }
+  @media (min-width: 1025px) {
+    width: 10vw;
+  }
 `;
 
 export const RemoveButton = styled(DeleteButton)`
@@ -122,9 +138,19 @@ export const RemoveButton = styled(DeleteButton)`
 
 export const Input = styled.input`
   padding: 1.5vh;
-  width: 50%;
+  width: 52%;
   border: 0.5px solid lightgray;
   border-radius: 5px;
+  @media (min-width: 426px) {
+    width: 40%;
+  }
+  @media (min-width: 769px) {
+    width: 35%;
+    padding: 2vh;
+  }
+  @media (min-width: 1025px) {
+    width: 30%;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -209,7 +235,7 @@ export const Cleanlist = styled.ul`
 `;
 
 export const Select = styled.select`
-  width: 50%;
+  width: 52%;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   font-size: 1em;
@@ -219,6 +245,16 @@ export const Select = styled.select`
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  @media (min-width: 426px) {
+    width: 40%;
+  }
+  @media (min-width: 769px) {
+    width: 35%;
+    padding: 2.3vh;
+  }
+  @media (min-width: 1025px) {
+    width: 30%;
+  }
 `;
 
 export const SmallFridge = styled.div`
