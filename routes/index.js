@@ -6,9 +6,6 @@ const profileRoutes = require("./profile");
 const fridgeRoutes = require("./fridges");
 const itemRoutes = require("./foodItems");
 const editRoutes = require("./editfooditems");
-router.get("/", (req, res) => {
-  res.send("This is home");
-});
 
 router.use("/", editRoutes);
 router.use("/", itemRoutes);
