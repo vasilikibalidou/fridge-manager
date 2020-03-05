@@ -161,31 +161,35 @@ export const Title = styled.h1`
   color: #414042;
 `;
 export const FridgeTitle = styled.p`
-  font-size: 2vh;
-  font-weight: lightest;
+  font-size: 2.5vh;
+  font-style: normal;
+  font-weight: bold;
   color: rgb(45, 46, 46);
   transform: rotate(-15deg);
-  line-height: 70%;
-  font-family: "Lobster";
+  line-height: 80%;
+  font-family: "Coming Soon";
   word-wrap: break-word;
   text-indent: 0.5em;
-  padding: 0.5vh;
+  padding: 1vh;
   height: 5vh;
   width: 5vw;
 
   @media (min-width: 320px) {
     width: 15vw;
     line-height: 80%;
+    font-size: 2vh;
   }
   @media (min-width: 426px) {
-    width: 10vw;
+    width: 7vw;
   }
   @media (min-width: 769px) {
-    width: 10vw;
+    width: 5vw;
   }
   @media (min-width: 1025px) {
-    width: 5vw;
+    width: 4vw;
     height: 7vh;
+    font-size: 2.5vh;
+    line-height: 90%;
   }
 `;
 
@@ -199,14 +203,14 @@ export const Postit = styled.div`
   margin: 0 auto;
 
   @media (min-width: 426px) {
-    width: 10vw;
+    width: 8vw;
   }
   @media (min-width: 769px) {
-    width: 10vw;
+    width: 6vw;
   }
   @media (min-width: 1025px) {
     width: 5vw;
-    height: 7vh;
+    height: 10vh;
   }
 `;
 
