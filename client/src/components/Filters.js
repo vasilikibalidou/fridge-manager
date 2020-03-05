@@ -4,11 +4,12 @@ import { Title, Cleanlist, FilterButton } from "./StyledComponents";
 
 export default class Filters extends Component {
   state = {
-    filter: ""
+    filters: []
   };
 
   handleClick = event => {
-    this.setState({ filter: event.target.name });
+    this.setState({ filters: [...this.state.filters, event.target.name] });
+    console.log(this.state.filters);
   };
 
   render() {
@@ -52,16 +53,16 @@ export default class Filters extends Component {
           </li>
         </Cleanlist>
         {/* Redirect, with a parameter, if a filter has been selected. */}
-        {this.state.filter && (
+        {this.state.filters && (
           <Redirect
             to={{
               pathname: `/fridge/${this.props.fridgeId}`,
-              search: `?filter=${this.state.filter}`
-              //   state: { filter: this.state.filter } doesn't work
+              search: `?filter=${this.state.filters.join("&")}`
+              //   state: { filters: this.state.filters } doesn't work
             }}
           />
         )}
-        {this.state.filter === "no-filter" && (
+        {this.state.filters === "no-filter" && (
           <Redirect to={{ pathname: `/fridge/${this.props.fridgeId}` }} />
         )}
       </div>
