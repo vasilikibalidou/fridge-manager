@@ -160,6 +160,55 @@ export const Title = styled.h1`
   padding: 2vh;
   color: #414042;
 `;
+export const FridgeTitle = styled.p`
+  font-size: 2vh;
+  font-weight: lightest;
+  color: rgb(45, 46, 46);
+  transform: rotate(-15deg);
+  line-height: 70%;
+  font-family: "Lobster";
+  word-wrap: break-word;
+  text-indent: 0.5em;
+  padding: 0.5vh;
+  height: 5vh;
+  width: 5vw;
+
+  @media (min-width: 320px) {
+    width: 15vw;
+    line-height: 80%;
+  }
+  @media (min-width: 426px) {
+    width: 10vw;
+  }
+  @media (min-width: 769px) {
+    width: 10vw;
+  }
+  @media (min-width: 1025px) {
+    width: 5vw;
+    height: 7vh;
+  }
+`;
+
+export const Postit = styled.div`
+  background-image: url(/postit.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 15vw;
+  height: 8vh;
+  margin: 0 auto;
+
+  @media (min-width: 426px) {
+    width: 10vw;
+  }
+  @media (min-width: 769px) {
+    width: 10vw;
+  }
+  @media (min-width: 1025px) {
+    width: 5vw;
+    height: 7vh;
+  }
+`;
 
 export const DeleteButton = styled.button`
   padding: 1vw;
