@@ -14,7 +14,7 @@ import Invite from "./components/Invite";
 import FridgeUsers from "./components/FridgeUsers";
 import ItemDetails from "./components/ItemDetails";
 import Filters from "./components/Filters";
-import { UnderNavbarDiv } from "./components/StyledComponents";
+import { UnderNavbarDiv, OuterDiv } from "./components/StyledComponents";
 import Footer from "./components/Footer";
 
 class App extends React.Component {
@@ -38,7 +38,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <OuterDiv className="App">
         {this.state.user && (
           <Navbar user={this.state.user} setUser={this.setUser} />
         )}
@@ -165,7 +165,7 @@ class App extends React.Component {
           </Switch>
         </UnderNavbarDiv>
         <Footer />
-      </div>
+      </OuterDiv>
     );
   }
 }

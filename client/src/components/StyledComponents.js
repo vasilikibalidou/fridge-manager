@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const OuterDiv = styled.div`
+  min-height: 100vh;
+  height: 90%;
+`;
+export const UnderNavbarDiv = styled.div`
+  margin-top: 15vh;
+  min-height: 100vh;
+  height: 100%;
+`;
 export const Nav = styled.nav`
   position: fixed;
   overflow: hidden;
@@ -23,9 +32,6 @@ export const NavTitle = styled.span`
   font-family: "Lobster";
   padding: 0.5vw;
   font-size: 2em;
-`;
-export const UnderNavbarDiv = styled.div`
-  margin-top: 15vh;
 `;
 
 export const Span = styled.span`
