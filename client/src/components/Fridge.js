@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Title } from "./StyledComponents";
+import { Postit, FridgeTitle } from "./StyledComponents";
 
 export default class Fridge extends Component {
   state = {
@@ -18,9 +18,12 @@ export default class Fridge extends Component {
   render() {
     return (
       <div>
-        <div>
-          <Title>{this.state.fridge?.name}</Title>
-        </div>
+        <Postit>
+          <FridgeTitle>
+            <p></p>
+            {this.state.fridge?.name}
+          </FridgeTitle>
+        </Postit>
       </div>
     );
   }

@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button } from "./StyledComponents";
-import { Section, Input, Form, Select } from "./StyledComponents";
+import {
+  Section,
+  Input,
+  Form,
+  Select,
+  ContainerTitleAndFilter,
+  SpacerDiv,
+  FilterLink
+} from "./StyledComponents";
 export default class EditItem extends Component {
   state = {
     name: "",
@@ -69,6 +77,14 @@ export default class EditItem extends Component {
   render() {
     return (
       <>
+        <ContainerTitleAndFilter>
+          <SpacerDiv></SpacerDiv>
+          <FilterLink
+            to={`/fridge/${this.props.fridgeId}/foodItem/${this.props.foodItemId}`}
+          >
+            <img src="/close-24px.svg" alt="back to frige"></img>
+          </FilterLink>
+        </ContainerTitleAndFilter>
         <Form onSubmit={this.handleSubmit}>
           <Section>
             <label htmlFor="name">Item name: </label>
