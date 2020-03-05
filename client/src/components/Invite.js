@@ -35,25 +35,27 @@ export default class CreateItem extends Component {
 
   render() {
     return (
-      <Section>
-        <H2>Invite to fridge</H2>
+      <div style={{ height: "78vh" }}>
+        <Section>
+          <H2>Invite to fridge</H2>
 
-        <Form onSubmit={this.handleSubmit} id="email-form">
-          <Label htmlFor="emails">
-            Please enter user e-mails, separated by a comma:
-          </Label>
-          <br />
-          <Textarea
-            name="emails"
-            cols="80"
-            rows="8"
-            form="email-form"
-            onChange={this.handleChange}
-          ></Textarea>
-          <br />
-          <Button type="submit">Submit</Button>
-        </Form>
-      </Section>
+          <Form onSubmit={this.handleSubmit} id="email-form">
+            <Label htmlFor="emails">
+              Please enter user e-mails, separated by a comma:
+            </Label>
+            <br />
+            <Textarea
+              name="emails"
+              cols="80"
+              rows="8"
+              form="email-form"
+              onChange={this.handleChange}
+            ></Textarea>
+            <br />
+            <Button type="submit">Submit</Button>
+          </Form>
+        </Section>
+      </div>
     );
   }
 }

@@ -55,7 +55,7 @@ export default class FridgeUsers extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ height: "78vh" }}>
         <Section>
           <Section>
             Users of: <strong>{this.state.fridge?.name}</strong>

@@ -51,7 +51,7 @@ export default class Filters extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ height: "78vh" }}>
         <Title>Select a filter</Title>
         <FilterContainer>
           <ul style={{ textAlign: "left", margin: "0", listStyleType: "none" }}>

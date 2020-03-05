@@ -36,7 +36,7 @@ export default class CreateFridge extends Component {
 
   render() {
     return (
-      <>
+      <div style={{ height: "78vh" }}>
         <Form onSubmit={this.handleSubmit}>
           <Section>
             <label htmlFor="name">Fridge name: </label>
@@ -51,7 +51,7 @@ export default class CreateFridge extends Component {
           </Section>
           <Button type="submit">Submit</Button>
         </Form>
-      </>
+      </div>
     );
   }
 }

@@ -40,7 +40,7 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <>
+      <div style={{ height: "78vh" }}>
         <H2>Sign Up</H2>
         <Form onSubmit={this.handleSubmit}>
           <Section>
@@ -76,7 +76,7 @@ export default class Signup extends Component {
           Already have an account?
           <Link to="/"> Login</Link>
         </div>
-      </>
+      </div>
     );
   }
 }
