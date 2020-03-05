@@ -543,7 +543,7 @@ export const FridgeTitle = styled.p`
   @media (min-width: 1025px) {
     width: 4vw;
     height: 7vh;
-    font-size: 2.5vh;
+    font-size: 2vh;
     line-height: 90%;
   }
 `;
