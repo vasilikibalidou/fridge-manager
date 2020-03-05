@@ -6,8 +6,7 @@ export default class EditItem extends Component {
   state = {
     name: "",
     description: "",
-    category: "",
-    expiration: new Date(),
+    expiration: "",
     number: 0,
     unit: "",
     availability: "",
@@ -30,7 +29,7 @@ export default class EditItem extends Component {
         name: response.data.name,
         description: response.data.description,
         category: response.data.category,
-        expiration: response.data.expiration.slice(0, 10),
+        expiration: response.data.expiration?.slice(0, 10),
         number: response.data.quantity?.number,
         unit: response.data.quantity?.unit,
         availability: response.data.availability,
@@ -47,7 +46,6 @@ export default class EditItem extends Component {
         description: this.state.description,
         userId: this.props.user._id,
         fridgeId: this.props.fridgeId,
-        category: this.state.category,
         expiration: this.state.expiration,
         image: this.state.image,
         quantity: {
