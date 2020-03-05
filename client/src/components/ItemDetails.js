@@ -28,7 +28,6 @@ export default class ItemDetails extends Component {
           foodItem: response.data,
           fridge: responseFr.data
         });
-        console.log(responseFr.data);
       });
     });
   }
@@ -114,23 +113,21 @@ export default class ItemDetails extends Component {
             )}
           </Cleanlist>
         </Section>
-        {this.state.foodItem?.users[0]._id === this.state.user._id ||
-          (this.state.fridge?.admins.includes(this.state.user._id) && (
-            <Section>
-              <Link
-                to={`/${this.props.fridgeId}/foodItem/${this.props.itemId}/edit`}
-              >
-                <Button>Edit item</Button>
-              </Link>
+        {(this.state.foodItem?.users[0]._id === this.state.user._id ||
+          this.state.fridge?.admins.includes(this.state.user._id)) && (
+          <Section>
+            <Link
+              to={`/${this.props.fridgeId}/foodItem/${this.props.itemId}/edit`}
+            >
+              <Button>Edit item</Button>
+            </Link>
 
-              <br />
-              <DeleteButton
-                onClick={() => this.handleDelete(this.props.foodId)}
-              >
-                Delete
-              </DeleteButton>
-            </Section>
-          ))}
+            <br />
+            <DeleteButton onClick={() => this.handleDelete(this.props.foodId)}>
+              Delete
+            </DeleteButton>
+          </Section>
+        )}
       </div>
     );
   }
