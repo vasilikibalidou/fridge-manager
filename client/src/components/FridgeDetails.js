@@ -17,7 +17,8 @@ import {
   DeleteButton,
   Title,
   Innerbox,
-  FilterLink
+  FilterLink,
+  FilterSpan
 } from "./StyledComponents";
 
 export default class FridgeDetails extends Component {
@@ -127,7 +128,7 @@ export default class FridgeDetails extends Component {
           <SpacerDiv></SpacerDiv>
           <Title> {this.state.fridge?.name}</Title>
           <FilterLink to={`/fridge/${this.props.fridgeId}/filters`}>
-            <SortButton />
+            <SortButton /> <FilterSpan>Filters</FilterSpan>
           </FilterLink>
         </ContainerTitleAndFilter>
         <ContainerFridgedetails>
@@ -139,14 +140,7 @@ export default class FridgeDetails extends Component {
                     <StyledLink
                       to={`/fridge/${this.props.fridgeId}/foodItem/${item._id}`}
                     >
-                      {/* TODO: pass all info to component, no need for extra axios call inside. */}
-                      <FoodItem
-                        foodId={item._id}
-                        fridgeId={this.props.fridgeId}
-                        updateFunc={this.props.updateFunc}
-                        history={this.props.history}
-                        user={this.state.user}
-                      />
+                      <FoodItem foodItem={item} history={this.props.history} />
                     </StyledLink>
                   </Card>
                 </Innerbox>

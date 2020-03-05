@@ -1,16 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {
-  Section,
-  Title,
-  Input,
-  Form,
-  Select,
-  Button,
-  Textarea,
-  Label,
-  H2
-} from "./StyledComponents";
+import { Section, Form, Button, Textarea, Label, H2 } from "./StyledComponents";
 
 export default class CreateItem extends Component {
   state = {
