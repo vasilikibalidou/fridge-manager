@@ -98,7 +98,7 @@ export default class FridgeDetails extends Component {
       })
       .then(response => {
         this.props.updateFunc();
-        axios.get("/auth/loggedin").then(resp => {
+        axios.get("/api/auth/loggedin").then(resp => {
           let isAdmin = response.data?.admins.includes(resp.data._id);
           let hasFridge = response.data?.users.includes(resp.data._id);
           this.setState({
@@ -107,7 +107,6 @@ export default class FridgeDetails extends Component {
             userHasFridge: hasFridge,
             fridge: response.data
           });
-          this.props.history.push(`/fridge/${this.props.fridgeId}`);
         });
       })
       .catch(err => {
@@ -198,6 +197,7 @@ export default class FridgeDetails extends Component {
               </Button>
             </Center>
           )}
+          <br />
           <Section style={{ color: "#f05050" }}>
             {this.state.message && <p>{this.state.message}</p>}
           </Section>
