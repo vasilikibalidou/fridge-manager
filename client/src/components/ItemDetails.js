@@ -54,7 +54,7 @@ export default class ItemDetails extends Component {
       style = { color: "#f05050", fontWeight: "bold" };
     }
     return (
-      <div>
+      <div style={{ height: "100vh" }}>
         <ContainerTitleAndFilter>
           <SpacerDiv></SpacerDiv>
           <FilterLink to={`/fridge/${this.props.fridgeId}`}>

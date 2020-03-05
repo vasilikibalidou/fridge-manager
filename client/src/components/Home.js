@@ -17,7 +17,7 @@ export default class Home extends Component {
   render() {
     if (this.props.user) {
       return (
-        <>
+        <div>
           <Container>
             {this.props.user.fridges.map(fridgeId => {
               return (
@@ -35,7 +35,7 @@ export default class Home extends Component {
               <AddImg src="/add.png" alt="add" />
             </StyledLink>
           </Container>
-        </>
+        </div>
       );
     }
     return (

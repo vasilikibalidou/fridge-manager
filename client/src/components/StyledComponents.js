@@ -499,3 +499,14 @@ export const GroupDeleteButton = styled(DeleteButton)`
 export const Center = styled.div`
   margin: 0 auto;
 `;
+
+export const StyledFooter = styled.footer`
+  font-size: 0.8em;
+  background: #e6e6e6;
+  height: 8vh;
+  padding-top: 2vh;
+  position: relative;
+  width: 100%;
+  left: 0;
+  bottom: 0px;
+`;
