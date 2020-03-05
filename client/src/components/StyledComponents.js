@@ -63,6 +63,7 @@ export const H2 = styled.h2`
   padding: 3vw;
   width: 70vw;
   text-align: center;
+  margin: 0 auto;
 `;
 export const Form = styled.form`
   ${"" /* display: flex; */}

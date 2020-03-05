@@ -17,7 +17,7 @@ export default class Home extends Component {
   render() {
     if (this.props.user) {
       return (
-        <div style={{ height: "100%" }}>
+        <div style={{ minHeight: "100%" }}>
           <Container>
             {this.props.user.fridges?.map(fridgeId => {
               return (
