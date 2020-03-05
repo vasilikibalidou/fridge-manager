@@ -107,6 +107,7 @@ export default class FridgeDetails extends Component {
             userHasFridge: hasFridge,
             fridge: response.data
           });
+          this.props.history.push(`/fridge/${this.props.fridgeId}`);
         });
       })
       .catch(err => {
