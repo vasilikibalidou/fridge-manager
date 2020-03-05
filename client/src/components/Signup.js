@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import { Form, Section, Button, Input, H2 } from "./StyledComponents";
 
@@ -71,6 +72,10 @@ export default class Signup extends Component {
         <Section style={{ color: "#f05050" }}>
           {this.state.message && <p>{this.state.message}</p>}
         </Section>
+        <div style={{ padding: "0 15vw", fontSize: "0.8em" }}>
+          Already have an account?
+          <Link to="/"> Login</Link>
+        </div>
       </>
     );
   }

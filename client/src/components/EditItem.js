@@ -168,7 +168,6 @@ export default class EditItem extends Component {
           </Section> */}
           <Section>
             <label htmlFor="common">
-              To share
               <input
                 type="checkbox"
                 id="common"
@@ -176,6 +175,8 @@ export default class EditItem extends Component {
                 checked={this.state.common}
                 onChange={this.handleChange}
               />
+              <span> </span>
+              To share
             </label>
           </Section>
 

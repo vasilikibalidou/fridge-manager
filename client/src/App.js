@@ -15,6 +15,7 @@ import FridgeUsers from "./components/FridgeUsers";
 import ItemDetails from "./components/ItemDetails";
 import Filters from "./components/Filters";
 import { UnderNavbarDiv } from "./components/StyledComponents";
+import Footer from "./components/Footer";
 
 class App extends React.Component {
   state = {
@@ -163,6 +164,7 @@ class App extends React.Component {
             />
           </Switch>
         </UnderNavbarDiv>
+        <Footer />
       </div>
     );
   }
