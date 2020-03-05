@@ -7,8 +7,9 @@ export default class EditItem extends Component {
     name: "",
     description: "",
     category: "",
-    expiration: "",
-    quantity: { number: "", unit: "" },
+    expiration: new Date(),
+    number: 0,
+    unit: "",
     availability: "",
     common: ""
   };
@@ -29,8 +30,9 @@ export default class EditItem extends Component {
         name: response.data.name,
         description: response.data.description,
         category: response.data.category,
-        expiration: response.data.expiration,
-        quantity: { number: "", unit: "" },
+        expiration: response.data.expiration.slice(0, 10),
+        number: response.data.quantity?.number,
+        unit: response.data.quantity?.unit,
         availability: response.data.availability,
         common: response.data.common
       });
@@ -39,7 +41,6 @@ export default class EditItem extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.expiration);
     axios
       .post(`/api/foodItem/edit/${this.props.foodItemId}`, {
         name: this.state.name,
@@ -82,13 +83,13 @@ export default class EditItem extends Component {
               onChange={this.handleChange}
             />
           </Section>
-          {/* <Section>
-            <label htmlFor="quantity">How much? </label>
+          <Section>
+            <label htmlFor="number">Quantity </label>
             <br />
             <Input
               type="number"
-              id="quantity"
-              name="quantity"
+              id="number"
+              name="number"
               value={this.state.number}
               onChange={this.handleChange}
               style={{ width: "10vw" }}
@@ -105,24 +106,26 @@ export default class EditItem extends Component {
               <option value="kg">kg</option>
               <option value="item">item</option>
             </Select>
-          </Section> */}
-
-          <Section>
-            <label htmlFor="availability">How much is left? </label>
-            <br />
-            <Select
-              type="text"
-              id="availability"
-              name="availability"
-              value={this.state.availability}
-              onChange={this.handleChange}
-            >
-              <option value="full">full</option>
-              <option value="half-full">half-full</option>
-              <option value="almost empty">almost empty</option>
-              <option value="empty">empty</option>
-            </Select>
           </Section>
+
+          {this.state.unit !== "item" && (
+            <Section>
+              <label htmlFor="availability">How much is left? </label>
+              <br />
+              <Select
+                type="text"
+                id="availability"
+                name="availability"
+                value={this.state.availability}
+                onChange={this.handleChange}
+              >
+                <option value="full">full</option>
+                <option value="half-full">half-full</option>
+                <option value="almost empty">almost empty</option>
+                <option value="empty">empty</option>
+              </Select>
+            </Section>
+          )}
           <Section>
             <label htmlFor="expiration">Best before: </label>
             <br />
