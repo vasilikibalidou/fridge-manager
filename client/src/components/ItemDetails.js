@@ -8,7 +8,10 @@ import {
   DeleteButton,
   Cleanlist,
   Title,
-  Li
+  Li,
+  ContainerTitleAndFilter,
+  SpacerDiv,
+  FilterLink
 } from "./StyledComponents";
 
 export default class ItemDetails extends Component {
@@ -52,6 +55,13 @@ export default class ItemDetails extends Component {
     }
     return (
       <div>
+        <ContainerTitleAndFilter>
+          <SpacerDiv></SpacerDiv>
+          <FilterLink to={`/fridge/${this.props.fridgeId}`}>
+            <img src="/close-24px.svg" alt="back to frige"></img>
+          </FilterLink>
+        </ContainerTitleAndFilter>
+
         <Section>
           <Title>{this.state.foodItem?.name}</Title>
           <Cleanlist>
