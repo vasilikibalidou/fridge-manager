@@ -511,6 +511,8 @@ export const StyledFooter = styled.footer`
   height: 8vh;
   padding-top: 2vh;
   position: relative;
+  width: 100%;
   left: 0;
-  bottom: 0;
+  bottom: 0px;
+  margin-top: 10vh;
 `;
