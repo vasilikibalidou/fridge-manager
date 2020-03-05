@@ -19,14 +19,22 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #5cb1ab;
+  background-color: #5cb1ab;
   padding: 1vh;
+  z-index: 1000;
 `;
 export const NavLink = styled(Link)`
   color: white;
   font-size: 1em;
   padding: 1vw;
   text-decoration: none;
+
+  &:active {
+    color: white;
+  }
+  &:hover {
+    color: white;
+  }
 `;
 export const NavTitle = styled.span`
   font-family: "Lobster";
@@ -52,23 +60,20 @@ export const Label = styled.label`
 `;
 
 export const H2 = styled.h2`
-padding: 3vw
+  padding: 3vw;
   width: 70vw;
   text-align: center;
 `;
 export const Form = styled.form`
-  display: flex:
+  ${"" /* display: flex; */}
   flex-direction: column;
   padding: 5vh 0 2vh 0;
   align-items: flex-start;
   @media (min-width: 426px) {
-    
   }
   @media (min-width: 769px) {
-    
   }
   @media (min-width: 1025px) {
-    
   }
 `;
 
