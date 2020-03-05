@@ -64,7 +64,7 @@ export const Button = styled.button`
   font-size: 0.9em;
   width: 30vw;
   border: 0.5px solid lightgray;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #5cb1ab;
   color: white;
   margin-top: 3vh;
@@ -73,6 +73,10 @@ export const Button = styled.button`
   }
   @media (min-width: 426px) {
     width: 15vw;
+  }
+  @media (min-width: 769px) {
+    width: 12vw;
+    font-size: 0.7em;
   }
   @media (min-width: 1025px) {
     width: 10vw;
@@ -161,7 +165,7 @@ export const DeleteButton = styled.button`
   font-size: 0.9em;
   width: 30vw;
   border: 0.5px solid lightgray;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #f05050;
   color: white;
   margin: 3vh 0;
@@ -170,6 +174,10 @@ export const DeleteButton = styled.button`
   }
   @media (min-width: 426px) {
     width: 15vw;
+  }
+  @media (min-width: 769px) {
+    width: 12vw;
+    font-size: 0.7em;
   }
   @media (min-width: 1025px) {
     width: 10vw;
@@ -405,4 +413,35 @@ export const SmallFridge = styled.div`
   }
 `;
 
-//https://www.kasastore.com/files/kasastore_ltd_Files/Foto/740911_2.JPG
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  margin: 0 auto;
+  padding-bottom: 5vh;
+  @media (min-width: 426px) {
+    width: 50vw;
+  }
+  @media (min-width: 1025px) {
+    width: 40vw;
+  }
+`;
+export const GroupButton = styled(Button)`
+  width: 25vw;
+  height: 11vh;
+  @media (min-width: 769px) {
+    height: 8vh;
+  }
+`;
+
+export const GroupDeleteButton = styled(DeleteButton)`
+  width: 25vw;
+  height: 11vh;
+  @media (min-width: 769px) {
+    height: 8vh;
+  }
+`;
+
+export const Center = styled.div`
+  margin: 0 auto;
+`;
