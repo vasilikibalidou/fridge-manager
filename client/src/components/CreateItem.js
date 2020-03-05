@@ -10,7 +10,7 @@ export default class CreateItem extends Component {
     category: "dairy",
     expiration: null,
     number: 0,
-    unit: "",
+    unit: "L",
     availability: "full",
     common: false
   };
