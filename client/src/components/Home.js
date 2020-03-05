@@ -36,7 +36,7 @@ export default class Home extends Component {
               <AddImg src="/add.png" alt="add" />
             </StyledLink>
           </Container>
-        </>
+        </div>
       );
     }
     return (
