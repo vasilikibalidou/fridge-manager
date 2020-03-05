@@ -16,6 +16,7 @@ const Navbar = props => {
         </NavLink>
       </div>
       <div>
+        <NavLink to="/">{props.user.username}</NavLink>
         <NavLink to="/" onClick={logout}>
           Logout
         </NavLink>
