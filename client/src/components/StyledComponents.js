@@ -518,5 +518,10 @@ export const Center = styled.div`
 
 export const StyledFooter = styled.footer`
   font-size: 0.8em;
-  background: #5cb1ab;
+  background: #e6e6e6;
+  height: 8vh;
+  padding-top: 2vh;
+  position: relative;
+  left: 0;
+  bottom: 0;
 `;
