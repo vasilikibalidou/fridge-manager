@@ -36,7 +36,7 @@ export default class FridgeDetails extends Component {
       ? window.location.search.split("=")[1]
       : "";
     axios
-      .get(`/fridge/${this.props.fridgeId}/items`)
+      .get(`/api/fridge/${this.props.fridgeId}/items`)
       .then(response => {
         let isAdmin = response?.data?.admins?.includes(this.state.user._id);
         let hasFridge = response?.data?.users?.includes(this.state.user._id);
@@ -85,12 +85,12 @@ export default class FridgeDetails extends Component {
 
   joinFridge = () => {
     axios
-      .post(`/fridge/${this.state.fridge._id}/join`, {
+      .post(`/api/fridge/${this.state.fridge._id}/join`, {
         userId: this.props.user._id
       })
       .then(response => {
         this.props.updateFunc();
-        axios.get("/auth/loggedin").then(resp => {
+        axios.get("/api/auth/loggedin").then(resp => {
           let isAdmin = response.data?.admins.includes(resp.data._id);
           let hasFridge = response.data?.users.includes(resp.data._id);
           this.setState({
@@ -111,7 +111,7 @@ export default class FridgeDetails extends Component {
   handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this fridge?")) {
       axios
-        .post(`/fridge/${this.props.fridgeId}/delete`, {
+        .post(`/api/fridge/${this.props.fridgeId}/delete`, {
           userId: this.props.user._id
         })
         .then(response => {

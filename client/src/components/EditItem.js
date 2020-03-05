@@ -25,7 +25,7 @@ export default class EditItem extends Component {
   };
 
   componentDidMount = () => {
-    axios.get(`/foodItem/${this.props.foodItemId}`).then(response => {
+    axios.get(`/api/foodItem/${this.props.foodItemId}`).then(response => {
       this.setState({
         name: response.data.name,
         description: response.data.description,
@@ -42,7 +42,7 @@ export default class EditItem extends Component {
   handleSubmit = event => {
     event.preventDefault();
     axios
-      .post(`/foodItem/edit/${this.props.foodItemId}`, {
+      .post(`/api/foodItem/edit/${this.props.foodItemId}`, {
         name: this.state.name,
         description: this.state.description,
         userId: this.props.user._id,

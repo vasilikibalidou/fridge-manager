@@ -6,7 +6,7 @@ import { Nav, NavLink, NavTitle } from "./StyledComponents";
 const Navbar = props => {
   const logout = () => {
     props.setUser(null);
-    axios.delete("/auth/logout").then(() => {});
+    axios.delete("/api/auth/logout").then(() => {});
   };
   return (
     <Nav>
