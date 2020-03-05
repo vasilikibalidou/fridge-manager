@@ -35,8 +35,8 @@ export default class FridgeDetails extends Component {
   };
 
   componentDidMount() {
-    const filter = window.location.search
-      ? window.location.search.split("=")[1]
+    const filters = window.location.search
+      ? window.location.search.split("=")[1].split("&")
       : "";
     axios
       .get(`/api/fridge/${this.props.fridgeId}/items`)
@@ -45,29 +45,34 @@ export default class FridgeDetails extends Component {
         let hasFridge = response?.data?.users?.includes(this.state.user._id);
 
         let filteredItems = response?.data?.items;
-        if (filter) {
-          if (filter === "expiration-date") {
+        if (filters.length) {
+          filteredItems = response?.data?.items?.filter(item => {
+            // possible filters: myItems, commonItems, expirationSort, expired, empty
+
+            if (filters.includes("myItems")) {
+              return item.users.includes(this.state.user._id);
+            }
+            if (filters.includes("commonItems")) {
+              return item.common === true;
+            }
+            if (filters.includes("expired")) {
+              return item.expiration && new Date(item.expiration) < new Date();
+            }
+            if (filters.includes("empty")) {
+              return (
+                item.availability === "empty" && item.quantity.unit !== "item"
+              );
+            }
+            return true;
+          });
+
+          if (filters.includes("expirationSort")) {
             // sort by exp.date
             filteredItems = filteredItems.sort((a, b) => {
               if (!a.expiration || !b.expiration) {
                 return true;
               }
               return new Date(a.expiration) - new Date(b.expiration);
-            });
-          } else {
-            filteredItems = response?.data?.items.filter(item => {
-              if (filter === "my-items") {
-                return item.users.includes(this.state.user._id);
-              }
-              if (filter === "availability") {
-                return (
-                  item.availability === "empty" ||
-                  (item.expiration && new Date(item.expiration) < new Date())
-                );
-              } else if (filter === "common-items") {
-                return item.common === true;
-              }
-              return true;
             });
           }
         }
@@ -81,7 +86,7 @@ export default class FridgeDetails extends Component {
       })
       .catch(err => {
         this.setState({
-          message: err.response.data.message
+          message: err.response.data?.message
         });
       });
   }

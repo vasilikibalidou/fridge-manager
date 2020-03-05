@@ -35,6 +35,9 @@ export const Span = styled.span`
   color: darkgray;
 `;
 
+export const CheckboxLabel = styled.label`
+  margin: 0 2vw;
+`;
 export const Label = styled.label`
   width: 70vw;
   @media (min-width: 769px) {
@@ -83,26 +86,12 @@ export const Button = styled.button`
   }
 `;
 
-export const FilterButton = styled.button`
-  padding: 1vw;
-  font-size: 0.8em;
-  width: 30vw;
-  border: 0.5px solid lightgray;
-  border-radius: 5px;
-  background-color: #5cb1ab;
-  color: white;
-  margin-top: 3vh;
-  @media (min-width: 321px) {
-    width: 50vw;
-  }
-  @media (min-width: 426px) {
-    width: 40vw;
-  }
-  @media (min-width: 1025px) {
-    width: 30vw;
-  }
+export const FilterContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0vw;
 `;
-
 export const ContainerTitleAndFilter = styled.div`
   display: flex;
   align-items: center;
