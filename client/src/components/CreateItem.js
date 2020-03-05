@@ -149,14 +149,15 @@ export default class CreateItem extends Component {
           </Section>
           <Section>
             <label htmlFor="common">
-              To share
-              <Input
+              <input
                 type="checkbox"
                 id="common"
                 name="common"
                 checked={this.state.common}
                 onChange={this.handleChange}
               />
+              <span> </span>
+              To share
             </label>
           </Section>
           <Section>
