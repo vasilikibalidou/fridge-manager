@@ -9,7 +9,8 @@ export default class CreateItem extends Component {
     description: "",
     category: "dairy",
     expiration: null,
-    quantity: { number: null, unit: null },
+    number: 0,
+    unit: "",
     availability: "full",
     common: false
   };
@@ -27,7 +28,7 @@ export default class CreateItem extends Component {
   handleSubmit = event => {
     event.preventDefault();
     axios
-      .post("/foodItem", {
+      .post("/api/foodItem", {
         name: this.state.name,
         description: this.state.description,
         userId: this.props.user._id,
@@ -68,13 +69,13 @@ export default class CreateItem extends Component {
             />
           </Section>
           <Section>
-            <label htmlFor="quantity">How much?</label>
+            <label htmlFor="number">Quantity</label>
             <br />
             <Input
               type="number"
               min="0"
-              id="quantity"
-              name="quantity"
+              id="number"
+              name="number"
               placeholder="0"
               value={this.state.number}
               onChange={this.handleChange}
@@ -92,22 +93,24 @@ export default class CreateItem extends Component {
               <option value="item">item</option>
             </Select>
           </Section>
-          <Section>
-            <label htmlFor="availability">How much is left? </label>
-            <br />
-            <Select
-              type="text"
-              id="availability"
-              name="availability"
-              value={this.state.availability}
-              onChange={this.handleChange}
-            >
-              <option value="full">full</option>
-              <option value="half-full">half-full</option>
-              <option value="almost empty">almost empty</option>
-              <option value="empty">empty</option>
-            </Select>
-          </Section>
+          {this.state.unit !== "item" && (
+            <Section>
+              <label htmlFor="availability">How much is left?</label>
+              <br />
+              <Select
+                type="text"
+                id="availability"
+                name="availability"
+                value={this.state.availability}
+                onChange={this.handleChange}
+              >
+                <option value="full">full</option>
+                <option value="half-full">half-full</option>
+                <option value="almost empty">almost empty</option>
+                <option value="empty">empty</option>
+              </Select>
+            </Section>
+          )}
           <Section>
             <label htmlFor="expiration">Best before: </label>
             <br />

@@ -20,7 +20,7 @@ export default class Signup extends Component {
     event.preventDefault();
 
     axios
-      .post("/auth/signup", {
+      .post("/api/auth/signup", {
         username: this.state.username,
         password: this.state.password
       })
@@ -68,7 +68,7 @@ export default class Signup extends Component {
             <Button type="submit">Sign up</Button>
           </Section>
         </Form>
-        <Section style={{ color: "red" }}>
+        <Section style={{ color: "#f05050" }}>
           {this.state.message && <p>{this.state.message}</p>}
         </Section>
       </>

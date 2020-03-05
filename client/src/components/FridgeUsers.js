@@ -17,7 +17,7 @@ export default class FridgeUsers extends Component {
 
   componentDidMount() {
     axios
-      .get(`/fridge/${this.props.fridgeId}/users`)
+      .get(`/api/fridge/${this.props.fridgeId}/users`)
       .then(response => {
         this.setState({
           fridge: response.data
@@ -37,7 +37,7 @@ export default class FridgeUsers extends Component {
       )
     ) {
       axios
-        .post(`/fridge/${this.props.fridgeId}/removeUser`, {
+        .post(`/api/fridge/${this.props.fridgeId}/removeUser`, {
           userId: userId
         })
         .then(response => {
