@@ -52,6 +52,53 @@ export const Form = styled.form`
   flex-direction: column;
   padding: 5vh 0 2vh 0;
   align-items: flex-start;
+  @media (min-width: 426px) {
+    
+  }
+  @media (min-width: 769px) {
+    
+  }
+  @media (min-width: 1025px) {
+    
+  }
+`;
+
+export const Input = styled.input`
+  padding: 1.5vh;
+  width: 50vw;
+  border-radius: 5px;
+  @media (min-width: 426px) {
+    width: 35vw;
+  }
+  @media (min-width: 769px) {
+    width: 30vw;
+  }
+  @media (min-width: 1025px) {
+    width: 25vw;
+  }
+`;
+
+export const Select = styled.select`
+  width: 52%;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  font-size: 1em;
+  margin: 1vw;
+  outline: 0;
+  padding: 1.8vh;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  @media (min-width: 426px) {
+    width: 35vw;
+  }
+  @media (min-width: 769px) {
+    width: 30vw;
+    padding: 2.3vh;
+  }
+  @media (min-width: 1025px) {
+    width: 25vw;
+  }
 `;
 
 export const Section = styled.div`
@@ -206,12 +253,6 @@ export const RemoveButton = styled(DeleteButton)`
   @media (min-width: 1025px) {
     width: 8vw;
   }
-`;
-
-export const Input = styled.input`
-  padding: 1.5vh;
-  width: 50vw;
-  border-radius: 5px;
 `;
 
 export const Textarea = styled.textarea`
@@ -382,29 +423,6 @@ export const Li = styled.li`
   width: 50vw;
 `;
 
-export const Select = styled.select`
-  width: 52%;
-  border: 0.5px solid lightgray;
-  border-radius: 5px;
-  font-size: 1em;
-  margin: 1vw;
-  outline: 0;
-  padding: 1.8vh;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  @media (min-width: 426px) {
-    width: 40%;
-  }
-  @media (min-width: 769px) {
-    width: 35%;
-    padding: 2.3vh;
-  }
-  @media (min-width: 1025px) {
-    width: 30%;
-  }
-`;
-
 export const SmallFridge = styled.div`
   background-image: url("/FridgyFridge.png");
   background-repeat: no-repeat;
@@ -441,29 +459,64 @@ export const ButtonContainer = styled.div`
   width: 80vw;
   margin: 0 auto;
   padding-bottom: 5vh;
+  @media (min-width: 376px) {
+    width: 72vw;
+  }
   @media (min-width: 426px) {
-    width: 50vw;
+    width: 58vw;
+  }
+  @media (min-width: 769px) {
+    width: 38vw;
   }
   @media (min-width: 1025px) {
-    width: 40vw;
+    width: 32vw;
   }
 `;
 export const GroupButton = styled(Button)`
   width: 25vw;
   height: 11vh;
+  @media (min-width: 376px) {
+    width: 22vw;
+    height: 10vh;
+  }
+  @media (min-width: 426px) {
+    width: 18vw;
+    height: 10vh;
+  }
   @media (min-width: 769px) {
+    width: 12vw;
     height: 8vh;
+  }
+  @media (min-width: 1025px) {
+    width: 10vw;
   }
 `;
 
 export const GroupDeleteButton = styled(DeleteButton)`
   width: 25vw;
   height: 11vh;
+  @media (min-width: 376px) {
+    width: 22vw;
+    height: 10vh;
+  }
+  @media (min-width: 426px) {
+    width: 18vw;
+    height: 10vh;
+  }
   @media (min-width: 769px) {
+    width: 12vw;
     height: 8vh;
+  }
+  @media (min-width: 1025px) {
+    width: 10vw;
   }
 `;
 
 export const Center = styled.div`
   margin: 0 auto;
+`;
+
+export const StyledFooter = styled.footer`
+  font-size: 0.8em;
+  background: #5cb1ab;
 `;

@@ -156,6 +156,8 @@ export default class FridgeDetails extends Component {
                   <StyledLink
                     to={`/fridge/${this.state.fridge._id}/createItem`}
                   >
+                    Add an item
+                    <br />
                     <AddImg src="/add.png" alt="add" />
                   </StyledLink>
                 </Card>

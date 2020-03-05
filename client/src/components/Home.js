@@ -31,7 +31,8 @@ export default class Home extends Component {
               );
             })}
             <StyledLink to="/createFridge" style={{ padding: "5vw" }}>
-              <h5>Add a fridge</h5>
+              Add a fridge
+              <br />
               <AddImg src="/add.png" alt="add" />
             </StyledLink>
           </Container>
