@@ -13,8 +13,7 @@ export default class Filters extends Component {
     myItems: false,
     commonItems: false,
     expirationSort: false,
-    expired: false,
-    empty: false,
+    shoppingList: false,
     submit: false,
     filters: []
   };
@@ -41,8 +40,7 @@ export default class Filters extends Component {
         myItems: false,
         commonItems: false,
         expirationSort: false,
-        expired: false,
-        empty: false,
+        shoppingList: false,
         submit: false,
         filters: []
       });
@@ -78,22 +76,14 @@ export default class Filters extends Component {
             <li>
               <input
                 type="checkbox"
-                id="expired"
-                name="expired"
-                checked={this.state.expired}
+                id="shoppingList"
+                name="shoppingList"
+                checked={this.state.shoppingList}
                 onChange={this.handleChange}
               />
-              <CheckboxLabel htmlFor="expired">Expired</CheckboxLabel>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                id="empty"
-                name="empty"
-                checked={this.state.empty}
-                onChange={this.handleChange}
-              />
-              <CheckboxLabel htmlFor="empty">Empty</CheckboxLabel>
+              <CheckboxLabel htmlFor="shoppingList">
+                My shopping list
+              </CheckboxLabel>
             </li>
             <li>
               <input

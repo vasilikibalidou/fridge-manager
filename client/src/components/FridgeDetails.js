@@ -47,7 +47,7 @@ export default class FridgeDetails extends Component {
         let filteredItems = response?.data?.items;
         if (filters.length) {
           filteredItems = response?.data?.items?.filter(item => {
-            // possible filters: myItems, commonItems, expirationSort, expired, empty
+            // possible filters: myItems, commonItems, expirationSort, shoppingList
 
             if (filters.includes("myItems")) {
               return item.users.includes(this.state.user._id);
@@ -55,14 +55,13 @@ export default class FridgeDetails extends Component {
             if (filters.includes("commonItems")) {
               return item.common === true;
             }
-            if (filters.includes("expired")) {
-              return item.expiration && new Date(item.expiration) < new Date();
-            }
-            if (filters.includes("empty")) {
+            if (filters.includes("shoppingList")) {
               return (
-                item.availability === "empty" && item.quantity.unit !== "item"
+                (item.expiration && new Date(item.expiration) < new Date()) ||
+                (item.availability === "empty" && item.quantity.unit !== "item")
               );
             }
+
             return true;
           });
 
