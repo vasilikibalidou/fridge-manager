@@ -8,7 +8,6 @@ import {
   DeleteButton,
   Cleanlist,
   Title,
-  Span,
   Li
 } from "./StyledComponents";
 
@@ -62,29 +61,37 @@ export default class ItemDetails extends Component {
             </Li>
             <br />
             <li>
-              <Span>Belongs to: </Span> {this.props.user.username}
+              <strong>Belongs to: </strong> {this.props.user.username}
             </li>
             <li>
-              <Span>Category: </Span>
+              <strong>Category: </strong>
               {this.state.foodItem?.category}
             </li>
             <li>
-              <Span>Availability: </Span> {this.state.foodItem?.availability}
+              <strong>Quantity: </strong>
+              {this.state.foodItem?.quantity?.number}{" "}
+              {this.state.foodItem?.quantity?.unit}
             </li>
+            {this.state.foodItem?.quantity?.unit !== "item" && (
+              <li>
+                <strong>Availability: </strong>{" "}
+                {this.state.foodItem?.availability}
+              </li>
+            )}
             {this.state.foodItem?.expiration && (
               <li>
-                <Span>Best before: </Span>
+                <strong>Best before: </strong>
                 <br />
                 {this.state.foodItem?.expiration?.slice(0, 10)}
               </li>
             )}
             <li>
-              <Span>To be shared: </Span>
+              <strong>To be shared: </strong>
               {this.state.foodItem?.common ? "Yes" : "No"}
             </li>
             {this.state.foodItem?.description && (
               <li>
-                <Span>Description: </Span>
+                <strong>Description: </strong>
                 {this.state.foodItem?.description}
               </li>
             )}
