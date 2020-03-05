@@ -221,7 +221,7 @@ export const DeleteButton = styled.button`
 `;
 
 export const RemoveButton = styled(DeleteButton)`
-  margin-top: 0vh;
+  margin: 0vh;
   width: 25vw;
   padding: 1vw;
   font-size: 0.8em;
@@ -275,20 +275,20 @@ export const UserCard = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 70vw;
+  width: 60vw;
   margin: 0 auto;
-  padding: 2vh;
+  padding: 1vh;
   @media (min-width: 376px) {
-    width: 65vw;
-  }
-  @media (min-width: 426px) {
     width: 50vw;
   }
-  @media (min-width: 769px) {
+  @media (min-width: 426px) {
     width: 40vw;
   }
-  @media (min-width: 1025px) {
+  @media (min-width: 769px) {
     width: 30vw;
+  }
+  @media (min-width: 1025px) {
+    width: 25vw;
   }
 `;
 
