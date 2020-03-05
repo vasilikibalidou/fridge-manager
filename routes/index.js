@@ -10,10 +10,10 @@ const editRoutes = require("./editfooditems");
   res.send("This is home");
 });*/
 
-router.use("/", editRoutes);
-router.use("/", itemRoutes);
-router.use("/", fridgeRoutes);
-router.use("/", profileRoutes);
-router.use("/auth", usersRoutes);
+router.use("/api", editRoutes);
+router.use("/api", itemRoutes);
+router.use("/api", fridgeRoutes);
+router.use("/api", profileRoutes);
+router.use("/api/auth", usersRoutes);
 
 module.exports = router;

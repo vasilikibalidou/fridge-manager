@@ -18,7 +18,7 @@ export default class ItemDetails extends Component {
   };
 
   componentDidMount() {
-    axios.get(`/foodItem/${this.props.itemId}`).then(response => {
+    axios.get(`/api/foodItem/${this.props.itemId}`).then(response => {
       this.setState({
         foodItem: response.data
       });
@@ -28,7 +28,7 @@ export default class ItemDetails extends Component {
   handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       axios
-        .post(`/foodItem/${this.props.itemId}/delete`, {
+        .post(`/api/foodItem/${this.props.itemId}/delete`, {
           fridgeId: this.props.fridgeId
         })
         .then(response => {

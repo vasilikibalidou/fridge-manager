@@ -27,7 +27,7 @@ export default class CreateItem extends Component {
   handleSubmit = event => {
     event.preventDefault();
     axios
-      .post("/foodItem", {
+      .post("/api/foodItem", {
         name: this.state.name,
         description: this.state.description,
         userId: this.props.user._id,

@@ -17,7 +17,7 @@ export default class CreateFridge extends Component {
   handleSubmit = event => {
     event.preventDefault();
     axios
-      .post("/fridge", {
+      .post("/api/fridge", {
         name: this.state.name,
         userId: this.props.user._id
       })
