@@ -6,6 +6,7 @@ import axios from "axios";
 import {
   SortButton,
   StyledLink,
+  Container,
   ContainerTitleAndFilter,
   ContainerFridgedetails,
   ContainerFridgeInside,
@@ -160,37 +161,39 @@ export default class FridgeDetails extends Component {
             )}
           </ContainerFridgeInside>
         </ContainerFridgedetails>
-        <div>
-          {this.state.userIsAdmin && this.state.fridge && (
-            <Link to={`/fridge/${this.state.fridge._id}/users`}>
-              <Button>({this.state.fridge.users.length}) Users</Button>
-            </Link>
-          )}
-          <br />
-          {this.state.userIsAdmin && (
-            <Link to={`/fridge/${this.state.fridge._id}/invite`}>
-              <Button>Invite Users</Button>
-            </Link>
-          )}
-          <br />
-          {this.state.userHasFridge === false && (
-            <div>
-              <Button type="submit" onClick={this.joinFridge}>
-                Join Fridge
-              </Button>
-            </div>
-          )}
-          {this.state.userIsAdmin && (
-            <DeleteButton
-              onClick={() => this.handleDelete(this.props.fridgeId)}
-            >
-              Delete fridge
-            </DeleteButton>
-          )}
-          <Section style={{ color: "red" }}>
-            {this.state.message && <p>{this.state.message}</p>}
-          </Section>
-        </div>
+        <Container>
+          <div>
+            {this.state.userIsAdmin && this.state.fridge && (
+              <Link to={`/fridge/${this.state.fridge._id}/users`}>
+                <Button>({this.state.fridge.users.length}) Users</Button>
+              </Link>
+            )}
+            <br />
+            {this.state.userIsAdmin && (
+              <Link to={`/fridge/${this.state.fridge._id}/invite`}>
+                <Button>Invite Users</Button>
+              </Link>
+            )}
+            <br />
+            {this.state.userHasFridge === false && (
+              <div>
+                <Button type="submit" onClick={this.joinFridge}>
+                  Join Fridge
+                </Button>
+              </div>
+            )}
+            {this.state.userIsAdmin && (
+              <DeleteButton
+                onClick={() => this.handleDelete(this.props.fridgeId)}
+              >
+                Delete fridge
+              </DeleteButton>
+            )}
+            <Section style={{ color: "red" }}>
+              {this.state.message && <p>{this.state.message}</p>}
+            </Section>
+          </div>
+        </Container>
       </div>
     );
   }

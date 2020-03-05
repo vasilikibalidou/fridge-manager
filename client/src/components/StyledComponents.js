@@ -68,6 +68,7 @@ export const Button = styled.button`
   background-color: #5cb1ab;
   color: white;
   margin-top: 3vh;
+
   @media (min-width: 321px) {
     width: 25vw;
   }
