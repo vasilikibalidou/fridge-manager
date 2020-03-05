@@ -60,6 +60,7 @@ router.post("/foodItem", (req, res) => {
 // gets food item
 router.get("/foodItem/:id", (req, res) => {
   FoodItem.findById(req.params.id)
+    .populate("users")
     .then(foundItem => {
       return res.json(foundItem);
     })

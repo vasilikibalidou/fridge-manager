@@ -13,13 +13,19 @@ import {
 
 export default class ItemDetails extends Component {
   state = {
-    foodItem: null
+    user: this.props.user,
+    foodItem: null,
+    fridge: null
   };
 
   componentDidMount() {
     axios.get(`/api/foodItem/${this.props.itemId}`).then(response => {
-      this.setState({
-        foodItem: response.data
+      axios.get(`/api/fridge/${this.props.fridgeId}`).then(responseFr => {
+        this.setState({
+          foodItem: response.data,
+          fridge: responseFr.data
+        });
+        console.log(responseFr.data);
       });
     });
   }
@@ -60,7 +66,8 @@ export default class ItemDetails extends Component {
             </Li>
             <br />
             <li>
-              <strong>Belongs to: </strong> {this.props.user.username}
+              <strong>Belongs to: </strong>{" "}
+              {this.state.foodItem?.users?.[0].username}
             </li>
             <li>
               <strong>Category: </strong>
@@ -98,18 +105,23 @@ export default class ItemDetails extends Component {
             )}
           </Cleanlist>
         </Section>
-        <Section>
-          <Link
-            to={`/${this.props.fridgeId}/foodItem/${this.props.itemId}/edit`}
-          >
-            <Button>Edit item</Button>
-          </Link>
+        {this.state.foodItem?.users[0]._id === this.state.user._id ||
+          (this.state.fridge?.admins.includes(this.state.user._id) && (
+            <Section>
+              <Link
+                to={`/${this.props.fridgeId}/foodItem/${this.props.itemId}/edit`}
+              >
+                <Button>Edit item</Button>
+              </Link>
 
-          <br />
-          <DeleteButton onClick={() => this.handleDelete(this.props.foodId)}>
-            Delete
-          </DeleteButton>
-        </Section>
+              <br />
+              <DeleteButton
+                onClick={() => this.handleDelete(this.props.foodId)}
+              >
+                Delete
+              </DeleteButton>
+            </Section>
+          ))}
       </div>
     );
   }
