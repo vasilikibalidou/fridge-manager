@@ -33,7 +33,7 @@ export default class Filters extends Component {
           </li>
           <li>
             <FilterButton onClick={this.handleClick} name="availability">
-              My shopping list
+              Unavailable / Expired items
             </FilterButton>
           </li>
           {/* <li>

@@ -22,7 +22,7 @@ class App extends React.Component {
   };
 
   updateUserState = () => {
-    axios.get("/auth/loggedin").then(response => {
+    axios.get("/api/auth/loggedin").then(response => {
       this.setState({
         user: response.data
       });
