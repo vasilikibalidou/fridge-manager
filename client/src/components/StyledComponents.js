@@ -272,7 +272,16 @@ export const UserDeleteButton = styled.div`
 export const Innerbox = styled.div`
   border-bottom: 3px double grey;
   border-bottom-style: double;
-  width: 35%;
+  width: 35vw;
+  @media (min-width: 376px) {
+    width: 30vw;
+  }
+  @media (min-width: 426px) {
+    width: 15vw;
+  }
+  @media (min-width: 769px) {
+    width: 10vw;
+  }
 `;
 
 export const ContainerScroll = styled.div`
@@ -301,12 +310,25 @@ export const ContainerFridgedetails = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   margin: 0 auto;
   width: 90vw;
   height: 70vh;
-  max-width: 1000px;
   border-radius: 45px;
+  @media (min-width: 321px) {
+    width: 80vw;
+  }
+  @media (min-width: 376px) {
+    width: 70vw;
+  }
+  @media (min-width: 426px) {
+    width: 35vw;
+  }
+  @media (min-width: 769px) {
+    width: 28vw;
+  }
+  @media (min-width: 1025px) {
+    width: 25vw;
+  }
 `;
 export const ContainerFridgeInside = styled.div`
   display: flex;
