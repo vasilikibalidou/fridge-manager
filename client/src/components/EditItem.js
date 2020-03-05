@@ -30,7 +30,7 @@ export default class EditItem extends Component {
         name: response.data.name,
         description: response.data.description,
         category: response.data.category,
-        expiration: response.data.expiration.slice(0, 10),
+        expiration: response.data.expiration?.slice(0, 10),
         number: response.data.quantity?.number,
         unit: response.data.quantity?.unit,
         availability: response.data.availability,
