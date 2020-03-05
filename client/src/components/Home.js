@@ -19,7 +19,7 @@ export default class Home extends Component {
       return (
         <>
           <Container>
-            {this.props.user.fridges.map(fridgeId => {
+            {this.props.user.fridges?.map(fridgeId => {
               return (
                 <StyledLink to={`/fridge/${fridgeId}`} key={fridgeId}>
                   <SmallFridge>

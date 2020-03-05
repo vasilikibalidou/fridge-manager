@@ -59,7 +59,7 @@ export default class FridgeDetails extends Component {
               if (filter === "availability") {
                 return (
                   item.availability === "empty" ||
-                  new Date(item.expiration) < new Date()
+                  (item.expiration && new Date(item.expiration) < new Date())
                 );
               } else if (filter === "common-items") {
                 return item.common === true;
@@ -90,7 +90,7 @@ export default class FridgeDetails extends Component {
       })
       .then(response => {
         this.props.updateFunc();
-        axios.get("/api/auth/loggedin").then(resp => {
+        axios.get("/auth/loggedin").then(resp => {
           let isAdmin = response.data?.admins.includes(resp.data._id);
           let hasFridge = response.data?.users.includes(resp.data._id);
           this.setState({
