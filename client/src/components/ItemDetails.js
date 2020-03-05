@@ -57,7 +57,7 @@ export default class ItemDetails extends Component {
       style = { color: "#f05050", fontWeight: "bold" };
     }
     return (
-      <div>
+      <div style={{ height: "100vh" }}>
         <Section>
           <Title>{this.state.foodItem?.name}</Title>
           <Cleanlist>

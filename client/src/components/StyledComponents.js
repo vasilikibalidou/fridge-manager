@@ -514,5 +514,4 @@ export const StyledFooter = styled.footer`
   width: 100%;
   left: 0;
   bottom: 0px;
-  margin-top: 10vh;
 `;
