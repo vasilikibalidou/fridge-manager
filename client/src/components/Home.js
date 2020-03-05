@@ -50,7 +50,10 @@ export default class Home extends Component {
         </div>
         <div style={{ paddingBottom: "10vh" }}>
           <Login setUser={this.props.setUser} />
-          <Link to="/signup">Sign Up</Link>
+          <div style={{ padding: "0 15vw", fontSize: "0.8em" }}>
+            You don't have an account yet?
+            <Link to="/signup"> Sign Up</Link>
+          </div>
         </div>
       </div>
     );
